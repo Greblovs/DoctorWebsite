@@ -4,7 +4,7 @@ export default class Posts extends Component{
     render() {
         return(
             <>
-               <p>sdfsd</p>
+                <p>"Posts"</p>
             </>
         )
     }

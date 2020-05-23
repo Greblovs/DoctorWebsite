@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import classes from "./PopupMenu.module.scss"
+import {NavLink} from "react-router-dom"
+
 
 const PopupMenu = ({isOpen}) => {
     const [state, setState] = useState({
-        list : [
-            //{link: "link", name: "Главная"},
-            {link: "link", name: "Вопросы"},
-            {link: "link", name: "Статьи"},
-            {link: "link", name: "Регистрация"},
+        links : [
+            //{to: "/", label: "Главная", exact: true,},
+            {to: "/Questions", label: "Вопросы", exact: false},
+            {to: "/Posts", label: "Статьи", exact: false},
+            {to: "/Registration", label: "Регистрация", exact: false},
         ],
         contacts:
             {link: "link", name: "Контакты"},
@@ -20,10 +22,10 @@ const PopupMenu = ({isOpen}) => {
     }
 
 
-    let menu  = state.list.map((element, index)=>{
+    let menu  = state.links.map((element, index)=>{
         return(
             <div className={classes.element} key={index}>
-                <a href={element.link}>{element.name}</a>
+                <NavLink className = {classes.link} to = {element.to} exact = {element.exact} >{element.label}</NavLink>
             </div>
         )
     })

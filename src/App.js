@@ -1,17 +1,21 @@
 import React from 'react';
-import Layout from "./components/hoc/Layout/Layout";
-import Header from "./components/Header/Header";
-import Banner from "./components/Banner/Banner";
-import PostsSlider from "./components/PostsSlider/PostsSlider";
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import Registration from "./components/Pages/Registration"
+import MainPage from "./components/Pages/Main"
+import Posts from "./components/Pages/Posts"
+import Questions from "./components/Pages/Questions"
 
 function App() {
     return (
         <>
-            <Header/>
-            <Layout>
-                <Banner/>
-                <PostsSlider/>
-            </Layout>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path = "/" component = {MainPage}/>
+                <Route path = "/Posts" component = {Posts}/>
+                <Route path = "/Questions" component = {Questions}/>
+                <Route path = "/Registration" component = {Registration}/>
+            </Switch>
+         </BrowserRouter>
         </>
     );
 }

@@ -4,7 +4,7 @@ export default class Questions extends Component{
     render() {
         return(
             <>
-                <p>sdfsd</p>
+                <p>Questions</p>
             </>
         )
     }
