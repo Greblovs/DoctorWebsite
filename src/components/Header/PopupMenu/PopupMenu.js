@@ -3,10 +3,10 @@ import classes from "./PopupMenu.module.scss"
 import {NavLink} from "react-router-dom"
 
 
-const PopupMenu = ({isOpen, handleClick}) => {
+const PopupMenu = ({isOpen, handleClick, page}) => {
     const [state, setState] = useState({
         links : [
-            //{to: "/", label: "Главная", exact: true,},
+            {to: "/", label: "Главная", exact: true,},
             {to: "/Questions", label: "Вопросы", exact: false},
             {to: "/Posts", label: "Статьи", exact: false},
             {to: "/Registration", label: "Регистрация", exact: false},
@@ -23,11 +23,18 @@ const PopupMenu = ({isOpen, handleClick}) => {
 
 
     let menu  = state.links.map((element, index)=>{
-        return(
-            <div className={classes.element} key={index} onClick={handleClick}>
-                <NavLink className = {classes.link} to = {element.to} exact = {element.exact} >{element.label}</NavLink>
-            </div>
-        )
+        if (element.label !== page) {
+            const label = element.label;
+            return (
+                <div className={classes.element} key={index} onClick={handleClick}>
+                    <NavLink className={classes.link} to={element.to} exact={element.exact}>{element.label}</NavLink>
+                </div>
+            );
+        }else{
+            return (
+                <React.Fragment key={index}/>
+            )
+        }
     });
     return (
         <div className={popupMenuCls.join(" ")}>
