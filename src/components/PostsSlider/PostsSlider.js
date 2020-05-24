@@ -14,7 +14,6 @@ const PostsSlider = () => {
 
     let setSlideInterval = useCallback(()=>{
         const interval = setInterval(() => {
-            console.log(1)
             if (isMountedRef.current) {
                 setState(prevState => {
                     return {
