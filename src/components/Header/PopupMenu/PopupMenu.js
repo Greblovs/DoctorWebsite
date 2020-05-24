@@ -3,7 +3,7 @@ import classes from "./PopupMenu.module.scss"
 import {NavLink} from "react-router-dom"
 
 
-const PopupMenu = ({isOpen}) => {
+const PopupMenu = ({isOpen, handleClick}) => {
     const [state, setState] = useState({
         links : [
             //{to: "/", label: "Главная", exact: true,},
@@ -12,7 +12,7 @@ const PopupMenu = ({isOpen}) => {
             {to: "/Registration", label: "Регистрация", exact: false},
         ],
         contacts:
-            {link: "link", name: "Контакты"},
+            {link: "link", name: "Контакты"}
 
     });
     const popupMenuCls = [classes.PopupMenu];
@@ -24,11 +24,11 @@ const PopupMenu = ({isOpen}) => {
 
     let menu  = state.links.map((element, index)=>{
         return(
-            <div className={classes.element} key={index}>
+            <div className={classes.element} key={index} onClick={handleClick}>
                 <NavLink className = {classes.link} to = {element.to} exact = {element.exact} >{element.label}</NavLink>
             </div>
         )
-    })
+    });
     return (
         <div className={popupMenuCls.join(" ")}>
             <div className={classes.menuLinks}>

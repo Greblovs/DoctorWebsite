@@ -29,7 +29,7 @@ const Header = () => {
                     {state.page}
                 </div>
             </div>
-            <PopupMenu isOpen={state.isMenuOpen}/>
+            <PopupMenu isOpen={state.isMenuOpen}  handleClick={openMenu}/>
         </>
     );
 };
