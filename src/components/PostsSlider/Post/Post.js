@@ -1,13 +1,18 @@
 import React from 'react';
 import classes from "./Post.module.scss";
 
-const Post = ({title}) => {
-    console.log(1);
+const Post = ({title, text}) => {
     return (
         <div className={classes.Post}>
             <div className={classes.Title}>
                 {title}
             </div>
+            <div className={classes.Text}>
+                {text}
+            </div>
+            <button className={classes.Button}>
+                Читать дальше
+            </button>
         </div>
     );
 };

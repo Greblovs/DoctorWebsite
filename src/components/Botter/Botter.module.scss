@@ -1,0 +1,11 @@
+@import "../../strings/colors";
+.Botter {
+  width: 100vw;
+  height: 300px;
+  background: $accent1;
+  //box-shadow: 0 0 10px $text-color;
+  z-index: 1000;
+  color: white;
+  box-sizing: border-box;
+  padding: 30px;
+}

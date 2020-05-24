@@ -10,6 +10,18 @@ const PostsSlider = () => {
         interval: null
     });
 
+    const posts = [
+        {title:"Неотложная помощь", text:"Если у Вас неотложная ситуация, Вам нужен совет ЛОР врача или рекомендации как поступить в той или иной ситуации."},
+        {title:"Заболевания носа", text:"Если у Вас неотложная ситуация, Вам нужен совет ЛОР врача или рекомендации как поступить в той или иной ситуации."},
+        {title:"Заболевания уха", text:"Если у Вас неотложная ситуация, Вам нужен совет ЛОР врача или рекомендации как поступить в той или иной ситуации."},
+        {title:"Заболевания горла", text:"Если у Вас неотложная ситуация, Вам нужен совет ЛОР врача или рекомендации как поступить в той или иной ситуации."}
+
+    ];
+
+    const rendPosts = posts.map((element, number)=>(
+        <Post title={element.title} text={element.text} />
+    ));
+
     const isMountedRef = useRef(null);
 
     let setSlideInterval = useCallback(()=>{
@@ -82,10 +94,7 @@ const PostsSlider = () => {
                 })
             }}>
                 <div className={postWrapCls.join(" ")}>
-                    <Post title="Неотложная помощь"/>
-                    <Post title="Заболевания носа"/>
-                    <Post title="Заболевания уха"/>
-                    <Post title="Заболевания горла"/>
+                    {rendPosts}
                 </div>
             </Swipeable>
             <div className={classes.Dots}>
