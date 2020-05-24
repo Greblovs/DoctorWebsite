@@ -1,8 +1,8 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom'
 import Registration from "./components/Pages/Registration"
-import MainPage from "./components/Pages/Main"
-import Posts from "./components/Pages/Posts"
+import MainPage from "./components/Pages/Main/Main"
+import Posts from "./components/Pages/Posts/Posts"
 import Questions from "./components/Pages/Questions"
 import Layout from "./components/hoc/Layout/Layout";
 

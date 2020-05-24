@@ -1,11 +1,65 @@
 @import "../../strings/colors";
 .Botter {
   width: 100vw;
-  height: 300px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background: $accent1;
   //box-shadow: 0 0 10px $text-color;
   z-index: 1000;
   color: white;
   box-sizing: border-box;
-  padding: 30px;
+}
+.name{
+  font-size: 20px;
+  padding-bottom: 10px;
+  color:white;
+}
+.Wrapper{
+  margin:  0 auto;
+  width: calc(100% - 40px);
+  text-align: left;
+}
+.status{
+  color:white;
+  font-size: 14px;
+  padding-bottom: 5px;
+}
+.info{
+  color:white;
+  font-size: 12px;
+  padding-bottom: 5px;
+}
+.rightsWriting{
+  color:white;
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+.CircleWhatsAp{
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  position:  absolute;
+  background: url("https://img.favpng.com/10/4/16/viber-icon-skype-whatsapp-png-favpng-juZnTA8yURv8zdsuBZCx6VeUq.jpg") center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50px;
+  margin-left: 10px;
+}
+.CirclePhone{
+  margin-left: calc(100% - 80px);
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+  position:  absolute;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST0QAJr1B52IULWeUuD5m5AR997RF0d6NUr4SkEVAKmYETUdWt&usqp=CAU") center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50px;
+
+}
+.rights{
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import Banner from "../../components/Banner/Banner";
-import PostsSlider from "../../components/PostsSlider/PostsSlider";
+import Banner from "../../Banner/Banner";
+import PostsSlider from "../../PostsSlider/PostsSlider";
 
  export default class MainPage extends Component{
      render() {
