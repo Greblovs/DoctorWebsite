@@ -19,7 +19,7 @@ const PostsSlider = () => {
     ];
 
     const rendPosts = posts.map((element, number)=>(
-        <Post title={element.title} text={element.text} />
+        <Post title={element.title} text={element.text} key={number}/>
     ));
 
     const isMountedRef = useRef(null);
