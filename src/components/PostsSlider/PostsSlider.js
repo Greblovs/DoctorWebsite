@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import classes from "./PostsSlider.module.scss"
 import {Swipeable} from "react-touch";
 import Post from "./Post/Post";
@@ -10,24 +10,36 @@ const PostsSlider = () => {
         interval: null
     });
 
+    const isMountedRef = useRef(null);
+
     let setSlideInterval = useCallback(()=>{
-        return setInterval(() => {
-            setState(prevState => {
-                return {
-                    ...prevState,
-                    activePostId: prevState.activePostId === 3 ? 0 : ++prevState.activePostId
-                }
-            })
+        const interval = setInterval(() => {
+            console.log(1)
+            if (isMountedRef.current) {
+                setState(prevState => {
+                    return {
+                        ...prevState,
+                        activePostId: prevState.activePostId === 3 ? 0 : ++prevState.activePostId
+                    }
+                })
+            }else{
+                clearInterval(interval);
+            }
         }, 5000)
+        return interval;
     },[]);
 
     useEffect(() => {
+        isMountedRef.current = true;
         setState(prevState => {
-            return{
-                ...prevState,
-                interval: setSlideInterval()
+            if (isMountedRef.current) {
+                return {
+                    ...prevState,
+                    interval: setSlideInterval()
+                }
             }
-        })
+        });
+        return () => isMountedRef.current = false;
     }, [setSlideInterval]);
 
     const postWrapCls = [classes.PostWrap];
