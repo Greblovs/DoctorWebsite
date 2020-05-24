@@ -21,8 +21,8 @@
   text-align: left;
 }
 .element{
-  padding-left: 40px;
-  width: 60vw;
+  padding-left: 20px;
+  width: calc(100% - 40px);
   height: 60px;
   line-height: 60px;
   color : white;
@@ -30,6 +30,7 @@
 
 }
 .link{
+  padding-left: 20px;
   height: inherit;
   display: block;
   text-align: left;
@@ -45,7 +46,6 @@
   display: block;
   height: 1px;
   background-color: white;
-  margin-top: calc(100vh - 345px);
   text-align: right;
 }
 .contacts{

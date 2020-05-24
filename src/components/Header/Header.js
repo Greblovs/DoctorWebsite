@@ -52,6 +52,15 @@ const Header = () => {
         })
     }, []);
 
+    const chooseElement = useCallback(() => {
+        setState(prev => {
+            return {
+                ...prev,
+                isMenuOpen: false
+            }
+        })
+    }, []);
+
     return (
         <>
             <div className={classes.Header}>
@@ -61,7 +70,7 @@ const Header = () => {
                     {state.page}
                 </div>
             </div>
-            <PopupMenu isOpen={state.isMenuOpen}  handleClick={openMenu} page={state.page}/>
+            <PopupMenu isOpen={state.isMenuOpen}  handleClick={chooseElement} page={state.page}/>
         </>
     );
 };
