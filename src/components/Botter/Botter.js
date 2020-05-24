@@ -17,7 +17,7 @@ const Botter = (props) => {
                 </div>
                 <div className={classes.CircleWhatsAp}></div>
                 <div className={classes.CirclePhone}></div>
-                <div  className={classes.rights}>>
+                <div  className={classes.rights}>
                     <p className={classes.rightsWriting}> All rights reserved</p>
                 </div>
             </div>

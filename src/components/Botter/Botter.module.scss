@@ -35,28 +35,39 @@
   padding-bottom: 5px;
 }
 .CircleWhatsAp{
-  margin-top: 10px;
-  width: 70px;
-  height: 70px;
+  margin-top: 5px;
+  width: 60px;
+  height: 60px;
   position:  absolute;
-  background: url("https://img.favpng.com/10/4/16/viber-icon-skype-whatsapp-png-favpng-juZnTA8yURv8zdsuBZCx6VeUq.jpg") center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: url("https://2.bp.blogspot.com/-NYe9dcID4IE/XDjyU3qcgEI/AAAAAAAAGyA/xhciPwZ0ZyYsjkIDWf8xCpaPG5oaFbHOwCK4BGAYYCw/s1600/logo%2Bviber.png");
+  background-size:cover;
   border-radius: 50px;
   margin-left: 10px;
+
+  transition: 0.1s;
+  background-position: center center;
 }
 .CirclePhone{
-  margin-left: calc(100% - 80px);
-  margin-top: 10px;
-  width: 70px;
-  height: 70px;
+  margin-left: calc(100% - 70px);
+  margin-top: 5px;
+  width: 60px;
+  height: 60px;
   position:  absolute;
   background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST0QAJr1B52IULWeUuD5m5AR997RF0d6NUr4SkEVAKmYETUdWt&usqp=CAU") center center;
-  background-size: cover;
+  background-size:70px;
   background-repeat: no-repeat;
   border-radius: 50px;
 
+  transition: 0.1s;
 }
+.CirclePhone:active{
+  transform: scale(1.1);
+}
+.CircleWhatsAp:active{
+
+  transform: scale(1.1);
+}
+
 .rights{
   width: 100%;
   text-align: center;
