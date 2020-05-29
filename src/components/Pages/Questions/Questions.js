@@ -1,66 +1,95 @@
 import React, {Component} from "react";
 import classes from "./Questions.module.scss"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 
 export default class Questions extends Component{
     state = {
         questions: [{
+            date: "12/12/12",
             public: true,
-            title: "Ухо",
+            title: "Как записаться на прием",
             age: 22,
             name: "Сергей",
             backTrace: "example@example.com",
-            textShort: "Добрый вечер Вечеслав Федорович где можно попасть к вам на консультацию.Спасибо",
-            text: null,
+            text: "Добрый вечер Вечеслав Федорович где можно попасть к вам на консультацию. Спасибо",
+
         },{
+            date: "12/12/12",
             public: true,
-            title: "Ухо",
+            title: "Виталя хуесос",
             age: 22,
             name: "Сергей",
             backTrace: "example@example.com",
-            textShort: "Добрый вечер Вечеслав Федорович где можно попасть к вам на консультацию.Спасибо",
-            text: null,
+            text: "Добрый вечер все кто читает это, ответственно заявляю что я заебался пределывать дизайн",
+
         }, {
+            date: "12/12/12",
             public: true,
-            title: "Ухо",
+            title: "Как записаться на прием",
             age: 22,
             name: "Сергей",
             backTrace: "example@example.com",
-            textShort: "Добрый вечер Вечеслав Федорович где можно попасть к вам на консультацию.Спасибо",
-            text: null,
-        },{
-            public: false,
-            title: "Ухо",
-            age: 22,
-            name: "Сергей",
-            backTrace: "example@example.com",
-            textShort: "Добрый вечер Вечеслав Федорович где можно попасть к вам на консультацию.Спасибо",
-            text: null,
+            text: "Заебался переделывать дизайн",
+
         }]
     }
 
     content = this.state.questions.map((element, index)=>{
-        return(
+        var  shortText = element.text.slice(0,60);
+        if (element.text.length >50){
+            shortText = shortText + "...";
+        }
+        var shortTitle = element.title.slice(0,15);
+        if (element.title.length >15){
+            shortTitle = shortTitle + "...";
+        }
+
+            return(
             element.public?
-            < div className = {classes.Question} key = {index}>
-                <div className={classes.SubTittle}>
-                    <p className = {classes.QuestionTitle}>{element.title}</p>
-                </div>
-                <div className={classes.ShortInfo}>
-                    <strong>Имя:</strong>
-                    <p> {element.name}</p>
-                    <strong>Возраст:</strong>
-                    <p>{element.age}</p>
-                </div>
-                <div className={classes.ShortText}>
-                    <div className={classes.wrapper}>
-                        <p>{element.textShort}</p>
+                index %2 == 0?
+
+                    <div className={classes.QuestionL} key = {index}>
+                        <div className={classes.Main}>
+                            <div className={classes.Title}>
+
+                                {shortTitle}
+                            </div>
+                            <div className={classes.Date}>
+                                <strong>Дата:</strong>
+                                {element.date}
+                            </div>
+                            <div className={classes.TextShort}>{shortText}</div>
+                        </div>
+                        <div className={classes.Arrow}>
+                            <div className={classes.ArrowHandler}>
+                                <div className={classes.UpperL}></div>
+                                <div className={classes.LowerL}></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <button className={classes.Button}>
-                    Просмотреть диалог
-                </button>
-            </div>
+                    :<div className={classes.QuestionR} key = {index}>
+                        <div className={classes.Arrow}>
+                            <div className={classes.ArrowHandler}>
+                                <div className={classes.UpperR}></div>
+                                <div className={classes.LowerR}></div>
+                            </div>
+                        </div>
+                        <div className={classes.Main}>
+                            <div className={classes.Title}>
+
+                                {shortTitle}
+                            </div>
+                            <div className={classes.Date}>
+                                <strong>Дата:</strong>
+                                {element.date}
+                            </div>
+                            <div className={classes.TextShort}>{shortText}</div>
+                        </div>
+
+                    </div>
+
                 : null
         )
     })
@@ -69,10 +98,10 @@ export default class Questions extends Component{
     render() {
         return(
             <>
-                <div className={classes.tittle}>
-                    <p>Вопросы - Ответы</p>
-                    <button className={classes.ButtonWrite}>Задайте Вопрос</button>
+                <div className={classes.QuestionTitle}>
+                    
                 </div>
+
                 {this.content}
             </>
         )
