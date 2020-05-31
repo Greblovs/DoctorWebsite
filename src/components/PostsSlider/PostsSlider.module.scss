@@ -13,6 +13,11 @@
     overflow: visible;
   }
 
+
+  .PostWrap.disAnim{
+    transition: margin 0s;
+  }
+
   .PostWrap.first{
     margin-left: 0vw;
   }
