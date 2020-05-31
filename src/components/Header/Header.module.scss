@@ -25,3 +25,43 @@
     font-weight: 600;
   }
 }
+.BackTrace{
+  width: 70px;
+  height: 70px;
+  background-color: black;
+  position: fixed;
+  z-index: 100000;
+  border-radius: 50px;
+  margin-left: calc(100% - 80px);
+  margin-top: calc(100vh - 80px);
+}
+.BackTraceMenu{
+  width: 70px;
+  z-index: 1000000;
+  position: fixed;
+  margin-left: calc(100% - 80px);
+  margin-top: calc(100vh - 25px);
+  overflow: hidden;
+  transition: 0.4s;
+  height: 0;
+}
+.backTraceMenuClosed{
+  height: 0;
+
+}
+
+.backTraceMenuOpen{
+  margin-top: calc(100vh - 320px);
+
+  height: 225px;
+  transition: 0.4s;
+}
+
+.backTraceLink{
+  margin-bottom: 5px;
+  width: 70px;
+  height: 70px;
+  background-color: black;
+
+  border-radius: 50px;
+}

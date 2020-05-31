@@ -37,7 +37,7 @@ export default class Posts extends Component{
         }
         ]
 
-    menu  =  this.posts.map((element , index) =>{
+    posts  =  this.posts.map((element , index) =>{
         return(
             <div className={classes.Post}  key={index} >
                 <div>
@@ -56,8 +56,7 @@ export default class Posts extends Component{
     render() {
         return(
             <>
-                {this.menu}
-                <div className={classes.SpaceBottom}/>
+                {this.posts}
             </>
         )
     }

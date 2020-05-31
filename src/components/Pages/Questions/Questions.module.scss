@@ -11,7 +11,6 @@
 .QuestionTitle{
   font-weight: 600;
   font-size: 30px;
-  padding-top: 40px;
   width: 100vw;
   text-align: center;
   padding-bottom: 40px;
@@ -20,7 +19,6 @@
 .QuestionTitle p{
   color: $accent1;
 }
-
 
 .QuestionL{
   border-radius: 0 30px 30px 0;
@@ -31,7 +29,7 @@
   display: block;
   width: calc(100% - 20px);
   height: 150px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   box-shadow: 0 4px 10px #e075d9;
 }
 .QuestionR{
@@ -44,7 +42,7 @@
   display: block;
   width: calc(100% - 20px);
   margin-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   height: 150px;
 }
 

@@ -9,6 +9,7 @@ const Header = () => {
 
     const [state, setState] = useState({
         isMenuOpen: false,
+        isTraceBackMenuOpen: false,
         page: "Главная"
     });
 
@@ -61,8 +62,37 @@ const Header = () => {
         })
     }, []);
 
+    const backTraceMenu = [classes.BackTraceMenu, classes.backTraceMenuClosed];
+
+    const toggleMenu = useCallback(()=>{
+        setState(prev => {
+            return {
+                ...prev,
+                isTraceBackMenuOpen: !prev.isTraceBackMenuOpen
+            }
+        })
+
+
+
+    }, [])
+    if (state.isTraceBackMenuOpen === true){
+        backTraceMenu.pop();
+        backTraceMenu.push(classes.backTraceMenuOpen)
+        console.log(backTraceMenu)
+    }else{
+        backTraceMenu.pop();
+    }
+
+
+
     return (
         <>
+            <div className={classes.BackTrace} onClick={toggleMenu}/>
+            <div className={backTraceMenu.join(' ')}>
+                <div className={classes.backTraceLink}/>
+                <div className={classes.backTraceLink}/>
+                <div className={classes.backTraceLink}/>
+            </div>
             <div className={classes.Header}>
                 <MenuButton isOpen={state.isMenuOpen} handleClick={openMenu}/>
                 <img srcSet={logo} alt=""/>

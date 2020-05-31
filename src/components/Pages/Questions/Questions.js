@@ -33,6 +33,33 @@ export default class Questions extends Component{
             backTrace: "example@example.com",
             text: "Заебался переделывать дизайн",
 
+        },{
+            date: "12/12/12",
+            public: true,
+            title: "Как записаться на прием",
+            age: 22,
+            name: "Сергей",
+            backTrace: "example@example.com",
+            text: "Добрый вечер Вечеслав Федорович где можно попасть к вам на консультацию. Спасибо",
+
+        },{
+            date: "12/12/12",
+            public: true,
+            title: "Виталя хуесос",
+            age: 22,
+            name: "Сергей",
+            backTrace: "example@example.com",
+            text: "Добрый вечер все кто читает это, ответственно заявляю что я заебался пределывать дизайн",
+
+        }, {
+            date: "12/12/12",
+            public: true,
+            title: "Как записаться на прием",
+            age: 22,
+            name: "Сергей",
+            backTrace: "example@example.com",
+            text: "Заебался переделывать дизайн",
+
         }]
     }
 
@@ -99,9 +126,7 @@ export default class Questions extends Component{
         return(
             <>
                 <div className={classes.QuestionTitle}>
-                    
                 </div>
-
                 {this.content}
             </>
         )
