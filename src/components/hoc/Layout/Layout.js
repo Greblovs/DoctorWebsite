@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "./Layout.module.scss";
-import Header from "../../Header/Header";
-import Botter from "../../Botter/Botter";
+import Header from "../Header/Header";
+import Botter from "../Botter/Botter";
 
 
 const Layout = ({children}) => {
