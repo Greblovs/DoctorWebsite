@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import classes from "./Questions.module.scss"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 

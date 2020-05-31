@@ -1,4 +1,4 @@
-@import "../../strings/colors";
+@import "../../../../strings/colors";
 .PostsSlider{
   width: 100vw;
   height: 310px;
@@ -11,6 +11,11 @@
     margin-left: 0vw;
     transition: margin-left .5s ease-in-out;
     overflow: visible;
+  }
+
+
+  .PostWrap.disAnim{
+    transition: margin 0s;
   }
 
   .PostWrap.first{

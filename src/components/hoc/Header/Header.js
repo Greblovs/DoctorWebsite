@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import classes from "./Header.module.scss";
 import MenuButton from "./MenuButton/MenuButton";
-import logo from "../../images/logo.png";
+import logo from "../../../images/logo.png";
 import PopupMenu from "./PopupMenu/PopupMenu";
 import { useLocation } from 'react-router-dom';
 

@@ -12,10 +12,11 @@ function App() {
         <>
         <Layout>
             <Switch>
-                <Route exact path = "/" component = {MainPage}/>
+                <Route path = "/post/:id" component = {MainPage}/>
                 <Route path = "/Posts" component = {Posts}/>
                 <Route path = "/Questions" component = {Questions}/>
                 <Route path = "/Registration" component = {Registration}/>
+                <Route path = "/" component = {MainPage}/>
             </Switch>
          </Layout>
         </>
