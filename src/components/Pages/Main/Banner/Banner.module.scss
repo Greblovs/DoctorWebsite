@@ -18,6 +18,7 @@
   }
 
   button{
+
     position: relative;
     font-size: 18px;
     width: 230px;
@@ -27,12 +28,18 @@
     background: $accent1;
     border-radius: 20px;
     margin-top: 15px;
-    color: $background;
+
     font-weight: 600;
     transform: scale(1);
+
     transition: transform .1s ease-in-out, box-shadow .1s ease-in-out;
     z-index: 1;
     box-shadow: 0 2px 5px $accent1;
+  }
+  button>p{
+
+
+    color: $background;
   }
 
   button:active{

@@ -12,7 +12,9 @@ const Banner = () => {
                     Кот Вячеслав Федорович
                 </div>
                 <button>
+                    <p>
                     Задайте вопрос
+                    </p>
                 </button>
             </div>
 
