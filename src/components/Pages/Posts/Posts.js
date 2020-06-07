@@ -1,16 +1,14 @@
-import React, {Component} from "react";
-
+import React from "react";
 import classes from  "./post.module.scss"
+import Post from "./Post/Post";
+
+const Posts = () => {
 
 
-
-export default class Posts extends Component{
-
-
-    posts = [
+    let posts = [
         {
             title: "Ангина",
-            subTitle: "Большинство пациентов безаплеляционно заявляют: 'Доктор у меня ангина'. Но так ли однозначна причина боли?",
+            text: "Большинство пациентов заявляют: 'Доктор у меня ангина'. Но так ли однозначна причина боли?",
             paragraphs : [
                 {first : "sadf"},
                 {second : "dsfdsf"},
@@ -19,7 +17,7 @@ export default class Posts extends Component{
         },
         {
             title: "Акустическая Травма",
-            subTitle: "Так ли это безвредно — слушать громкую музыку, заслонившись от окружающей действительности плотной пеленой громких звуков?",
+            text: "Так ли это безвредно — слушать громкую музыку, заслонившись от окружающей действительности плотной пеленой громких звуков?",
             paragraphs : [
                 {first : "sadf"},
                 {second : "dsfdsf"},
@@ -28,36 +26,26 @@ export default class Posts extends Component{
         },
         {
             title: "Почему болят уши",
-            subTitle: "Наиболее частым и грозным осложнением респираторных инфекций у детей (и взрослых) бывает острый стредний отит (воспаление среднего уха).",
+            text: "Наиболее частым и грозным осложнением респираторных инфекций у детей (и взрослых) бывает острый стредний отит (воспаление среднего уха).",
             paragraphs : [
                 {first : "sadf"},
                 {second : "dsfdsf"},
                 {third : "dsfdf"}
             ]
         }
-        ];
+    ];
 
-    posts  =  this.posts.map((element , index) =>{
+    posts  =  posts.map((element , index) =>{
         return(
-            <div className={classes.Post}  key={index} >
-                <div>
-                    <p className={classes.Title}>{element.title}</p>
-                </div>
-                <div className={classes.MainText}>
-                    <p>
-                        {element.subTitle}
-                    </p>
-                </div>
-                <div className={classes.Button}>Подробнее</div>
-            </div>
+            <Post title={element.title} text={element.text} key={index} openPost={()=>{}}/>
         )
-    })
+    });
 
-    render() {
-        return(
-            <>
-                {this.posts}
-            </>
-        )
-    }
-}
+    return(
+        <>
+            {posts}
+        </>
+    )
+};
+
+export default Posts;

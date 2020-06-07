@@ -1,22 +1,4 @@
 @import "../../../../strings/colors";
-.Wrap{
-
-  width: calc(100% - 40px);
-  border-radius: 0 40px 40px 0;
-  height: 60px;
-  background-color: $accent1;
-  position: absolute;
-  margin-top: 90px;
-  z-index: 4;
-  box-shadow: 0 5px 10px $accent1;
-}
-.Wrap > p{
-  color: white;
-  width: 100%;
-  font-size: 25px;
-  text-align: center;
-  line-height: 60px;
-}
 
 .Post {
   margin-left: 20px;

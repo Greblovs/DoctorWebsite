@@ -1,46 +1,38 @@
 import React from 'react';
 import classes from "./PopularPost.module.scss"
+import Heading from "../Heading/Heading";
+import Post from "../Post/Post";
 
 const PopularPost = () => {
+
     const posts = [
         {
             title: "Ангина",
-            subTitle: "Большинство пациентов безаплеляционно заявляют: 'Доктор у меня ангина'. Но так ли однозначна причина боли?",
-            paragraphs : [
-                {first : "sadf"},
-                {second : "dsfdsf"},
-                {third : "dsfdf"}
+            // text: "Большинство пациентов безаплеляционно заявляют: 'Доктор у меня ангина'. Но так ли однозначна причина боли?",
+            text: "Большинство пациентов заявляют: 'Доктор у меня ангина'. Но так ли однозначна причина боли?",
+            paragraphs: [
+                {first: "sadf"},
+                {second: "dsfdsf"},
+                {third: "dsfdf"}
             ]
-        }]
-    const rendPosts   =  posts.map((element , index) =>{
-        return(
-            <div className={classes.Post}  key={index} >
-                <div>
-                    <p className={classes.Title}>{element.title}</p>
-                </div>
-                <div className={classes.MainText}>
-                    <p>
-                        {element.subTitle}
-                    </p>
-                </div>
-                <div className={classes.Button}>Подробнее</div>
-            </div>
+        }];
+
+    const rendPosts = posts.map((element, index) => {
+        return (
+            <Post title={element.title} text={element.text} key={index} openPost={()=>{}}/>
         )
-    })
+    });
+
     return (
         <>
-            <div className={classes.Wrap}>
-                <p>Популярные статьи</p>
-            </div>
+            <Heading text={"Популярные статьи"}/>
 
-            <div className={classes.PostWrap}>
+            {rendPosts}
 
-                {rendPosts}
-
-            </div>
+            <button className={classes.MoreButton}>Больше статей</button>
 
         </>
     )
-}
+};
 
-export default  PopularPost;
+export default PopularPost;

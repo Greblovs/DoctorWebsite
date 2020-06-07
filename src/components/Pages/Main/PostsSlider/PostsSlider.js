@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import classes from "./PostsSlider.module.scss"
 import {Swipeable} from "react-touch";
-import Post from "./Post/Post";
+import Post from "../Post/Post";
 import { useParams, useLocation } from 'react-router-dom';
 
 function getElementOffset(element) {

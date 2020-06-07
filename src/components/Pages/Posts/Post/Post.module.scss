@@ -1,0 +1,88 @@
+@import "../../../../strings/colors";
+
+.PostWrap {
+  position: relative;
+  width: 100vw;
+  height: 310px;
+  float: left;
+  overflow: visible;
+  margin-top: 30px;
+}
+
+.Post {
+  position: absolute;
+  width: calc(100vw - 20px);
+  height: 310px;
+  background: linear-gradient($accent2light, $accent2);
+  margin: 0px 10px;
+  border-radius: 30px;
+  float: left;
+  box-shadow: 0 4px 10px $accent2;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  transform: translate3d(0px, 0px, 0px);
+  transition: transform .5s ease-in-out, border-radius .5s ease-in-out, margin .5s ease-in-out, width .5s ease-in-out, height .5s ease-in-out;
+  z-index: 999;
+
+  .Title {
+    color: $background;
+    font-size: 27px;
+    font-weight: 600;
+    //background: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Text {
+    padding: 0 20px;
+    color: $background;
+    font-weight: 600;
+    text-align: justify;
+    height: 150px;
+    font-size: 18px;
+    transition: padding .5s ease-in-out;
+  }
+
+  .Button {
+    margin: 0px auto;
+    font-size: 22px;
+    width: calc(100% - 40px);
+    height: 50px;
+    outline: none;
+    border: none;
+    background: $background;
+    border-radius: 20px;
+    color: $accent2;
+    font-weight: 600;
+    transform: scale(1);
+    transition: transform .1s ease-in-out, box-shadow .1s ease-in-out;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Button:active {
+    transform: scale(.95);
+  }
+}
+
+.Post.open {
+  width: 100vw;
+  margin: 0px;
+  border-radius: 0px;
+  height: 100vh;
+  z-index: 1001;
+
+  .Text {
+    padding: 0 30px;
+  }
+}
+
+.Post.disAnim {
+  transition: none;
+}

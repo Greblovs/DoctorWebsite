@@ -1,11 +1,11 @@
-import React, {Component} from "react";
+import React from "react";
 
-export default class Registration extends Component{
-    render() {
-        return(
-            <>
-                <p>Regestretion</p>
-            </>
-        )
-    }
-}
+const Registration = () => {
+    return (
+        <>
+            <p>Regestretion</p>
+        </>
+    );
+};
+
+export default Registration;

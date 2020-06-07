@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Discussion.module.scss"
+import Heading from "../Heading/Heading";
 
 const Discussion = ()=>{
      const discuss = [{
@@ -29,7 +30,7 @@ const Discussion = ()=>{
             backTrace: "example@example.com",
             text: "Заебался переделывать дизайн",
 
-        }]
+        }];
 
     const content = discuss.map((element, index)=>{
         var  shortText = element.text.slice(0,60);
@@ -91,9 +92,7 @@ const Discussion = ()=>{
 
     return(
         <>
-            <div className={classes.Wrap}>
-                <p>Популярные вопросы</p>
-            </div>
+            <Heading text={"Популярные вопросы"}/>
             <div className={classes.Post}>
             </div>
             <div className={classes.CommentWrapper}>
