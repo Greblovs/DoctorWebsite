@@ -35,7 +35,7 @@ export default class Posts extends Component{
                 {third : "dsfdf"}
             ]
         }
-        ]
+        ];
 
     posts  =  this.posts.map((element , index) =>{
         return(

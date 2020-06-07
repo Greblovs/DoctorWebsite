@@ -1,11 +1,10 @@
 @import "../../../../strings/colors";
 .Post {
-  width: calc(100vw - 20px);
+  width: calc(100vw - 40px);
 
   background: linear-gradient(#0FA3B1,#66D7D1);
   box-shadow: 0 4px 10px #66D7D1;
   border-radius: 30px;
-  padding-top: 70px;
   flex-direction: column;
   margin: 80px 10px 0;
 
@@ -30,10 +29,8 @@
 }
 
 .Title{
-  margin-top: 0px;
   height: 80px;
   line-height: 80px;
-  margin-bottom: 0px;
   color: white;
   font-size: 24px;
   text-align: center;
@@ -50,6 +47,18 @@
   color: white;
 
 }
+
+.PostWrap{
+
+  border-radius: 0px 40px 40px 0px;
+  width: calc(100% - 20px);
+  background:  white;
+  padding-top: 40px;
+  margin-top: 75px;
+  box-shadow: 0 2px 5px #ccc;
+  padding-bottom: 20px;
+}
+
 .SpaceBottom{
   width: 100vw;
   height: 50px;

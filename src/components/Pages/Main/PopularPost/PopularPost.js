@@ -33,7 +33,11 @@ const PopularPost = () => {
                 <p>Популярные статьи</p>
             </div>
 
+            <div className={classes.PostWrap}>
+
                 {rendPosts}
+
+            </div>
 
         </>
     )
