@@ -83,7 +83,6 @@ const Discussion = ()=>{
 
         )
     })
-
     return(
         <>
             <Heading text={"Популярные вопросы"}/>
