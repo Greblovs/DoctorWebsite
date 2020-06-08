@@ -25,6 +25,8 @@
     font-weight: 600;
   }
 }
+
+
 .BackTrace{
   width: 70px;
   height: 70px;
@@ -42,6 +44,7 @@
   margin-left: calc(100% - 80px);
   margin-top: calc(100vh - 25px);
   overflow: hidden;
+  border-radius: 50px;
   transition: 0.4s;
   height: 0;
 }

@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import classes from "./Header.module.scss";
 import MenuButton from "./MenuButton/MenuButton";
 import logo from "../../../images/logo.png";
@@ -74,10 +74,10 @@ const Header = () => {
 
 
 
-    }, [])
+    }, []);
     if (state.isTraceBackMenuOpen === true){
         backTraceMenu.pop();
-        backTraceMenu.push(classes.backTraceMenuOpen)
+        backTraceMenu.push(classes.backTraceMenuOpen);
         console.log(backTraceMenu)
     }else{
         backTraceMenu.pop();
