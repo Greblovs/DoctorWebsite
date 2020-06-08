@@ -1,155 +1,77 @@
 @import "../../../../strings/colors";
 
-.Post {
-  margin-left: 20px;
-  border-radius: 40px 0 0 40px;
-  width: calc(100% - 20px);
-  background:  white;
-  padding-top: 100px;
-  margin-top: 70px;
-  height: 670px;
-  position: absolute;
-  z-index: 1;
-}
-.CommentWrapper{
-  margin-top: 170px;
-  display: block;
-  position: relative;
-  z-index: 10;
-}
+
 
 *{
   border:none;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
 }
 
-.QuestionTitle{
-  font-weight: 600;
-  font-size: 30px;
-  width: 100vw;
-  text-align: center;
-  padding-bottom: 40px;
-}
 
-.QuestionTitle p{
-  color: $accent1;
-}
-
-.QuestionL{
-  border-radius: 0 30px 30px 0;
-  overflow: hidden;
-  flex-direction: column;
-  justify-content: space-between;
-  background: linear-gradient(#e075d9,#d9abd8);
-  display: block;
-  width: calc(100% - 20px);
-  height: 150px;
+.Question {
+  position: inherit;
+  height: 100px;
+  border-radius: 30px;
+  width: calc(100% - 20%);
   margin-bottom: 40px;
-  box-shadow: 0 4px 10px #e075d9;
-}
-.QuestionR{
-  box-shadow: 0 4px 10px #e075d9;
-  background: linear-gradient(#e075d9,#d9abd8);
-  border-radius: 30px 0 0 30px ;
-  overflow: hidden;
-  flex-direction: column;
-  justify-content: space-between;
+  background: blue;
   display: block;
-  width: calc(100% - 20px);
-  margin-left: 20px;
-  margin-bottom: 40px;
-  height: 150px;
-}
-
-.Title{
-  padding-top: 10px;
-  color: white;
-  font-size: 20px;
-  padding-left: 10px;
-}
-.Title >strong{
-  margin-right: 5px;
-  color: white;
-  font-size: 20px;
-}
-.Date{
-  padding-top: 5px;
-  color: white;
-  font-size: 14px;
-  padding-left: 10px;
-}
-
-.Date >strong{
-  margin-right: 5px;
-  color: white;
-  font-size: 16px;
-}
-.TextShort{
-  font-size: 14px;
-  margin-top: 10px;
-  color: white;
-  padding-left: 10px;
-}
-
-.Main{
-  width: calc(100% - 60px);
-  height: inherit;
-  background: linear-gradient(#e075d9,#f7aaea);
-  display: inline-block;
-  padding-right: 10px;
+  margin-left: 25px;
 
 }
-.Arrow{
-  width: 60px;
-  height: inherit;
-  background: linear-gradient(#e075d9,#f7aaea);
-  display: inline-block;
-
-}
-.ArrowHandler{
-  margin-top: 55px;
-  width: 60px;
+.Circle{
+  margin-top: 50px;
+  position: absolute;
+  border-radius: 0px  0px 50px 50px  ;
+  width: 100px;
   height: 60px;
-  margin-left: 10px;
-}
-.UpperL{
-  margin-top: 10px;
-  display: block;
-  width: 30px;
-  height: 7px;
-  background: white;
-  transform: rotate(45deg);
-  border-radius: 10px;
-}
-.LowerL{
-  border-radius: 10px;
-  position: absolute;
-  width: 30px;
-  height: 7px;
-  background-color: white;
-  transform: rotate(-45deg);
-  margin-top: 10px;
+  background-color: $background;
+  margin-left: -75px;
 }
 
-.UpperR{
-  margin-top: 10px;
-  display: block;
-  width: 30px;
-  height: 7px;
-  background: white;
-  transform: rotate(135deg);
-  border-radius: 10px;
-}
-.LowerR {
-  border-radius: 10px;
+.Decoration{
+  margin-left: -18px;
   position: absolute;
-  width: 30px;
-  height: 7px;
-  background-color: white;
-  transform: rotate(-135deg);
-  margin-top: 10px;
+  margin-top: 55px;
+  display: block;
+  width: 50px;
+  background-color: blue;
+  height: 50px;
+  border-radius:  40px   40px 60px 0px ;
+}
+.QuestionL {
+  position: inherit;
+  height: 100px;
+  border-radius: 30px;
+  width: calc(100% - 20%);
+  margin-left: calc(20% - 25px);
+  margin-bottom: 40px;
+  background: blue;
+  display: block;
+
 
 }
+.CircleL{
+  margin-left: calc(100% - 25px);
+  margin-top: 50px;
+  position: absolute;
+  border-radius: 0px  0px  50px 50px ;
+  width: 100px;
+  height: 60px;
+  background-color: $background;
+
+}
+
+.DecorationL{
+  margin-left: calc(100% - 32px);
+  position: absolute;
+  margin-top: 55px;
+  display: block;
+  width: 50px;
+  background-color: blue;
+  height: 50px;
+  border-radius:  40px   40px 0px 60px ;
+}
+

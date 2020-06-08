@@ -44,27 +44,19 @@ const Discussion = ()=>{
 
         return(
             element.public?
-                index %2 == 0?
-
-                    <div className={classes.QuestionL} key = {index}>
-                        <div className={classes.Main}>
-                            <div className={classes.Title}>
-
-                                {shortTitle}
-                            </div>
-                            <div className={classes.Date}>
-                                <strong>Дата:</strong>
-                                {element.date}
-                            </div>
-                            <div className={classes.TextShort}>{shortText}</div>
-                        </div>
-                        <div className={classes.Arrow}>
-                            <div className={classes.ArrowHandler}>
-                                <div className={classes.UpperL}></div>
-                                <div className={classes.LowerL}></div>
-                            </div>
-                        </div>
+                < div key = {index}>
+                    <div>
+                        <div className={classes.Decoration}/>
+                        <div className={classes.Circle}/>
+                        <div className={classes.Question}/>
                     </div>
+                    <div>
+                        <div className={classes.DecorationL}/>
+                        <div className={classes.CircleL}/>
+                        <div className={classes.QuestionL}/>
+                    </div>
+                </div>
+                    /*
                     :<div className={classes.QuestionR} key = {index}>
                         <div className={classes.Arrow}>
                             <div className={classes.ArrowHandler}>
@@ -85,16 +77,17 @@ const Discussion = ()=>{
                         </div>
 
                     </div>
-
+                    */
                 : null
+
+
         )
     })
 
     return(
         <>
             <Heading text={"Популярные вопросы"}/>
-            <div className={classes.Post}>
-            </div>
+
             <div className={classes.CommentWrapper}>
                 {content}
             </div>
