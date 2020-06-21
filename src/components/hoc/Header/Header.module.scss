@@ -1,5 +1,32 @@
 @import "../../../strings/colors";
+
+
+
+
+.SmartSize{
+
+}
+.MenuButtons{
+
+}
+.ButtonSmart{
+  display: inline-block;
+  color: white;
+  padding-left: 40px;
+  font-weight: 600;
+  line-height: 100px;
+  font-size: 26px;
+}
+.ButtonDesktop{
+  display: inline-block;
+  color: white;
+  padding-left: 100px;
+  font-weight: bold;
+  line-height: 100px;
+  font-size: 32px;
+}
 .Header{
+  overflow: hidden;
   position: fixed;
   width: 100vw;
   height: 100px;

@@ -1,14 +1,35 @@
 @import "../../../../strings/colors";
+
+
+.BannerImage{
+  height: 600px;
+  max-height: calc(100vh - 100px);
+  background: url("../../../../images/man_bg.jpg") right top;
+  background-size: cover;
+  padding-left: 10vw  !important;
+}
+.LargeImage{
+  max-height: calc(100vh - 100px);
+  height: 700px;
+  padding-left: 10vw  !important;
+  background: url("../../../../images/man_bg.jpg") center top;
+  background-size: cover;
+}
 .Banner{
   width: 100vw;
   min-height: 300px;
-  padding: 40px;
+  padding-left: 50px;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 40px;
 
   .Title{
     font-size: 40px;
+    color: $accent1;
+    font-weight: 600;
+  }
+  .Title > p{
     color: $accent1;
     font-weight: 600;
   }

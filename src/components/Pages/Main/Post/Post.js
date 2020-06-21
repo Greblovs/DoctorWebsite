@@ -3,7 +3,7 @@ import classes from "./Post.module.scss";
 import {NavLink} from "react-router-dom";
 
 
-const Post = ({title, text, isOpen, id, translationY, openPost, hasToUpdate, disAnim}) => {
+const Post = ({index, title, text, isOpen, id, translationY, openPost, hasToUpdate, disAnim}) => {
 
 
     const postCls = [classes.Post];
@@ -18,10 +18,23 @@ const Post = ({title, text, isOpen, id, translationY, openPost, hasToUpdate, dis
         postCls.push(classes.disAnim);
     }
 
+    let marg = index*50;
 
-    return (
-        <div className={classes.PostWrap}>
-            <div className={postCls.join(" ")} ref={postRef} style={{transform: `translate3d(0px,${(-translationY)}px,0)`}}>
+    marg = marg + "vw";
+
+    return(
+        <div style={window.innerWidth < 660? {float :"left"}:
+            window.innerWidth > 660 && index%2 === 0?
+                index ===2?
+                    {float :"left", marginLeft: marg, marginTop:"-310px"}
+                :
+                    {float :"left", marginLeft: marg}
+            :
+                index ===3?
+                    {marginLeft: marg, marginTop:"-310px"}
+                :
+                    { marginLeft: marg }} className={classes.PostWrap}>
+            <div style={ window.innerWidth<660? {width: "calc(100vw - 20px)"}: {width: "calc(50vw - 20px"}} className={postCls.join(" ")} ref={postRef}>
                 <div className={classes.Title}>
                     {title}
                 </div>

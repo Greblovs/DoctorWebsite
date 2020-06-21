@@ -3,6 +3,7 @@ import classes from "./PostsSlider.module.scss"
 import {Swipeable} from "react-touch";
 import Post from "../Post/Post";
 import { useParams, useLocation } from 'react-router-dom';
+import {getWindowDimensions} from '../../../../scripts/SupportScripts'
 
 function getElementOffset(element) {
     const de = document.documentElement;
@@ -28,6 +29,13 @@ const PostsSlider = () => {
         disableAnimations: false
     });
 
+
+    let increase = 1;
+    let delta = 5000;
+    if (window.innerWidth > 660){
+       increase = 2;
+       delta = 10000;
+    }
 
     const openPost = useCallback((ref, id)=>{
         if (state.posts[id].isOpen === false) {
@@ -63,13 +71,13 @@ const PostsSlider = () => {
                 setState(prevState => {
                     return {
                         ...prevState,
-                        activePostId: prevState.activePostId === 3 ? 0 : ++prevState.activePostId
+                        activePostId: prevState.activePostId === 3 ||  (prevState.activePostId === 2 && increase === 2) ?   0 : increase + prevState.activePostId
                     }
                 })
             }else{
                 clearInterval(interval);
             }
-        }, 5000);
+        }, delta);
         return interval;
     },[]);
 
@@ -110,33 +118,69 @@ const PostsSlider = () => {
     },[location]);
 
     const rendPosts = state.posts.map((element, number)=>(
-        <Post title={element.title} text={element.text} key={number} isOpen={element.isOpen} id={number} openPost={openPost} translationY={element.translationY} hasToUpdate={element.hasToUpdate} disAnim={state.disableAnimations}/>
+        <Post index = {number} title={element.title} text={element.text} key={number} isOpen={element.isOpen} id={number} openPost={openPost} translationY={element.translationY} hasToUpdate={element.hasToUpdate} disAnim={state.disableAnimations}/>
     ));
+    let postWrapCls;
+    if (window.innerWidth < 660) {
+         postWrapCls = [classes.PostWrap];
+    }else{
+         postWrapCls = [classes.PostWrapBig];
+    }
 
-    const postWrapCls = [classes.PostWrap];
 
     let dots = [0, 0, 0, 0];
     dots[state.activePostId] = 1;
-    dots = dots.map((dot, number) => (
-        dot === 0 ?
-            <div className={classes.Dot} key={number}/> :
-            <div className={classes.Dot + " " + classes.open} key={number}/>
-    ));
-
-    if (state.activePostId == 0) {
-        postWrapCls.push(classes.first);
-    } else if (state.activePostId == 1) {
-        postWrapCls.push(classes.second);
-    } else if (state.activePostId == 2) {
-        postWrapCls.push(classes.third);
-    } else if (state.activePostId == 3) {
-        postWrapCls.push(classes.fourth);
+    if (increase === 1){
+        dots = dots.map((dot, number) => (
+            dot === 0 ?
+                <div className={classes.Dot} key={number}/> :
+                <div className={classes.Dot + " " + classes.open} key={number}/>
+        ));
+    }else{
+        dots = dots.map((dot, number) => (
+            number%2 ===0?
+                dot === 0 ?
+                    <div style = {{width: "35px"}} className={classes.Dot} key={number}/> :
+                    <div style = {{width: "35px"}} className={classes.Dot + " " + classes.open} key={number}/>
+                :null
+        ));
     }
 
+    if (state.activePostId == 0) {
+        if (window.innerWidth < 660) {
+            postWrapCls.push(classes.first);
+        }else{
+            postWrapCls.push(classes.first);
+
+        }
+    } else if (state.activePostId == 1) {
+        if (window.innerWidth < 660) {
+            console.log(1);
+            postWrapCls.push(classes.second);
+        }else{
+            postWrapCls.push(classes.first);
+        }
+    } else if (state.activePostId == 2) {
+        if (window.innerWidth < 660) {
+            postWrapCls.push(classes.third);
+        }else{
+            postWrapCls.push(classes.thirdBig);
+        }
+
+    } else if (state.activePostId == 3) {
+        if (window.innerWidth < 660) {
+            postWrapCls.push(classes.fourth);
+        }else{
+            postWrapCls.push(classes.thirdBig);
+        }
+
+    }
 
     if (state.disableAnimations){
         postWrapCls.push(classes.disAnim);
     }
+    
+    const width = getWindowDimensions().width;
 
     return (
         <div className={classes.PostsSlider}>
@@ -145,16 +189,17 @@ const PostsSlider = () => {
                 setState(prevState => {
                     return{
                         ...prevState,
-                        activePostId: prevState.activePostId === 3 ? 3 : ++prevState.activePostId,
+                        activePostId: prevState.activePostId === 3 ?3 : (prevState.activePostId === 2 && increase === 2)   ?2 : increase + prevState.activePostId,
                         interval: setSlideInterval()
                     }
                 })
+             
             }} onSwipeRight={()=>{
                 clearInterval(state.interval);
                 setState(prevState => {
                     return{
                         ...prevState,
-                        activePostId: prevState.activePostId === 0 ? 0 : --prevState.activePostId,
+                        activePostId: prevState.activePostId === 0 ||  (prevState.activePostId === 1 && increase === 2)  ? 0  :  prevState.activePostId - increase,
                         interval: setSlideInterval()
                     }
                 })
@@ -168,6 +213,7 @@ const PostsSlider = () => {
             </div>
 
         </div>
+
     );
 };
 

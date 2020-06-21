@@ -2,6 +2,8 @@ import React from "react";
 import classes from "./Discussion.module.scss"
 import Heading from "../Heading/Heading";
 
+
+
 const Discussion = ()=>{
      const discuss = [{
             date: "12/12/12",
@@ -56,33 +58,12 @@ const Discussion = ()=>{
                         <div className={classes.QuestionL}/>
                     </div>
                 </div>
-                    /*
-                    :<div className={classes.QuestionR} key = {index}>
-                        <div className={classes.Arrow}>
-                            <div className={classes.ArrowHandler}>
-                                <div className={classes.UpperR}></div>
-                                <div className={classes.LowerR}></div>
-                            </div>
-                        </div>
-                        <div className={classes.Main}>
-                            <div className={classes.Title}>
-
-                                {shortTitle}
-                            </div>
-                            <div className={classes.Date}>
-                                <strong>Дата:</strong>
-                                {element.date}
-                            </div>
-                            <div className={classes.TextShort}>{shortText}</div>
-                        </div>
-
-                    </div>
-                    */
-                : null
-
-
+                : null  
         )
     })
+
+
+
     return(
         <>
             <Heading text={"Популярные вопросы"}/>

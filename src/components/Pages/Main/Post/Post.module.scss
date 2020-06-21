@@ -4,18 +4,18 @@
   position: relative;
   width: 100vw;
   height: 310px;
-  float: left;
+
   overflow: visible;
 }
 
-.Post {
+.Post{
   position: absolute;
-  width: calc(100vw - 20px);
+
   height: 310px;
   background: linear-gradient($accent2light, $accent2);
   margin: 0px 10px;
   border-radius: 30px;
-  float: left;
+
   box-shadow: 0 4px 10px $accent2;
   display: flex;
   align-items: stretch;

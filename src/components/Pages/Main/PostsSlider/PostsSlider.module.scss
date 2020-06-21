@@ -12,27 +12,42 @@
     transition: margin-left .5s ease-in-out;
     overflow: visible;
   }
+  .PostWrapBig{
+    width: 200vw;
+    height: inherit;
+    margin-left: 0vw;
+    transition: margin-left .5s ease-in-out;
+    overflow: visible;
+  }
 
 
   .PostWrap.disAnim{
     transition: margin 0s;
   }
 
-  .PostWrap.first{
+  .first{
     margin-left: 0vw;
   }
 
-  .PostWrap.second{
+
+  .second{
     margin-left: -100vw;
   }
 
-  .PostWrap.third{
+
+  .third{
     margin-left: -200vw;
   }
 
-  .PostWrap.fourth{
+  .thirdBig{
+    margin-left: -100vw;
+  }
+
+
+  .fourth{
     margin-left: -300vw;
   }
+
 
   .Dots{
     overflow: visible;

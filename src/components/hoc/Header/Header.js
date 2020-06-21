@@ -86,22 +86,34 @@ const Header = () => {
 
 
     return (
-        <>
-            <div className={classes.BackTrace} onClick={toggleMenu}/>
-            <div className={backTraceMenu.join(' ')}>
-                <div className={classes.backTraceLink}/>
-                <div className={classes.backTraceLink}/>
-                <div className={classes.backTraceLink}/>
-            </div>
-            <div className={classes.Header}>
-                <MenuButton isOpen={state.isMenuOpen} handleClick={openMenu}/>
-                <img srcSet={logo} alt=""/>
-                <div className={classes.Title}>
-                    {state.page}
+        window.innerWidth <= 570?
+                <div className={classes.SmartSize}>
+                    <div className={classes.BackTrace} onClick={toggleMenu}/>
+                    <div className={backTraceMenu.join(' ')}>
+                        <div className={classes.backTraceLink}/>
+                        <div className={classes.backTraceLink}/>
+                        <div className={classes.backTraceLink}/>
+                    </div>
+                    <div className={classes.Header}>
+                        <MenuButton isOpen={state.isMenuOpen} handleClick={openMenu}/>
+                        <img srcSet={logo} alt=""/>
+                        <div className={classes.Title}>
+                            {state.page}
+                        </div>
+                    </div>
+                    <PopupMenu isOpen={state.isMenuOpen}  handleClick={chooseElement} page={state.page}/>
+                </div>
+            :
+            <div className={ classes.TabletSize}>
+                <div className={classes.Header}>
+                    <img srcSet={logo} alt=""/>
+                    <div className={classes.MenuButtons}>
+                        <div className={window.innerWidth <= 1440 ? classes.ButtonSmart: classes.ButtonDesktop} style={{marginLeft: "6vw"}}>Главная</div>
+                        <div className={window.innerWidth <= 1440 ? classes.ButtonSmart: classes.ButtonDesktop}>Вопросы</div>
+                        <div className={window.innerWidth <= 1440 ? classes.ButtonSmart: classes.ButtonDesktop}>Статьи</div>
+                    </div>
                 </div>
             </div>
-            <PopupMenu isOpen={state.isMenuOpen}  handleClick={chooseElement} page={state.page}/>
-        </>
     );
 };
 
