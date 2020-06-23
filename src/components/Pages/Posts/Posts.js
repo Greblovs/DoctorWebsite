@@ -42,9 +42,9 @@ const Posts = () => {
     });
 
     return(
-        <>
+        <div style={{marginTop: "100px", paddingBottom: "20px"}}>
             {posts}
-        </>
+        </div>
     )
 };
 

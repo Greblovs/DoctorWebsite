@@ -7,8 +7,8 @@ import Botter from "../Botter/Botter";
 const Layout = ({children}) => {
     return (
         <>
-            <Header/>
             <div className={classes.Layout} >
+                <Header/>
                 {children}
                 <Botter/>
             </div>

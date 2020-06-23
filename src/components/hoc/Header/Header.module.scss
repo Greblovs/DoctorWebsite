@@ -31,9 +31,9 @@
   width: 100vw;
   height: 100px;
   background: $accent1;
-  //box-shadow: 0 0 10px $text-color;
-  z-index: 1000;
+  //box-shadow: 0 0 10px $text-color;;
   box-shadow: 0 4px 10px $accent1;
+  z-index: 1000;
 
   img{
     position: absolute;

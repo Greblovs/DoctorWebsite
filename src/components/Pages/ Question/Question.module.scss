@@ -1,0 +1,47 @@
+@import "../../../strings/colors";
+
+.Question {
+  position: inherit;
+  height: 150px;
+  border-radius: 30px;
+  width: calc(100% - 20px);
+  margin-bottom: 20px;
+  background: linear-gradient(#D183C9, #c859d1);
+  box-shadow: 0 4px 10px #c859d1;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+
+  .Text {
+    text-align: center;
+    width: calc(100% - 20px);
+    font-size: 23px;
+    font-weight: 600;
+    color: $background;
+  }
+
+  .Button {
+    margin: 0px auto;
+    font-size: 18px;
+    width: calc(100% - 60px);
+    height: 40px;
+    outline: none;
+    border: none;
+    background: $background;
+    border-radius: 20px;
+    color: #c859d1;
+    font-weight: 600;
+    transform: scale(1);
+    transition: transform .1s ease-in-out, box-shadow .1s ease-in-out;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Button:active {
+    transform: scale(.95);
+  }
+}
