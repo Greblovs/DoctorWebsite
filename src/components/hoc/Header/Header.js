@@ -105,6 +105,12 @@ const Header = () => {
                 </div>
             :
             <div className={ classes.TabletSize}>
+                <div className={classes.BackTrace} onClick={toggleMenu}/>
+                <div className={backTraceMenu.join(' ')}>
+                    <div className={classes.backTraceLink}/>
+                    <div className={classes.backTraceLink}/>
+                    <div className={classes.backTraceLink}/>
+                </div>
                 <div className={classes.Header}>
                     <img srcSet={logo} alt=""/>
                     <div className={classes.MenuButtons}>
