@@ -25,9 +25,10 @@ const Post = ({index, title, text, someAdditor}) => {
     const openPost = useCallback(() => {
         const offset = getElementOffset(postRef.current)
         const top = offset.top;
+        const left = offset.left;
         someAdditor();
         setState((prev) => {
-            let translation = {transform: `translate3d(0,${-offset.top + 10}px,0)`}
+            let translation = {transform: `translate3d(${-offset.left + 10}px,${-offset.top + 10}px,0)`}
             if (prev.isOpen){
                 translation = {}
             }
