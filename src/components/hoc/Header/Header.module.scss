@@ -59,14 +59,14 @@
   height: 70px;
   background-color: black;
   position: fixed;
-  z-index: 100000;
+  z-index: 1000;
   border-radius: 50px;
   margin-left: calc(100% - 80px);
   margin-top: calc(100vh - 80px);
 }
 .BackTraceMenu{
   width: 70px;
-  z-index: 1000000;
+  z-index: 1000;
   position: fixed;
   margin-left: calc(100% - 80px);
   margin-top: calc(100vh - 25px);

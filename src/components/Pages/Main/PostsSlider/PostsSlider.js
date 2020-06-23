@@ -13,6 +13,7 @@ const PostsSlider = () => {
     const [state, setState] = useState({
         activePostId: 0,
         interval: null,
+        isPostOpen: false,
         posts: [
             {
                 title: "Неотложная помощь",
@@ -34,6 +35,26 @@ const PostsSlider = () => {
         disableAnimations: false
     });
 
+    const changeSlideInterval = useCallback(()=>{
+        if (!state.isPostOpen){
+            setState((prev)=>{
+                clearInterval(prev.interval);
+                return{
+                    ...prev,
+                    interval: null,
+                    isPostOpen: true
+                }
+            })
+        }else{
+            setState((prev)=>{
+                return{
+                    ...prev,
+                    interval: setSlideInterval(),
+                    isPostOpen: false
+                }
+            })
+        }
+    },[]);
 
     let increase = 1;
     let delta = 5000;
@@ -73,8 +94,7 @@ const PostsSlider = () => {
     }, [setSlideInterval]);
 
     const rendPosts = state.posts.map((element, number) => (
-        <Post index={number} title={element.title} text={element.text} key={number} isOpen={element.isOpen}
-              id={number}/>
+        <Post index={number} title={element.title} text={element.text} key={number} isOpen={element.isOpen} someAdditor={changeSlideInterval} id={number}/>
     ));
     let postWrapCls;
     if (window.innerWidth < 660) {

@@ -11,7 +11,7 @@ function getElementOffset(element) {
 }
 
 
-const Post = ({index, title, text}) => {
+const Post = ({index, title, text, someAdditor}) => {
 
     const [state, setState] = useState({
         isOpen: false,
@@ -25,6 +25,7 @@ const Post = ({index, title, text}) => {
     const openPost = useCallback(() => {
         const offset = getElementOffset(postRef.current)
         const top = offset.top;
+        someAdditor();
         setState((prev) => {
             let translation = {transform: `translate3d(0,${-offset.top + 10}px,0)`}
             if (prev.isOpen){
