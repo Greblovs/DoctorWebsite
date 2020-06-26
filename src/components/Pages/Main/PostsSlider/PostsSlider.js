@@ -7,6 +7,20 @@ import {getWindowDimensions} from '../../../../scripts/SupportScripts'
 
 
 const PostsSlider = () => {
+    const [dimensions, setDimensions] = React.useState({
+        height: window.innerHeight,
+        width: window.innerWidth
+    })
+    React.useEffect(() => {
+        function handleResize() {
+            setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth
+            })}
+        window.addEventListener('resize', handleResize)
+
+    })
+
 
     const isMountedRef = useRef(null);
 

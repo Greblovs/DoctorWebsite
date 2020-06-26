@@ -12,6 +12,20 @@ function getElementOffset(element) {
 
 
 const Post = ({index, title, text, someAdditor}) => {
+    const [dimensions, setDimensions] = React.useState({
+        height: window.innerHeight,
+        width: window.innerWidth
+    })
+    React.useEffect(() => {
+        function handleResize() {
+            setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth
+            })}
+        window.addEventListener('resize', handleResize)
+
+    })
+
 
     const [state, setState] = useState({
         isOpen: false,
