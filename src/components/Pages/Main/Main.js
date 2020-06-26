@@ -6,6 +6,7 @@ import Meetings from "./Meetings/Meetings";
 import Discussion from "./Discussion/Discussion";
 
 const Main = () => {
+
     return (
         <>
             <Banner/>

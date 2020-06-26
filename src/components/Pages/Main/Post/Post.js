@@ -3,6 +3,7 @@ import classes from "./Post.module.scss";
 import {NavLink} from "react-router-dom";
 
 function getElementOffset(element) {
+
     const de = document.documentElement;
     const box = element.getBoundingClientRect();
     const top = box.top + window.pageYOffset - de.clientTop;
@@ -17,12 +18,17 @@ const Post = ({index, title, text, someAdditor}) => {
         width: window.innerWidth
     })
     React.useEffect(() => {
+        let isMounted = true
         function handleResize() {
-            setDimensions({
-                height: window.innerHeight,
-                width: window.innerWidth
-            })}
+            if (isMounted) {
+                setDimensions({
+                    height: window.innerHeight,
+                    width: window.innerWidth
+                })
+            }
+        }
         window.addEventListener('resize', handleResize)
+        return()=>{isMounted=false}
 
     })
 
@@ -32,8 +38,15 @@ const Post = ({index, title, text, someAdditor}) => {
         translation: {transform: "translate3d(0,0,0)"}
     })
 
-    const postCls = [classes.Post];
 
+    let postCls = [classes.Post];
+    if (window.innerWidth<= 660){
+        postCls = [classes.Post];
+    }
+    if (window.innerWidth > 660) {
+        postCls.push(classes.Fullscreen);
+
+    }
     const postRef = useRef();
 
     const openPost = useCallback(() => {
@@ -57,30 +70,27 @@ const Post = ({index, title, text, someAdditor}) => {
     }, []);
 
     if (state.isOpen) {
-        postCls.push(classes.open);
+        postCls.push(classes.open)
     }
 
-    if (window.innerWidth > 660) {
-        postCls.push(classes.fullscreen)
-    }
 
     let marg = index * 50;
-
+    let widthWindow = window.innerWidth
     marg = marg + "vw";
+    let styles = ()=>({
+            float: widthWindow < 660 || (window.innerWidth > 660 && index % 2 === 0) ?  "left" : null,
+            marginLeft:widthWindow > 660? marg: null,
+            marginTop: (window.innerWidth > 660 && (index % 2 === 0 &&index === 2 || index===3))? "-310px":null
+    })
 
+
+
+
+    console.log(styles)
 
     return (
-        <div style={window.innerWidth < 660 ? {float: "left"} :
-            window.innerWidth > 660 && index % 2 === 0 ?
-                index === 2 ?
-                    {float: "left", marginLeft: marg, marginTop: "-310px"}
-                    :
-                    {float: "left", marginLeft: marg}
-                :
-                index === 3 ?
-                    {marginLeft: marg, marginTop: "-310px"}
-                    :
-                    {marginLeft: marg}} className={classes.PostWrap}>
+        <div style={styles()} className={classes.PostWrap}>
+
             <div className={postCls.join(" ")} ref={postRef} style={state.translation}>
                 <div className={classes.Title}>
                     {title}

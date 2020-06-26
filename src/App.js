@@ -19,12 +19,17 @@ function App() {
         width: window.innerWidth
     })
     React.useEffect(() => {
+        let isMounted = true
         function handleResize() {
-            setDimensions({
-                height: window.innerHeight,
-                width: window.innerWidth
-            })}
-            window.addEventListener('resize', handleResize)
+            if (isMounted) {
+                setDimensions({
+                    height: window.innerHeight,
+                    width: window.innerWidth
+                })
+            }
+        }
+        window.addEventListener('resize', handleResize)
+        return()=>{isMounted=false}
 
         })
 

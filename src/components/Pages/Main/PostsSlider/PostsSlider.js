@@ -7,19 +7,7 @@ import {getWindowDimensions} from '../../../../scripts/SupportScripts'
 
 
 const PostsSlider = () => {
-    const [dimensions, setDimensions] = React.useState({
-        height: window.innerHeight,
-        width: window.innerWidth
-    })
-    React.useEffect(() => {
-        function handleResize() {
-            setDimensions({
-                height: window.innerHeight,
-                width: window.innerWidth
-            })}
-        window.addEventListener('resize', handleResize)
 
-    })
 
 
     const isMountedRef = useRef(null);
@@ -107,9 +95,13 @@ const PostsSlider = () => {
         return () => isMountedRef.current = false;
     }, [setSlideInterval]);
 
-    const rendPosts = state.posts.map((element, number) => (
-        <Post index={number} title={element.title} text={element.text} key={number} isOpen={element.isOpen} someAdditor={changeSlideInterval} id={number}/>
-    ));
+    const rendPosts = state.posts.map((element, number) => {
+
+        return (
+            <Post index={number} title={element.title} text={element.text} key={number} isOpen={element.isOpen}
+                  someAdditor={changeSlideInterval} id={number}/>
+        )
+    });
     let postWrapCls;
     if (window.innerWidth < 660) {
         postWrapCls = [classes.PostWrap];
@@ -144,7 +136,7 @@ const PostsSlider = () => {
         }
     } else if (state.activePostId == 1) {
         if (window.innerWidth < 660) {
-            console.log(1);
+
             postWrapCls.push(classes.second);
         } else {
             postWrapCls.push(classes.first);
@@ -169,7 +161,7 @@ const PostsSlider = () => {
         postWrapCls.push(classes.disAnim);
     }
 
-    const width = getWindowDimensions().width;
+    let width = getWindowDimensions().width;
 
     return (
         <div className={classes.PostsSlider}>

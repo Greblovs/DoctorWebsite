@@ -69,9 +69,6 @@
   }
 }
 
-.Post.fullscreen {
-  width: calc(50vw - 20px);
-}
 
 .Post.open {
   width: 100vw;
@@ -87,4 +84,12 @@
 
 .Post.disAnim {
   transition: none;
+}
+
+
+.smallAdapt{
+  float: left
+}
+.Fullscreen {
+  width: calc(50vw - 20px);
 }
