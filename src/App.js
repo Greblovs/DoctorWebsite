@@ -32,11 +32,14 @@ function App() {
     React.useEffect(() => {
         let isMounted = true
         const debouncedHandleResize = debounce(function handleResize() {
-            setDimensions({
-                height: window.innerHeight,
-                width: window.innerWidth
-            })
-        }, 500)
+            if(isMounted ) {
+                setDimensions({
+                    height: window.innerHeight,
+                    width: window.innerWidth
+                })
+            }
+        }, 20)
+
         window.addEventListener('resize', debouncedHandleResize)
         return()=>{isMounted=false}
     })
