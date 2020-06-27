@@ -110,14 +110,21 @@ const PostsSlider = () => {
     }
 
     let dots = [0, 0, 0, 0];
-    dots[state.activePostId] = 1;
+
     if (increase === 1) {
+        dots[state.activePostId] = 1;
         dots = dots.map((dot, number) => (
             dot === 0 ?
                 <div className={classes.Dot} key={number}/> :
                 <div className={classes.Dot + " " + classes.open} key={number}/>
         ));
     } else {
+        if (state.activePostId === 1){
+            state.activePostId = 0
+        }else if (state.activePostId === 3){
+            state.activePostId = 2
+        }
+        dots[state.activePostId] = 1;
         dots = dots.map((dot, number) => (
             number % 2 === 0 ?
                 dot === 0 ?
