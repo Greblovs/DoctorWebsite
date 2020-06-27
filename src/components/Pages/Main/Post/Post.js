@@ -11,6 +11,18 @@ function getElementOffset(element) {
     return {top: top, left: left};
 }
 
+function debounce(fn, ms) {
+    let timer
+    return _ => {
+        clearTimeout(timer)
+        timer = setTimeout(_ => {
+            timer = null
+            fn.apply(this, arguments)
+        }, ms)
+    };
+}
+
+
 
 const Post = ({index, title, text, someAdditor}) => {
     const [dimensions, setDimensions] = React.useState({
@@ -19,18 +31,17 @@ const Post = ({index, title, text, someAdditor}) => {
     })
     React.useEffect(() => {
         let isMounted = true
-        function handleResize() {
-            if (isMounted) {
-                setDimensions({
-                    height: window.innerHeight,
-                    width: window.innerWidth
-                })
-            }
-        }
-        window.addEventListener('resize', handleResize)
-        return()=>{isMounted=false}
+        const debouncedHandleResize = debounce(function handleResize() {
+            setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth
+            })
+        }, 500)
 
+        window.addEventListener('resize', debouncedHandleResize)
+        return()=>{isMounted=false}
     })
+
 
 
     const [state, setState] = useState({

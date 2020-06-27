@@ -10,6 +10,17 @@ import Layout from "./components/hoc/Layout/Layout";
 
 
 
+function debounce(fn, ms) {
+    let timer
+    return _ => {
+        clearTimeout(timer)
+        timer = setTimeout(_ => {
+            timer = null
+            fn.apply(this, arguments)
+        }, ms)
+    };
+}
+
 
 
 
@@ -20,18 +31,16 @@ function App() {
     })
     React.useEffect(() => {
         let isMounted = true
-        function handleResize() {
-            if (isMounted) {
-                setDimensions({
-                    height: window.innerHeight,
-                    width: window.innerWidth
-                })
-            }
-        }
-        window.addEventListener('resize', handleResize)
+        const debouncedHandleResize = debounce(function handleResize() {
+            setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth
+            })
+        }, 500)
+        window.addEventListener('resize', debouncedHandleResize)
         return()=>{isMounted=false}
+    })
 
-        })
 
 
 
