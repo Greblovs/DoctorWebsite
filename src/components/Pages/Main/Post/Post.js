@@ -58,12 +58,19 @@ const Post = ({index, title, text, someAdditor}) => {
 
 
     let postCls = [classes.Post];
+
     if (window.innerWidth <= 660) {
         postCls = [classes.Post];
     }
     if (window.innerWidth > 660) {
-        postCls.push(classes.Fullscreen);
+        if (window.innerWidth>1400){
+            postCls.push(classes.PostFLoated)
+        }else {
+            postCls.push(classes.Fullscreen);
+        }
+
     }
+
     if (state.canOpen === false) {
         postCls.push(classes.recentlyClosed);
     }

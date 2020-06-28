@@ -9,10 +9,11 @@
   overflow: visible;
 }
 
+
 .Post {
 
   width: calc(100% - 20px);
-  max-width: 660px;
+
   position: absolute;
   height: 310px;
   background: linear-gradient($accent2light, $accent2);
@@ -92,6 +93,7 @@
 
 .Post.fullyOpen{
   //position: fixed;
+
   max-width: 100vw;
 }
 
@@ -104,10 +106,12 @@
   transition: none;
 }
 
-
 .smallAdapt{
   float: left
 }
 .Fullscreen {
   width: calc(50vw - 20px);
+}
+.PostFLoated{
+  width: 660px;
 }
