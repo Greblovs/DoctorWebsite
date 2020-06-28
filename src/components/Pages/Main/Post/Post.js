@@ -49,14 +49,10 @@ const Post = ({index, title, text, someAdditor}) => {
     const marginLetPost = (window.innerWidth/2-660)-20
 
     const [state, setState] = useState({
-        isOpen: false,
-        translation: {
-            transform: "translate3d(0,0,0)",
-            fullyOpen: false,
-            canOpen: true,
-            translation: {transform: "translate3d(0,0,0)"},
-            savedTranslation: {transform: "translate3d(0,0,0)"}
-        }
+        transform: "translate3d(0,0,0)",
+        fullyOpen: false,
+        canOpen: true,
+        translation: {transform: "translate3d(0,0,0)"},
     });
 
 
@@ -74,6 +70,7 @@ const Post = ({index, title, text, someAdditor}) => {
     const postRef = useRef();
 
     const openPost = useCallback(() => {
+
         const offset = getElementOffset(postRef.current);
         const top = offset.top;
         const left = offset.left;
