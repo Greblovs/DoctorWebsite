@@ -50,8 +50,10 @@ const Post = ({index, title, text, someAdditor}) => {
 
     const [state, setState] = useState({
         isOpen: false,
-        translation: {transform: "translate3d(0,0,0)"}
+        translation: {transform: "translate3d(0,0,0)",
+        }
     })
+    const marginLetPost = (window.innerWidth/2-660)-20
 
 
     let postCls = [classes.Post];
@@ -89,13 +91,16 @@ const Post = ({index, title, text, someAdditor}) => {
     }
 
 
+
+
     let marg = index * 50;
     let widthWindow = window.innerWidth
     marg = marg + "vw";
     let styles = ()=>({
             float: widthWindow < 660 || (window.innerWidth > 660 && index % 2 === 0) ?  "left" : null,
             marginLeft:widthWindow > 660? marg: null,
-            marginTop: (window.innerWidth > 660 && (index % 2 === 0 &&index === 2 || index===3))? "-310px":null
+            marginTop: (window.innerWidth > 660 && (index % 2 === 0 &&index === 2 || index===3))? "-310px":null,
+            width:  window.innerWidth > 660? "50vw" : "100vw"
     })
 
 
@@ -105,17 +110,18 @@ const Post = ({index, title, text, someAdditor}) => {
 
     return (
         <div style={styles()} className={classes.PostWrap}>
-
-            <div className={postCls.join(" ")} ref={postRef} style={state.translation}>
-                <div className={classes.Title}>
-                    {title}
+            <div style={window.innerWidth>1400 && index%2 ===0? {marginLeft: marginLetPost}:window.innerWidth>1400 && index%2 ===1? {marginLeft: "10px"}:null}>
+                <div className={postCls.join(" ")} ref={postRef} style={state.translation}>
+                    <div className={classes.Title}>
+                        {title}
+                    </div>
+                    <div className={classes.Text}>
+                        {text}
+                    </div>
+                    <button onClick={openPost} className={classes.Button}>
+                        Читать дальше
+                    </button>
                 </div>
-                <div className={classes.Text}>
-                    {text}
-                </div>
-                <button onClick={openPost} className={classes.Button}>
-                    Читать дальше
-                </button>
             </div>
         </div>
     );
