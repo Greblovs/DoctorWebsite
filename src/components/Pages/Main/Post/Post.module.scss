@@ -92,10 +92,12 @@
 
 .Post.fullyOpen{
   //position: fixed;
+  max-width: 100vw;
 }
 
 .Post.recentlyClosed{
   z-index: 1001;
+  max-width: 100vw;
 }
 
 .Post.disAnim {
