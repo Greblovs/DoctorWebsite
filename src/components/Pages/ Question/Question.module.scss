@@ -1,47 +1,72 @@
 @import "../../../strings/colors";
 
-.Question {
-  position: inherit;
-  height: 150px;
-  border-radius: 30px;
-  width: calc(100% - 20px);
-  margin-bottom: 20px;
-  background: linear-gradient(#D183C9, #c859d1);
-  box-shadow: 0 4px 10px #c859d1;
-  margin-left: 10px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-around;
+.QuestionWrap {
+  position: relative;
+  width: 100vw;
+  height: 170px;
+  overflow: visible;
 
-  .Text {
-    text-align: center;
+  .Question {
+    position: absolute;
+    height: 150px;
+    border-radius: 30px;
     width: calc(100% - 20px);
-    font-size: 23px;
-    font-weight: 600;
-    color: $background;
-  }
-
-  .Button {
-    margin: 0px auto;
-    font-size: 18px;
-    width: calc(100% - 60px);
-    height: 40px;
-    outline: none;
-    border: none;
-    background: $background;
-    border-radius: 20px;
-    color: #c859d1;
-    font-weight: 600;
-    transform: scale(1);
-    transition: transform .1s ease-in-out, box-shadow .1s ease-in-out;
-    text-decoration: none;
+    margin-bottom: 20px;
+    background: linear-gradient(#D183C9, #c859d1);
+    box-shadow: 0 4px 10px #c859d1;
+    margin-left: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
-  }
+    flex-direction: column;
+    justify-content: space-around;
+    transition: transform .5s ease-in-out, border-radius .5s ease-in-out, margin .5s ease-in-out, width .5s ease-in-out, height .5s ease-in-out;
 
-  .Button:active {
-    transform: scale(.95);
+    .Text {
+      text-align: center;
+      width: calc(100% - 20px);
+      font-size: 23px;
+      font-weight: 600;
+      color: $background;
+    }
+
+    .Button {
+      margin: 0px auto;
+      font-size: 18px;
+      width: calc(100% - 60px);
+      height: 40px;
+      outline: none;
+      border: none;
+      background: $background;
+      border-radius: 20px;
+      color: #c859d1;
+      font-weight: 600;
+      transform: scale(1);
+      transition: transform .1s ease-in-out, box-shadow .1s ease-in-out;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .Button:active {
+      transform: scale(.95);
+    }
   }
+}
+
+.Question.open {
+  width: 100vw;
+  margin: 0px;
+  border-radius: 0px;
+  height: 100vh;
+  z-index: 1001;
+}
+
+.Question.fullyOpen{
+  //position: fixed;
+}
+
+
+.Question.recentlyClosed {
+  z-index: 1001;
 }

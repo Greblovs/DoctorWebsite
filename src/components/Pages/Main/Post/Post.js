@@ -12,74 +12,108 @@ function getElementOffset(element) {
 }
 
 function debounce(fn, ms) {
-    let timer
+    let timer;
     return _ => {
         clearTimeout(timer)
         timer = setTimeout(_ => {
-            timer = null
+            timer = null;
             fn.apply(this, arguments)
         }, ms)
     };
 }
 
 
-
 const Post = ({index, title, text, someAdditor}) => {
     const [dimensions, setDimensions] = React.useState({
         height: window.innerHeight,
         width: window.innerWidth
-    })
+    });
     React.useEffect(() => {
-        let isMounted = true
+        let isMounted = true;
 
         const debouncedHandleResize = debounce(function handleResize() {
-            if(isMounted ) {
+            if (isMounted) {
                 setDimensions({
                     height: window.innerHeight,
                     width: window.innerWidth
                 })
             }
-        }, 20)
+        }, 20);
 
 
         window.addEventListener('resize', debouncedHandleResize)
-        return()=>{isMounted=false}
-    })
-
-
+        return () => {
+            isMounted = false
+        }
+    });
+    const marginLetPost = (window.innerWidth/2-660)-20
 
     const [state, setState] = useState({
         isOpen: false,
-        translation: {transform: "translate3d(0,0,0)",
+        translation: {
+            transform: "translate3d(0,0,0)",
+            fullyOpen: false,
+            canOpen: true,
+            translation: {transform: "translate3d(0,0,0)"},
+            savedTranslation: {transform: "translate3d(0,0,0)"}
         }
-    })
-    const marginLetPost = (window.innerWidth/2-660)-20
+    });
+
 
 
     let postCls = [classes.Post];
-    if (window.innerWidth<= 660){
+    if (window.innerWidth <= 660) {
         postCls = [classes.Post];
     }
     if (window.innerWidth > 660) {
         postCls.push(classes.Fullscreen);
-
+    }
+    if (state.canOpen === false) {
+        postCls.push(classes.recentlyClosed);
     }
     const postRef = useRef();
 
     const openPost = useCallback(() => {
-        const offset = getElementOffset(postRef.current)
+        const offset = getElementOffset(postRef.current);
         const top = offset.top;
         const left = offset.left;
         someAdditor();
         setState((prev) => {
-            let translation = {transform: `translate3d(${-offset.left + 10}px,${-offset.top + 10}px,0)`}
-            if (prev.isOpen){
-                translation = {}
-            }
-            return {
-                ...prev,
-                isOpen: !prev.isOpen,
-                translation
+            if (prev.canOpen) {
+                let translation = {transform: `translate3d(${-offset.left + 10}px,${-offset.top + 10}px,0)`};
+                let fullyOpen = prev.fullyOpen;
+                if (prev.isOpen) {
+                    translation = {transform: "translate3d(0,0,0)"};
+                    fullyOpen = false;
+                } else {
+                    setTimeout(() => {
+                        setState((prev) => {
+                            return {
+                                ...prev,
+                                fullyOpen: true
+                            }
+                        })
+                    }, 500)
+                }
+                setTimeout(() => {
+                    setState((prev) => {
+                        return {
+                            ...prev,
+                            canOpen: true
+                        }
+                    })
+                }, 500);
+                return {
+                    ...prev,
+                    isOpen: !prev.isOpen,
+                    translation,
+                    canOpen: false,
+                    fullyOpen
+                }
+            } else {
+                return {
+                    ...prev
+                }
             }
         })
 
@@ -90,21 +124,24 @@ const Post = ({index, title, text, someAdditor}) => {
         postCls.push(classes.open)
     }
 
+    if (state.fullyOpen) {
+        postCls.push(classes.fullyOpen)
+    }
+
 
 
 
     let marg = index * 50;
     let widthWindow = window.innerWidth
     marg = marg + "vw";
+
     let styles = ()=>({
-            float: widthWindow < 660 || (window.innerWidth > 660 && index % 2 === 0) ?  "left" : null,
-            marginLeft:widthWindow > 660? marg: null,
-            marginTop: (window.innerWidth > 660 && (index % 2 === 0 &&index === 2 || index===3))? "-310px":null,
-            width:  window.innerWidth > 660? "50vw" : "100vw"
+        float: widthWindow < 660 || (window.innerWidth > 660 && index % 2 === 0) ? "left" : null,
+        marginLeft: widthWindow > 660 ? marg : null,
+        marginTop: (window.innerWidth > 660 && (index % 2 === 0 && index === 2 || index === 3)) ? "-310px" : null,
+        width: window.innerWidth > 660 ? "50vw" : "100vw"
+
     })
-
-
-
 
     console.log(styles)
 
