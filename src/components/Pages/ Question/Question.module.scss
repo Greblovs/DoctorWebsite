@@ -1,8 +1,19 @@
 @import "../../../strings/colors";
 
-.QuestionWrap {
-  position: relative;
+.smartQuestion{
   width: 100vw;
+}
+.tabletQuestion{
+  width: 50vw !important;
+}
+.desktopQuestion{
+  width: 700px  !important;
+}
+
+.QuestionWrap {
+
+  position: relative;
+  display: inline-block;
   height: 170px;
   overflow: visible;
 

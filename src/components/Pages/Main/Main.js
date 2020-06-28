@@ -21,7 +21,7 @@ const Main = () => {
             {slider()}
             <Meetings/>
             <PopularPost/>
-            <Discussion/>
+            <Discussion />
         </>
     );
 };

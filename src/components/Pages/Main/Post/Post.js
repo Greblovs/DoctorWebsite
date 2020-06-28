@@ -59,10 +59,10 @@ const Post = ({index, title, text, someAdditor}) => {
 
     let postCls = [classes.Post];
 
-    if (window.innerWidth <= 660) {
+    if (window.innerWidth < 660) {
         postCls = [classes.Post];
     }
-    if (window.innerWidth > 660) {
+    if (window.innerWidth >= 660) {
         if (window.innerWidth>1400){
             postCls.push(classes.PostFLoated)
         }else {
@@ -140,10 +140,10 @@ const Post = ({index, title, text, someAdditor}) => {
     marg = marg + "vw";
 
     let styles = ()=>({
-        float: widthWindow < 660 || (window.innerWidth > 660 && index % 2 === 0) ? "left" : null,
-        marginLeft: widthWindow > 660 ? marg : null,
-        marginTop: (window.innerWidth > 660 && (index % 2 === 0 && index === 2 || index === 3)) ? "-310px" : null,
-        width: window.innerWidth > 660 ? "50vw" : "100vw"
+        float: widthWindow < 660 || (window.innerWidth >= 660 && index % 2 === 0) ? "left" : null,
+        marginLeft: widthWindow >= 660 ? marg : null,
+        marginTop: (window.innerWidth >= 660 && (index % 2 === 0 && index === 2 || index === 3)) ? "-310px" : null,
+        width: window.innerWidth >= 660 ? "50vw" : "100vw"
 
     })
 

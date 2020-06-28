@@ -27,7 +27,8 @@ const PopularPost = () => {
                 ]
             }];
 
-
+    let marginHeader = (window.innerWidth-1400)/2
+    let marginButton = (window.innerWidth-1300)/2
     const rendPosts = posts.map((element, index) => {
         return (
             <Post index = {index} title={element.title} text={element.text} key={index} openPost={()=>{}}/>
@@ -35,17 +36,17 @@ const PopularPost = () => {
     });
 
     return (
-        window.innerWidth > 660?
+        window.innerWidth >= 660?
         <>
-            <Heading text={"Популярные статьи"}/>
+            <Heading marginL = {marginHeader} text={"Популярные статьи"}/>
             {rendPosts}
-            <button className={classes.MoreButton}>Больше статей</button>
+            <button style={window.innerWidth>1300 && marginButton>20? {marginLeft: marginButton}: null} className={classes.MoreButton}>Больше статей</button>
         </>
         :
         <>
             <Heading text={"Популярные статьи"}/>
-            <Post index = {0} title={posts[0].title} text={posts[0].text}  openPost={()=>{}}></Post>
-            <button className={classes.MoreButton}>Больше статей</button>
+            <Post index = {0} title={posts[0].title} text={posts[0].text}  openPost={() => {}}/>
+            <button   className={classes.MoreButton}>Больше статей</button>
         </>
     )
 };

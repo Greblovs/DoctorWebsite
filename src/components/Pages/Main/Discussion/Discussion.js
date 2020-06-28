@@ -37,17 +37,18 @@ const Discussion = () => {
 
         return (
             element.public ?
-                < Question shortTitle={shortTitle}/>
+                < Question index = {index} key={index} shortTitle={shortTitle}/>
                 : null
         )
     })
 
-
+    let marginHeader = (window.innerWidth-1400)/2
     return (
         <>
-            <Heading text={"Популярные вопросы"}/>
 
-            <div className={classes.CommentWrapper}>
+            <Heading marginL = {marginHeader}  style = {{float: "left"}} text={"Популярные вопросы"}/>
+            <div style={{textAlign: "center"}} className={classes.CommentWrapper}>
+
                 {content}
             </div>
 

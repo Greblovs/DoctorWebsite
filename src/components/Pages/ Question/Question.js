@@ -78,8 +78,19 @@ const Question = ({shortTitle}) => {
         questionCls.push(classes.recentlyClosed);
     }
 
+    let wrapClasses = [classes.QuestionWrap]
+    if (window.innerWidth>=660){
+        if (window.innerWidth>=1400){
+            wrapClasses.push(classes.desktopQuestion)
+        }else{
+            wrapClasses.push(classes.tabletQuestion)
+        }
+    }else{
+        wrapClasses.push(classes.smartQuestion)
+    }
+
     return (
-        <div className={classes.QuestionWrap}>
+        <div style={window.innerWidth>660? {display:"inline-block"}:{display: "block"}} className={wrapClasses.join(" ")}>
             <div className={questionCls.join(" ")} ref={questionRef} style={state.translation}>
                 <div className={classes.Text}>
                     {shortTitle}

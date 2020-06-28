@@ -1,19 +1,72 @@
 @import "../../../strings/colors";
 .Botter {
+  overflow: hidden;
   width: 100vw;
   padding-top: 20px;
-  padding-bottom: 20px;
+  min-height: 240px;
   background: $accent1;
   //box-shadow: 0 0 10px $text-color;
   z-index: 1000;
   color: white;
   box-sizing: border-box;
   margin-top: 20px;
-  height: 300px;
+
 }
-.name{
+.Contacts{
+  height: 0px;
+  transition: 0.2s ease-in-out;
+  overflow: hidden;
+}
+.ContactsOpen{
+  overflow: hidden;
+  transition: 0.2s ease-in-out;
+  height: 120px;
+}
+
+.AdressOpen{
+  overflow: hidden;
+  transition: 0.2s ease-in-out;
+  height: 120px;
+}
+.NavOpen{
+  overflow: hidden;
+  transition: 0.2s ease-in-out;
+  height: 80px;
+}
+
+.Adress{
+  height: 0px;
+  transition: 0.2s ease-in-out;
+  overflow: hidden;
+}
+.Nav{
+  height: 0px;
+  transition: 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+i{
+  color:white;
+  float:right;
+}
+
+
+.Button{
+  font-weight: 600;
+  color:white;
   font-size: 20px;
-  padding-bottom: 10px;
+  width: 100%;
+  text-align: left;
+  height:50px;
+  line-height: 50px;
+  background-color: $accent1;
+}
+
+
+
+.name{
+  font-size: 18px;
+  padding-bottom: 5px;
   color:white;
 }
 .Wrapper{
@@ -22,14 +75,16 @@
   text-align: left;
 }
 .status{
+  line-height: 24px;
   color:white;
+  height: 24px;
   font-size: 14px;
   padding-bottom: 5px;
 }
 .info{
   color:white;
-  font-size: 12px;
-  padding-bottom: 5px;
+  padding-top: 5px;
+  font-size: 13px;
 }
 .rightsWriting{
   color:white;
@@ -79,5 +134,5 @@
   padding-bottom: 20px;
 }
 iframe{
-  width: calc(100vw - 120px);
+
 }

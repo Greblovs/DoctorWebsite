@@ -44,7 +44,6 @@ const PostsSlider = () => {
                 return{
                     ...prev,
                     interval: null,
-                    isPostOpen: true
                 }
             })
         }else{
@@ -60,7 +59,7 @@ const PostsSlider = () => {
 
     let increase = 1;
     let delta = 5000;
-    if (window.innerWidth > 660) {
+    if (window.innerWidth >= 660) {
         increase = 2;
         delta = 10000;
     }

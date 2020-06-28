@@ -1,26 +1,87 @@
 import React, {useCallback, useState} from 'react';
 import classes from "./Botter.module.scss";
-
-
-
-
+import 'font-awesome/css/font-awesome.min.css';
 
 
 const Botter = ((props) => {
     const [state, setState] = useState({
-
+        contacts: false,
+        address: false,
+        nav: false
     });
+    let contacts =  [classes.Contacts];
+    if (state.contacts === true){
+        contacts = [classes.ContactsOpen]
+    }
+    let address =  [classes.Adress]
+    if (state.address === true){
+        address = [classes.AdressOpen]
+    }
+    let nav =  [classes.Nav]
+    if (state.nav === true){
+        nav = [classes.NavOpen]
+    }
+    const openContacts = useCallback(()=> {
+        setState(prev => {
+            return {
+                ...prev,
+                contacts: !prev.contacts
+            }
+        })
+    },[])
+    const openAdress = useCallback(()=> {
+        setState(prev => {
+            return {
+                ...prev,
+                address: !prev.address
+            }
+        })
+    },[])
+    const openNav = useCallback(()=> {
+        setState(prev => {
+            return {
+                ...prev,
+                nav: !prev.nav
+            }
+        })
+    },[])
+
 
 
     return (
-            <div  className={classes.Botter}>
+            <div style={{marginTop:props.top, marginLeft: props.left}} className={classes.Botter}>
                 <div className={classes.Wrapper}>
-                    <p className={classes.name}>Кот Вячеслав Федорович</p>
-                    <p className={classes.status}>Лор врач</p>
-                    <p className={classes.info}>(067) 5065206  (8.00 — 20.00)</p>
-                    <p className={classes.info}>example@example.com</p>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2842.624934838815!2d-123.2816329845101!3d44.56378057910075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54c040b9ea50bb43%3A0xa6fff1dc01f7b49f!2z0KPQvdC40LLQtdGA0YHQuNGC0LXRgiDRiNGC0LDRgtCwINCe0YDQtdCz0L7QvQ!5e0!3m2!1sru!2sus!4v1593252032617!5m2!1sru!2sus"/>
+                    <div onClick={openContacts} className={classes.Button}>Контакты
+                        <i className="fa fa-angle-right fa-2x" aria-hidden="true"/>
+                    </div>
+                    <div className={contacts.join(" ")}>
+                        <p className={classes.name}>Кот Вячеслав Федорович</p>
+                        <p className={classes.info}>(067) 5065206  (8.00 — 20.00)</p>
+                        <p className={classes.info}>example@example.com</p>
+                        <p className={classes.info}>@theBestDoctor</p>
+                        <p className={classes.info}>Задайте Вопрос</p>
+
+                    </div>
+                    <div onClick={openAdress} className={classes.Button}>Адресс
+                        <i className="fa fa-angle-right fa-2x" aria-hidden="true"/></div>
+                    <div className={address.join(" ")}>
+                        <p className={classes.info}>клиника Медиком на Печерске</p>
+                        <p className={classes.info}>ул. Василия Тютюнника (Анри Барбюса) 37/1</p>
+                        <br/>
+                        <p className={classes.info}>клиника Медиком на Оболони</p>
+                        <p className={classes.info}>ул. Героев Сталинграда 6-Д</p>
+
+                    </div>
+                    <div onClick={openNav} className={classes.Button}>Навигация сайта
+                        <i className="fa fa-angle-right fa-2x" aria-hidden="true"/></div>
+                    <div className={nav.join(" ")}>
+                        <p className={classes.status}>Главная</p>
+                        <p className={classes.status}>Статьи</p>
+                        <p className={classes.status}>Вопросы</p>
+
+                    </div>
                 </div>
+                <p style={{fontWeight:"600", marginLeft: "20px", marginTop: "20px", paddingBottom: "30px"}}  className={classes.info}>@ALL RIGHTS RESERVED | 2020</p>
             </div>
 
     );

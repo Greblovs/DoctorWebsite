@@ -8,7 +8,7 @@ const Meetings = () => {
 
     return (
         <div className={classes.Wrapper}>
-            <Heading text={"Консультации"}/>
+            <Heading marginL={"10px"} text={"Консультации"}/>
 
             <div className={classes.topText}>
                 {text}
