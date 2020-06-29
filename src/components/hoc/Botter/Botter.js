@@ -88,9 +88,10 @@ const Botter = ((props) => {
             <div className={classes.Botter}>
                 <div style={{width: "1400px", margin: "0 auto"}}>
                     <div   className={classes.Column}>
-                        <div style={{width:"250px", height: "240px", textAlign: "left", marginLeft: "100px"}}>
+                        <div style={{width:"300px", height: "240px", textAlign: "left", marginLeft: "25px"}}>
                             <p className={classes.title}>Контакты</p>
-                            <p style={{paddingTop: "20px"}} className={classes.text}>(067) 5065206  (8.00 — 20.00)</p>
+                            <div style={{width: "100%", height: "4px", backgroundColor: "white", marginTop: "10px"}}></div>
+                            <p style={{paddingTop: "10px"}} className={classes.text}>(067) 5065206  (8.00 — 20.00)</p>
                             <p className={classes.text}>example@example.com</p>
                             <p className={classes.text}>@theBestDoctor</p>
                             <p className={classes.text}>Задайте Вопрос</p>
@@ -99,16 +100,18 @@ const Botter = ((props) => {
                     <div className={classes.Column}>
                         <div style={{width:"400px", height: "240px", textAlign: "left", marginLeft: "25px"}}>
                             <p className={classes.title}>Где нас найти?</p>
-                            <p style={{paddingTop: "20px"}} className={classes.text}>клиника Медиком на Печерске</p>
+                            <div style={{width: "100%", height: "4px", backgroundColor: "white", marginTop: "10px"}}></div>
+                            <p style={{paddingTop: "10px"}} className={classes.text}>клиника Медиком на Печерске</p>
                             <p className={classes.text}>ул. Василия Тютюнника (Анри Барбюса) 37/1</p>
                             <p style={{paddingTop: "20px"}} className={classes.text}>клиника Медиком на Оболони</p>
                             <p className={classes.text}>ул. Героев Сталинграда 6-Д</p>
                         </div>
                     </div>
                     <div  className={classes.Column}>
-                        <div style={{width:"240px", height: "240px", textAlign: "left",  marginLeft: "105px"}}>
+                        <div style={{width:"300px", height: "240px", textAlign: "left",  marginLeft: "125px"}}>
                             <p className={classes.title}>Навигация сайта</p>
-                            <p style={{paddingTop: "20px"}} className={classes.text}>Главная</p>
+                            <div style={{width: "100%", height: "4px", backgroundColor: "white", marginTop: "10px"}}></div>
+                            <p style={{paddingTop: "10px"}} className={classes.text}>Главная</p>
                             <p className={classes.text}>Статьи</p>
                             <p className={classes.text}>Вопросы</p>
                         </div>
