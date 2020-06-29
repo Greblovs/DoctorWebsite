@@ -25,7 +25,7 @@
   flex-direction: column;
   transform: translate3d(0px, 0px, 0px);
   transition: transform .5s ease-in-out, border-radius .5s ease-in-out, margin .5s ease-in-out, width .5s ease-in-out, height .5s ease-in-out;
-  z-index: 999;
+  z-index: 998;
 
   .Title {
     color: $background;

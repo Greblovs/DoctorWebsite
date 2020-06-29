@@ -114,7 +114,7 @@ const Header = () => {
                 </div>
             :
             <div className={ classes.TabletSize}>
-                <div  className={window.innerWidth<1400? classes.BackTrace: classes.backTraceDesktop} onClick={toggleMenu}/>
+                <div  className={window.innerWidth<1400? classes.BackTrace: classes.backTraceDesktop} onClick={toggleMenu}></div>
                 <div className={backTraceMenu.join(' ')}>
                     <div className={window.innerWidth<1400? classes.backTraceLink: classes.backTraceLinkDesktop}/>
                     <div className={window.innerWidth<1400? classes.backTraceLink: classes.backTraceLinkDesktop}/>

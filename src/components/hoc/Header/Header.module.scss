@@ -2,7 +2,6 @@
 
 
 
-
 .SmartSize{
 
 }
@@ -58,7 +57,10 @@
 .BackTrace{
   width: 70px;
   height: 70px;
-  background-color: black;
+  background: url("../../../images/viber.png") center center;
+  background-color: rgb(115,096,242);
+  background-size: 80%;
+  background-repeat: no-repeat;
   position: fixed;
   z-index: 1000;
   border-radius: 200px;
@@ -67,7 +69,7 @@
 }
 .BackTraceMenu{
   width: 70px;
-  z-index: 1000;
+  z-index: 999;
   position: fixed;
   margin-left: calc(100% - 80px);
   margin-top: calc(100vh - 25px);
@@ -80,7 +82,10 @@
 .backTraceDesktop{
   width: 100px;
   height: 100px;
-  background-color: black;
+  background: url("../../../images/viber.png") center center;
+  background-color: rgb(115,096,242);
+  background-size: 80%;
+  background-repeat: no-repeat;
   position: fixed;
   z-index: 1000;
   border-radius: 200px;
@@ -89,7 +94,7 @@
 }
 .BackTraceMenuDesktop{
   width: 100px;
-  z-index: 1000;
+  z-index: 999;
   position: fixed;
   margin-left: calc(100% - 150px);
   margin-top: calc(100vh - 75px);
@@ -119,19 +124,27 @@
 }
 
 .backTraceLink{
+  background: url("../../../images/viber.png") center center;
+  background-color: rgb(115,096,242);
+  background-size: 80%;
+  background-repeat: no-repeat;
+  justify-content: center;
   margin-bottom: 5px;
   width: 70px;
   height: 70px;
-  background-color: black;
 
   border-radius: 50px;
 }
 
 .backTraceLinkDesktop{
+  box-sizing: border-box;
   margin-bottom: 5px;
   width: 100px;
   height: 100px;
-  background-color: black;
+  background: url("../../../images/viber.png") center center;
+  background-color: rgb(115,096,242);
+  background-size: 80%;
+  background-repeat: no-repeat;
 
   border-radius: 50px;
 }
