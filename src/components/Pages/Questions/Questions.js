@@ -24,7 +24,7 @@ const Questions = () => {
         });
 
         axios.get(API + DEFAULT_QUERY)
-            .then(result => setState((prev)=>{
+            .then(result  => setState((prev)=>{
                 return {
                     ...prev,
                     questions: result.data.data,

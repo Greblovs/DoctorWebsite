@@ -19,8 +19,9 @@
   justify-content: space-between;
     background: linear-gradient(#e075d9,#d9abd8);
   display: block;
-  width: calc(100% - 20px);
+  width: calc(100% - 10px);
   height: 150px;
+
   margin-bottom: 40px;
   box-shadow: 0 4px 10px #e075d9;
 }
@@ -32,7 +33,7 @@
   flex-direction: column;
   justify-content: space-between;
   display: block;
-  width: calc(100% - 20px);
+  width: calc(100% - 10px);
   margin-left: 20px;
   margin-bottom: 40px;
   height: 150px;

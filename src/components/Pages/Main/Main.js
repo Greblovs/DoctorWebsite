@@ -21,8 +21,8 @@ const Main = () => {
             <Banner/>
             {slider()}
             <Meetings/>
-            <PopularPost/>
-            <Discussion />
+            < PopularPost />
+            <Discussion  />
             <Maps/>
         </>
     );
