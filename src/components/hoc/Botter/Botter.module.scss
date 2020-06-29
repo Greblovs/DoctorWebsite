@@ -126,13 +126,30 @@ i{
 }
 
 .rights{
-  transition: 4s ;
-
+  transition: 4s;
   width: 100%;
   text-align: center;
   padding-top: 10px;
   padding-bottom: 20px;
 }
-iframe{
 
+.title{
+  font-weight: 600;
+  color: white;
+  font-size: 28px;
+  opacity: 0.9;
+}
+
+.text{
+  color: white;
+  font-size: 18px;
+  height: 35px;
+  line-height: 35px;
+}
+
+.Column{
+  text-align: center;
+  height: 240px;
+  width: calc(450px);
+  display: inline-block;
 }

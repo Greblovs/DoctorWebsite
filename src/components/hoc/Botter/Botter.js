@@ -49,6 +49,7 @@ const Botter = ((props) => {
 
 
     return (
+        window.innerWidth<1400?
             <div style={{marginTop:props.top, marginLeft: props.left}} className={classes.Botter}>
                 <div className={classes.Wrapper}>
                     <div onClick={openContacts} className={classes.Button}>Контакты
@@ -82,6 +83,38 @@ const Botter = ((props) => {
                     </div>
                 </div>
                 <p style={{fontWeight:"600", marginLeft: "20px", marginTop: "20px", paddingBottom: "30px"}}  className={classes.info}>@ALL RIGHTS RESERVED | 2020</p>
+            </div>
+            :
+            <div className={classes.Botter}>
+                <div style={{width: "1400px", margin: "0 auto"}}>
+                    <div   className={classes.Column}>
+                        <div style={{width:"250px", height: "240px", textAlign: "left", marginLeft: "100px"}}>
+                            <p className={classes.title}>Контакты</p>
+                            <p style={{paddingTop: "20px"}} className={classes.text}>(067) 5065206  (8.00 — 20.00)</p>
+                            <p className={classes.text}>example@example.com</p>
+                            <p className={classes.text}>@theBestDoctor</p>
+                            <p className={classes.text}>Задайте Вопрос</p>
+                        </div>
+                    </div>
+                    <div className={classes.Column}>
+                        <div style={{width:"400px", height: "240px", textAlign: "left", marginLeft: "25px"}}>
+                            <p className={classes.title}>Где нас найти?</p>
+                            <p style={{paddingTop: "20px"}} className={classes.text}>клиника Медиком на Печерске</p>
+                            <p className={classes.text}>ул. Василия Тютюнника (Анри Барбюса) 37/1</p>
+                            <p style={{paddingTop: "20px"}} className={classes.text}>клиника Медиком на Оболони</p>
+                            <p className={classes.text}>ул. Героев Сталинграда 6-Д</p>
+                        </div>
+                    </div>
+                    <div  className={classes.Column}>
+                        <div style={{width:"240px", height: "240px", textAlign: "left",  marginLeft: "105px"}}>
+                            <p className={classes.title}>Навигация сайта</p>
+                            <p style={{paddingTop: "20px"}} className={classes.text}>Главная</p>
+                            <p className={classes.text}>Статьи</p>
+                            <p className={classes.text}>Вопросы</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
     );
