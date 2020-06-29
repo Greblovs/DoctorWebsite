@@ -62,7 +62,11 @@ const Header = () => {
         })
     }, []);
 
-    const backTraceMenu = [classes.BackTraceMenu, classes.backTraceMenuClosed];
+    let backTraceMenu = [classes.BackTraceMenu, classes.backTraceMenuClosed];
+
+    if (window.innerWidth>=1400){
+        backTraceMenu= [classes.BackTraceMenuDesktop, classes.backTraceMenuClosed]
+    }
 
     const toggleMenu = useCallback(()=>{
         setState(prev => {
@@ -77,7 +81,12 @@ const Header = () => {
     }, []);
     if (state.isTraceBackMenuOpen === true){
         backTraceMenu.pop();
-        backTraceMenu.push(classes.backTraceMenuOpen);
+        if (window.innerWidth<1400){
+            backTraceMenu.push(classes.backTraceMenuOpen);
+        }else{
+            backTraceMenu.push(classes.backTraceMenuOpenDesktop);
+        }
+
         console.log(backTraceMenu)
     }else{
         backTraceMenu.pop();
@@ -88,7 +97,7 @@ const Header = () => {
     return (
         window.innerWidth <= 570?
                 <div className={classes.SmartSize}>
-                    <div className={classes.BackTrace} onClick={toggleMenu}/>
+                    <div className={window.innerWidth<1400? classes.BackTrace: classes.backTraceDesktop} onClick={toggleMenu}/>
                     <div className={backTraceMenu.join(' ')}>
                         <div className={classes.backTraceLink}/>
                         <div className={classes.backTraceLink}/>
@@ -105,11 +114,11 @@ const Header = () => {
                 </div>
             :
             <div className={ classes.TabletSize}>
-                <div className={classes.BackTrace} onClick={toggleMenu}/>
+                <div  className={window.innerWidth<1400? classes.BackTrace: classes.backTraceDesktop} onClick={toggleMenu}/>
                 <div className={backTraceMenu.join(' ')}>
-                    <div className={classes.backTraceLink}/>
-                    <div className={classes.backTraceLink}/>
-                    <div className={classes.backTraceLink}/>
+                    <div className={window.innerWidth<1400? classes.backTraceLink: classes.backTraceLinkDesktop}/>
+                    <div className={window.innerWidth<1400? classes.backTraceLink: classes.backTraceLinkDesktop}/>
+                    <div className={window.innerWidth<1400? classes.backTraceLink: classes.backTraceLinkDesktop}/>
                 </div>
                 <div className={classes.Header}>
                     <img srcSet={logo} alt=""/>

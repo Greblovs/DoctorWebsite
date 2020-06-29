@@ -29,6 +29,7 @@
   overflow: hidden;
   position: fixed;
   width: 100vw;
+
   height: 100px;
   background: $accent1;
   //box-shadow: 0 0 10px $text-color;;
@@ -60,7 +61,7 @@
   background-color: black;
   position: fixed;
   z-index: 1000;
-  border-radius: 50px;
+  border-radius: 200px;
   margin-left: calc(100% - 80px);
   margin-top: calc(100vh - 80px);
 }
@@ -75,6 +76,36 @@
   transition: 0.4s;
   height: 0;
 }
+
+.backTraceDesktop{
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  position: fixed;
+  z-index: 1000;
+  border-radius: 200px;
+  margin-left: calc(100% - 150px);
+  margin-top: calc(100vh - 130px);
+}
+.BackTraceMenuDesktop{
+  width: 100px;
+  z-index: 1000;
+  position: fixed;
+  margin-left: calc(100% - 150px);
+  margin-top: calc(100vh - 75px);
+  overflow: hidden;
+  border-radius: 50px;
+  transition: 0.4s;
+  height: 0;
+}
+.backTraceMenuOpenDesktop{
+  margin-top: calc(100vh - 470px);
+
+  height: 340px;
+  transition: 0.4s;
+}
+
+
 .backTraceMenuClosed{
   height: 0;
 
@@ -91,6 +122,15 @@
   margin-bottom: 5px;
   width: 70px;
   height: 70px;
+  background-color: black;
+
+  border-radius: 50px;
+}
+
+.backTraceLinkDesktop{
+  margin-bottom: 5px;
+  width: 100px;
+  height: 100px;
   background-color: black;
 
   border-radius: 50px;

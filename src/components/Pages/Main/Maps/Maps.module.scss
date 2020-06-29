@@ -1,0 +1,63 @@
+@import "../../../../strings/colors";
+
+.MapsWrapper{
+  width: calc(100vw - 40px);
+  margin: 20px auto;
+}
+.Text{
+  overflow: hidden;
+  margin-top: 60px;
+  text-align: center;
+  float: left;
+  width : 300px;
+
+}
+.textTablet{
+  width: 450px;
+  margin-top: 80px;
+  margin-left: 50px;
+  text-align: center;
+  float: left;
+}
+.textDesktop{
+  width: 500px;
+  margin-top: 150px;
+  margin-left: 30px;
+  text-align: center;
+  float: left;
+}
+
+.topText{
+  width: 90%;
+  text-align: left;
+  font-size: 1.2em;
+  color: $accent1;
+  padding-bottom: 20px;
+}
+.Addressline{
+  width: 90%;
+  font-weight: 600;
+  text-align: left;
+  font-size: 1.5em;
+  color: $accent1;
+  padding-bottom: 5px;
+}
+.MapMobile{
+  width: 100%;
+  height: calc(3/4*100vw);
+}
+.MapTablet{
+  float: right  ;
+  width: 300px;
+  height: 240px;
+}
+.MapSmallDesktop{
+  float: right  ;
+  width: 450px;
+  height: 300px;
+}
+.Desktop{
+  float: right  ;
+  width: 600px;
+  height: 450px;
+}

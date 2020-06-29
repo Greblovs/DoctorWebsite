@@ -5,14 +5,15 @@ import PopularPost from "./PopularPost/PopularPost";
 import Meetings from "./Meetings/Meetings";
 import Discussion from "./Discussion/Discussion";
 import PostFullSceen from "./SliderFullScreen/Slider"
+import Maps from "./Maps/Maps"
 
 const Main = () => {
     let slider = ()=>(
-        <PostsSlider></PostsSlider>
+        <PostsSlider/>
     )
     if (window.innerWidth>1900) {
         slider = () => (
-            <PostFullSceen></PostFullSceen>
+            <PostFullSceen/>
         )
     }
     return (
@@ -22,6 +23,7 @@ const Main = () => {
             <Meetings/>
             <PopularPost/>
             <Discussion />
+            <Maps/>
         </>
     );
 };

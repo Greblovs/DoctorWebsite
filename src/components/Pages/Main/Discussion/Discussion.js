@@ -41,17 +41,15 @@ const Discussion = () => {
                 : null
         )
     })
-
     let marginHeader = (window.innerWidth-1400)/2
     return (
-        <>
 
+        <>
             <Heading marginL = {marginHeader}  style = {{float: "left"}} text={"Популярные вопросы"}/>
             <div style={{textAlign: "center"}} className={classes.CommentWrapper}>
-
                 {content}
+                <button     className={classes.MoreButton}>Больше вопросов</button>
             </div>
-
 
         </>
     )
