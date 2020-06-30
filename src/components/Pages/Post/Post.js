@@ -85,12 +85,7 @@ const Post = ({index, title, text, fullText, someAdditor, isPost}) => {
         someAdditor();
         setState((prev) => {
             if (prev.canOpen) {
-                let translation
-                if (!isPost) {
-                    translation = {transform: `translate3d(${-offset.left + 10}px,${-offset.top + 10}px,0)`};
-                }else{
-                    translation = {transform: `translate3d(${-offset.left + 10}px,${-offset.top}px,0)`};
-                }
+                let translation = {transform: `translate3d(${-offset.left + 10}px,${-offset.top}px,0)`};
                 let fullyOpen = prev.fullyOpen;
                 if (prev.isOpen) {
                     translation = {transform: "translate3d(0,0,0)"};
