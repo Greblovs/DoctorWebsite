@@ -1,6 +1,7 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
 import classes from "./Post.module.scss";
 import {NavLink} from "react-router-dom";
+import ScrollingContext from "../../hoc/ScrollingContext";
 
 function getElementOffset(element) {
 
@@ -23,7 +24,7 @@ function debounce(fn, ms) {
 }
 
 
-const Post = ({index, title, text, someAdditor}) => {
+const Post = ({index, title, text, fullText, someAdditor, isPost}) => {
     const [dimensions, setDimensions] = React.useState({
         height: window.innerHeight,
         width: window.innerWidth
@@ -55,7 +56,7 @@ const Post = ({index, title, text, someAdditor}) => {
         translation: {transform: "translate3d(0,0,0)"},
     });
 
-
+    const changeScrolling = useContext(ScrollingContext);
 
     let postCls = [classes.Post];
 
@@ -84,14 +85,21 @@ const Post = ({index, title, text, someAdditor}) => {
         someAdditor();
         setState((prev) => {
             if (prev.canOpen) {
-                let translation = {transform: `translate3d(${-offset.left + 10}px,${-offset.top + 10}px,0)`};
+                let translation
+                if (!isPost) {
+                    translation = {transform: `translate3d(${-offset.left + 10}px,${-offset.top + 10}px,0)`};
+                }else{
+                    translation = {transform: `translate3d(${-offset.left + 10}px,${-offset.top}px,0)`};
+                }
                 let fullyOpen = prev.fullyOpen;
                 if (prev.isOpen) {
                     translation = {transform: "translate3d(0,0,0)"};
                     fullyOpen = false;
                 } else {
+                    changeScrolling();
                     setTimeout(() => {
                         setState((prev) => {
+                            changeScrolling();
                             return {
                                 ...prev,
                                 fullyOpen: true
@@ -101,6 +109,7 @@ const Post = ({index, title, text, someAdditor}) => {
                 }
                 setTimeout(() => {
                     setState((prev) => {
+                        changeScrolling();
                         return {
                             ...prev,
                             canOpen: true
@@ -144,20 +153,22 @@ const Post = ({index, title, text, someAdditor}) => {
         marginLeft: widthWindow >= 660 ? marg : null,
         marginTop: (window.innerWidth >= 660 && (index % 2 === 0 && index === 2 || index === 3)) ? "-310px" : null,
         width: window.innerWidth >= 660 ? "50vw" : "100vw"
-
     })
 
-    console.log(styles)
+    const postWrapCls = [classes.PostWrap];
+    if (isPost){
+        postWrapCls.push(classes.margin)
+    }
 
     return (
-        <div style={styles()} className={classes.PostWrap}>
+        <div style={styles()} className={postWrapCls.join(" ")}>
             <div style={window.innerWidth>1400 && index%2 ===0? {marginLeft: marginLetPost}:window.innerWidth>1400 && index%2 ===1? {marginLeft: "10px"}:null}>
                 <div className={postCls.join(" ")} ref={postRef} style={state.translation}>
                     <div className={classes.Title}>
                         {title}
                     </div>
                     <div className={classes.Text}>
-                        {text}
+                        {state.isOpen ? fullText: text}
                     </div>
                     <button onClick={openPost} className={classes.Button}>
                         Читать дальше
@@ -169,5 +180,5 @@ const Post = ({index, title, text, someAdditor}) => {
 };
 
 export default React.memo(Post, (prevProps, nextProps) => {
-    return prevProps.isOpen === nextProps.isOpen && prevProps.translationY === nextProps.translationY;
+    return prevProps.isOpen === nextProps.isOpen && prevProps.translationY === nextProps.translationY && prevProps.title === nextProps.title;
 });
