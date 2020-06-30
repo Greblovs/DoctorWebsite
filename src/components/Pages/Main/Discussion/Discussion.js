@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./Discussion.module.scss"
 import Heading from "../Heading/Heading";
 import Question from "../../ Question/Question";
+import {NavLink} from "react-router-dom";
 
 
 const Discussion = () => {
@@ -48,7 +49,9 @@ const Discussion = () => {
             <Heading marginL = {marginHeader}  style = {{float: "left"}} text={"Популярные вопросы"}/>
             <div style={{textAlign: "center"}} className={classes.CommentWrapper}>
                 {content}
-                <button     className={classes.MoreButton}>Больше вопросов</button>
+                <NavLink to={"/Questions"} exact={false}>
+                    <button  className={classes.MoreButton}>Больше вопросов</button>
+                </NavLink>
             </div>
 
         </>

@@ -6,8 +6,7 @@
   width: 100vw;
 }
 .MoreButton {
-
-  max-width: 1350px;
+  max-width: 1300px;
   margin: 0px 20px;
   font-size: 22px;
   width: calc(100% - 40px);
@@ -29,4 +28,7 @@
 
 .MoreButton:active {
   transform: scale(.95);
+}
+a{
+  text-decoration: none;
 }

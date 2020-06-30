@@ -168,6 +168,7 @@ const Post = ({index, title, text, fullText, someAdditor, isPost}) => {
                     <button onClick={openPost} className={classes.Button}>
                         Читать дальше
                     </button>
+
                 </div>
             </div>
         </div>

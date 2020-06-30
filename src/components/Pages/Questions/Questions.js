@@ -86,7 +86,6 @@ const Questions = () => {
                                 </div>
                                 <div className={classes.Main}>
                                     <div className={classes.Title}>
-
                                         {shortTitle}
                                     </div>
                                     <div className={classes.Date}>

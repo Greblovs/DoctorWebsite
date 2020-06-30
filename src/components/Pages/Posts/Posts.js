@@ -1,6 +1,7 @@
 import React, {useCallback, useRef, useState} from "react";
 import classes from "./posts.module.scss"
 import Post from "./../Post/Post";
+import {NavLink} from "react-router-dom";
 
 const Posts = () => {
 

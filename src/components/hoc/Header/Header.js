@@ -3,14 +3,19 @@ import classes from "./Header.module.scss";
 import MenuButton from "./MenuButton/MenuButton";
 import logo from "../../../images/logo.png";
 import PopupMenu from "./PopupMenu/PopupMenu";
-import { useLocation } from 'react-router-dom';
+import {NavLink, useLocation} from 'react-router-dom';
 
 const Header = () => {
 
     const [state, setState] = useState({
         isMenuOpen: false,
         isTraceBackMenuOpen: false,
-        page: "Главная"
+        page: "Главная",
+        links : [
+            {to: "/", label: "Главная", exact: true,},
+            {to: "/Questions", label: "Вопросы", exact: false},
+            {to: "/Posts", label: "Статьи", exact: false},
+        ],
     });
 
     const location = useLocation().pathname;
@@ -123,9 +128,9 @@ const Header = () => {
                 <div className={classes.Header}>
                     <img srcSet={logo} alt=""/>
                     <div className={classes.MenuButtons}>
-                        <div className={window.innerWidth <= 1440 ? classes.ButtonSmart: classes.ButtonDesktop} style={{marginLeft: "6vw"}}>Главная</div>
-                        <div className={window.innerWidth <= 1440 ? classes.ButtonSmart: classes.ButtonDesktop}>Вопросы</div>
-                        <div className={window.innerWidth <= 1440 ? classes.ButtonSmart: classes.ButtonDesktop}>Статьи</div>
+                        <NavLink to={state.links[0].to} exact={state.links[0].to.exact}><div className={window.innerWidth <= 1440 ? classes.ButtonSmart: classes.ButtonDesktop} style={{marginLeft: "6vw"}}>Главная</div></NavLink>
+                        <NavLink to={state.links[1].to} exact={state.links[1].to.exact}><div className={window.innerWidth <= 1440 ? classes.ButtonSmart: classes.ButtonDesktop}>Вопросы</div></NavLink>
+                        <NavLink to={state.links[2].to} exact={state.links[2].to.exact}><div className={window.innerWidth <= 1440 ? classes.ButtonSmart: classes.ButtonDesktop}>Статьи</div></NavLink>
                     </div>
                 </div>
             </div>

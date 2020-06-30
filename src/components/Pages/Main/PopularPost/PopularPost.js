@@ -2,6 +2,7 @@ import React from 'react';
 import classes from "./PopularPost.module.scss"
 import Heading from "../Heading/Heading";
 import Post from "../../Post/Post";
+import {NavLink} from "react-router-dom";
 
 const PopularPost = () => {
 
@@ -40,13 +41,17 @@ const PopularPost = () => {
         <>
             <Heading marginL = {marginHeader} text={"Популярные статьи"}/>
             {rendPosts}
-            <button style={window.innerWidth>1300 && marginButton>20? {marginLeft: marginButton}: null} className={classes.MoreButton}>Больше статей</button>
+            <NavLink to={"/Posts"} exact={false}>
+                <button style={window.innerWidth>1300 && marginButton>20? {marginLeft: marginButton}: null} className={classes.MoreButton}>Больше статей</button>
+            </NavLink>
         </>
         :
         <>
             <Heading text={"Популярные статьи"}/>
             <Post index = {0} title={posts[0].title} text={posts[0].text}  someAdditor={() => {}}/>
-            <button   className={classes.MoreButton}>Больше статей</button>
+            <NavLink to={"/Posts"} exact={false}>
+                <button   className={classes.MoreButton}>Больше статей</button>
+            </NavLink>
         </>
     )
 };
