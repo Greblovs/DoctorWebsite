@@ -24,9 +24,10 @@
 }
 
 .AdressOpen{
+  max-height: 160px;
   overflow: hidden;
   transition: 0.2s ease-in-out;
-  height: 120px;
+  height: auto;
 }
 .NavOpen{
   overflow: hidden;
@@ -35,9 +36,10 @@
 }
 
 .Adress{
-  height: 0px;
+  
   transition: 0.2s ease-in-out;
   overflow: hidden;
+  max-height: 0px;
 }
 .Nav{
   height: 0px;
