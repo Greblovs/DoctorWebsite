@@ -25,11 +25,11 @@ function debounce(fn, ms) {
 
 
 const Post = ({index, title, text, fullText, someAdditor, isPost}) => {
-    const [dimensions, setDimensions] = React.useState({
+    const [dimensions, setDimensions] = useState({
         height: window.innerHeight,
         width: window.innerWidth
     });
-    React.useEffect(() => {
+    useEffect(() => {
         let isMounted = true;
 
         const debouncedHandleResize = debounce(function handleResize() {

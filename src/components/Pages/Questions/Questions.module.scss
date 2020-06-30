@@ -1,135 +1,114 @@
 @import "../../../strings/colors";
 
-.QuestionTitle{
-  font-weight: 600;
-  font-size: 30px;
-  width: 100vw;
-  text-align: center;
-  padding-bottom: 40px;
-}
+.PageWrap {
 
-.QuestionTitle p{
-  color: $accent1;
-}
+  min-height: calc(100vh - 250px);
+  padding-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: visible;
 
-.QuestionL{
-  border-radius: 0 30px 30px 0;
-  overflow: hidden;
-  flex-direction: column;
-  justify-content: space-between;
-    background: linear-gradient(#e075d9,#d9abd8);
-  display: block;
-  width: calc(100% - 10px);
-  height: 150px;
+  .SearchBarWrap {
+    width: 100vw;
+    height: 70px;
+    margin-top: 130px;
+    margin-bottom: 30px;
+    .SearchBar {
+      box-sizing: border-box;
+      width: calc(100vw - 20px);
+      margin: 0 auto;
+      height: 100%;
+      border-radius: 30px;
+      background: #D183C9;
 
-  margin-bottom: 40px;
-  box-shadow: 0 4px 10px #e075d9;
-}
-.QuestionR{
-  box-shadow: 0 4px 10px #e075d9;
-  background: linear-gradient(#e075d9,#d9abd8);
-  border-radius: 30px 0 0 30px ;
-  overflow: hidden;
-  flex-direction: column;
-  justify-content: space-between;
-  display: block;
-  width: calc(100% - 10px);
-  margin-left: 20px;
-  margin-bottom: 40px;
-  height: 150px;
-}
+      .SearchInput {
+        padding: 0 20px;
+        font-size: 30px;
+        box-sizing: border-box;
+        border: none;
+        outline: none;
+        width: calc(100vw - 100px);
+        height: 70px;
+        color: #D183C9;
+        font-weight: 600;
+        float: left;
+        border: 5px solid #D183C9;
+        border-radius: 30px;
+      }
 
-.Title{
-  padding-top: 10px;
-  color: white;
-  font-size: 20px;
-  padding-left: 10px;
-}
-.Title >strong{
-  margin-right: 5px;
-  color: white;
-  font-size: 20px;
-}
-.Date{
-  padding-top: 5px;
-  color: white;
-  font-size: 14px;
-  padding-left: 10px;
-}
+      .SearchInput.error {
+        color: red;
+      }
 
-.Date >strong{
-  margin-right: 5px;
-  color: white;
-  font-size: 16px;
-}
-.TextShort{
-  font-size: 14px;
-  margin-top: 10px;
-  color: white;
-  padding-left: 10px;
-}
+      .SearchButton {
+        width: 70px;
+        height: 70px;
+        float: right;
+        overflow: hidden;
 
-.Main{
-  width: calc(100% - 60px);
-  height: inherit;
-  background: linear-gradient(#e075d9,#f7aaea);
-  display: inline-block;
-  padding-right: 10px;
-
-}
-.Arrow{
-  width: 60px;
-  height: inherit;
-  background: linear-gradient(#e075d9,#f7aaea);
-  display: inline-block;
-
-}
-.ArrowHandler{
-  margin-top: 55px;
-  width: 60px;
-  height: 60px;
-  margin-left: 10px;
-}
-.UpperL{
-  margin-top: 10px;
-  display: block;
-  width: 30px;
-  height: 7px;
-  background: white;
-  transform: rotate(45deg);
-  border-radius: 10px;
-}
-.LowerL{
-  border-radius: 10px;
-  position: absolute;
-  width: 30px;
-  height: 7px;
-  background-color: white;
-  transform: rotate(-45deg);
-  margin-top: 10px;
-}
-
-.UpperR{
-  margin-top: 10px;
-  display: block;
-  width: 30px;
-  height: 7px;
-  background: white;
-  transform: rotate(135deg);
-  border-radius: 10px;
-}
-.LowerR {
-  border-radius: 10px;
-  position: absolute;
-  width: 30px;
-  height: 7px;
-  background-color: white;
-  transform: rotate(-135deg);
-  margin-top: 10px;
-
-}
+        .LensWrap {
+          width: 30px;
+          height: 58px;
+          display: flex;
+          align-items: center;
+          overflow: hidden;
+          transform: rotate(30deg) translate3d(10px, -5px, 0px);
 
 
+          .Circle {
+            position: absolute;
+            box-sizing: border-box;
+            width: 30px;
+            height: 30px;
+            border-radius: 30px;
+            border: 3px solid white;
+          }
+
+          .Line {
+            width: 4px;
+            height: 30px;
+            background: white;
+            border-radius: 10px;
+            margin-left: 13px;
+            margin-top: 28px;
+            position: absolute;
+          }
+        }
+      }
+    }
+
+  }
+
+  .MoreButtonWrap {
+    width: 100vw;
+    height: 70px;
+    overflow: visible;
+    position: relative;
+
+    .MoreButton{
+      margin: auto;
+      font-size: 22px;
+      width: calc(100% - 40px);
+      height: 70px;
+      outline: none;
+      border: none;
+      background: #c859d1;
+      border-radius: 30px;
+      text-align: center;
+      line-height: 70px;
+      color: white;
+      font-weight: 600;
+      transform: scale(1);
+
+      box-shadow: 0 2px 5px #c859d1;
+
+      transition: transform .1s ease-in-out, box-shadow .1s ease-in-out;
+    }
+    .MoreButton:active{
+      transform: scale(.95);
+    }
+  }
+}
 
 
 
