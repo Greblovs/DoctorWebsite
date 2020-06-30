@@ -69,7 +69,7 @@ const Meetings = () => {
             <div  className={textClasses.join(" ")}>
                 {hidden}
             </div>
-            <button onClick={open} style={window.innerWidth>1400? {width: "300px"} : {width: "calc(100% - 60px)"}  } className={classes.Button} >{mouseText}</button>
+            <button onClick={open} style={window.innerWidth>1400? {width: "300px"} : {width: "calc(100% - 40px)"}  } className={classes.Button} >{mouseText}</button>
         </div>
     )
 }

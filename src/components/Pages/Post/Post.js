@@ -53,6 +53,7 @@ const Post = ({index, title, text, fullText, someAdditor, isPost}) => {
         transform: "translate3d(0,0,0)",
         fullyOpen: false,
         canOpen: true,
+        isOpen: false,
         translation: {transform: "translate3d(0,0,0)"},
     });
 
@@ -166,7 +167,7 @@ const Post = ({index, title, text, fullText, someAdditor, isPost}) => {
                         {state.isOpen ? fullText: text}
                     </div>
                     <button onClick={openPost} className={classes.Button}>
-                        Читать дальше
+                        {state.isOpen ? "закрыть" : "Читать дальше"}
                     </button>
 
                 </div>
