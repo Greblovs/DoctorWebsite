@@ -1,0 +1,111 @@
+@import "../../../strings/colors";
+
+.PageWrap {
+
+  min-height: calc(100vh - 250px);
+  padding-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: visible;
+
+  .SearchBarWrap {
+    width: 100vw;
+    height: 70px;
+    margin-top: 130px;
+
+    .SearchBar {
+      box-sizing: border-box;
+      width: calc(100vw - 20px);
+      margin: 0 auto;
+      height: 100%;
+      border-radius: 30px;
+      background: $accent2light;
+
+      .SearchInput {
+        padding: 0 20px;
+        font-size: 30px;
+        box-sizing: border-box;
+        border: none;
+        outline: none;
+        width: calc(100vw - 100px);
+        height: 70px;
+        color: $accent2light;
+        font-weight: 600;
+        float: left;
+        border: 5px solid $accent2light;
+        border-radius: 30px;
+      }
+
+      .SearchInput.error {
+        color: red;
+      }
+
+      .SearchButton {
+        width: 70px;
+        height: 70px;
+        float: right;
+        overflow: hidden;
+
+        .LensWrap {
+          width: 30px;
+          height: 58px;
+          display: flex;
+          align-items: center;
+          overflow: hidden;
+          transform: rotate(30deg) translate3d(10px, -5px, 0px);
+
+
+          .Circle {
+            position: absolute;
+            box-sizing: border-box;
+            width: 30px;
+            height: 30px;
+            border-radius: 30px;
+            border: 3px solid white;
+          }
+
+          .Line {
+            width: 4px;
+            height: 30px;
+            background: white;
+            border-radius: 10px;
+            margin-left: 13px;
+            margin-top: 28px;
+            position: absolute;
+          }
+        }
+      }
+    }
+
+  }
+
+  .MoreButtonWrap {
+    width: 100vw;
+    height: 100px;
+    overflow: visible;
+    position: relative;
+
+    .MoreButton{
+      margin: 30px 20px 0px;
+      font-size: 22px;
+      width: calc(100% - 40px);
+      height: 70px;
+      outline: none;
+      border: none;
+      background: $accent2;
+      border-radius: 30px;
+      text-align: center;
+      line-height: 70px;
+      color: white;
+      font-weight: 600;
+      transform: scale(1);
+
+      box-shadow: 0 2px 5px $accent2;
+
+      transition: transform .1s ease-in-out, box-shadow .1s ease-in-out;
+    }
+    .MoreButton:active{
+      transform: scale(.95);
+    }
+  }
+}

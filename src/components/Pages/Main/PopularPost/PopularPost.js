@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "./PopularPost.module.scss"
 import Heading from "../Heading/Heading";
-import Post from "../Post/Post";
+import Post from "../../Post/Post";
 
 const PopularPost = () => {
 
@@ -27,11 +27,11 @@ const PopularPost = () => {
                 ]
             }];
 
-    let marginHeader = (window.innerWidth-1400)/2
-    let marginButton = (window.innerWidth-1300)/2
+    let marginHeader = (window.innerWidth-1400)/2;
+    let marginButton = (window.innerWidth-1300)/2;
     const rendPosts = posts.map((element, index) => {
         return (
-            <Post index = {index} title={element.title} text={element.text} key={index} openPost={()=>{}}/>
+            <Post index = {index} title={element.title} text={element.text} key={index} someAdditor={()=>{}}/>
         )
     });
 
@@ -45,7 +45,7 @@ const PopularPost = () => {
         :
         <>
             <Heading text={"Популярные статьи"}/>
-            <Post index = {0} title={posts[0].title} text={posts[0].text}  openPost={() => {}}/>
+            <Post index = {0} title={posts[0].title} text={posts[0].text}  someAdditor={() => {}}/>
             <button   className={classes.MoreButton}>Больше статей</button>
         </>
     )
