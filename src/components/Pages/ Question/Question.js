@@ -1,5 +1,6 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useContext, useRef, useState} from 'react';
 import classes from "./Question.module.scss";
+import ScrollingContext from "../../hoc/ScrollingContext";
 
 function getElementOffset(element) {
 
@@ -21,11 +22,12 @@ const Question = ({shortTitle, text, answer}) => {
 
     const questionRef = useRef();
 
+    const changeScrolling = useContext(ScrollingContext);
+
     const openQuestion = useCallback(() => {
         const offset = getElementOffset(questionRef.current);
         const top = offset.top;
         const left = offset.left;
-        console.log(top, "top,", left, "left");
         setState((prev) => {
             if (prev.canOpen) {
                 let translation = {transform: `translate3d(${-offset.left + 10}px,${-offset.top}px,0)`};
@@ -34,17 +36,20 @@ const Question = ({shortTitle, text, answer}) => {
                     translation = {};
                     fullyOpen = false;
                 } else {
+                    changeScrolling();
                     setTimeout(() => {
                         setState((prev) => {
+                            changeScrolling();
                             return {
                                 ...prev,
                                 fullyOpen: true
                             }
                         })
-                    }, 0)
+                    }, 500)
                 }
                 setTimeout(() => {
                     setState((prev) => {
+                        changeScrolling();
                         return {
                             ...prev,
                             canOpen: true

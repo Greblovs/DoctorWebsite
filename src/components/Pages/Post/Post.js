@@ -164,7 +164,7 @@ const Post = ({index, title, text, fullText, someAdditor, isPost}) => {
                         {title}
                     </div>
                     <div className={classes.Text}>
-                        {state.isOpen ? fullText: text}
+                        {state.isOpen || !isPost ? fullText: text}
                     </div>
                     <button onClick={openPost} className={classes.Button}>
                         {state.isOpen ? "закрыть" : "Читать дальше"}

@@ -51,6 +51,9 @@
     height: calc(100% - 170px);
     font-size: 18px;
     transition: padding .5s ease-in-out;
+    overflow: hidden;
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom,
+            from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
   }
 
   .Button {
@@ -89,6 +92,8 @@
 
   .Text {
     padding: 0 20px;
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom,
+            from(rgba(0,0,0,1)), to(rgba(0,0,0,1)));
   }
 
   .Button{
