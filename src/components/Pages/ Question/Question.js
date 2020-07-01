@@ -101,8 +101,8 @@ const Question = ({shortTitle, text, answer}) => {
                     {shortTitle}
                 </div>
                 <div className={classes.Text}>
-                    <div>{text}</div>
-                    <div>{answer}</div>
+                    <div>{state.isOpen ? text : null}</div>
+                    <div>{state.isOpen ? answer : null}</div>
                 </div>
                 <button className={classes.Button} onClick={openQuestion}>
                     Читать дальше
