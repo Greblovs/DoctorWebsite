@@ -26,7 +26,8 @@
     background: linear-gradient(#D183C9, #c859d1);
     box-shadow: 0 4px 10px #c859d1;
     margin-left: 10px;
-    transition: transform .5s ease-in-out, border-radius .5s ease-in-out, margin .5s ease-in-out, width .5s ease-in-out, height .5s ease-in-out;
+    transition-delay: 0.01s;
+    transition: transform .5s ,  border-radius .2s ease-in-out,  width .55s ease-in-out, height .45s ease-in-out;
 
     .Title {
       text-align: center;
@@ -82,7 +83,6 @@
   width: 100vw;
   margin: 0px;
   border-radius: 0px;
-  height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   z-index: 1005;
 }
@@ -94,5 +94,6 @@
 
 
 .Question.recentlyClosed {
+
   z-index: 1001;
 }
