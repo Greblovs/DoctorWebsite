@@ -26,22 +26,35 @@
     background: linear-gradient(#D183C9, #c859d1);
     box-shadow: 0 4px 10px #c859d1;
     margin-left: 10px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
     transition: transform .5s ease-in-out, border-radius .5s ease-in-out, margin .5s ease-in-out, width .5s ease-in-out, height .5s ease-in-out;
 
-    .Text {
+    .Title {
       text-align: center;
-      width: calc(100% - 20px);
+      width: calc(100%);
       font-size: 23px;
       font-weight: 600;
       color: $background;
+      height: 80px;
+      line-height: 80px;
+    }
+
+    .Text {
+      color: $background;
+      font-weight: 600;
+      text-align: left;
+      height: calc(100% - 150px);
+      font-size: 18px;
+      transition: padding .5s ease-in-out;
+
+      div{
+        color: $background;
+        padding: 20px;
+      }
     }
 
     .Button {
       margin: 0px auto;
+      margin-top: 5px;
       font-size: 18px;
       width: calc(100% - 60px);
       height: 40px;

@@ -59,79 +59,43 @@ const Questions = () => {
         name: "Сергей",
         backTrace: "example@example.com",
         text: "Добрый вечер Вечеслав Федорович где можно попасть к вам на консультацию. Спасибо",
-
-    }, {
+        answer: "Дурак, посмотри, на главной странице сайта все написано!"
+    },{
         date: "12/12/12",
         public: true,
         title: "Как записаться на прием",
         age: 22,
         name: "Сергей",
         backTrace: "example@example.com",
-        text: "Заебался переделывать дизайн",
-
-    }, {
+        text: "Добрый вечер Вечеслав Федорович где можно попасть к вам на консультацию. Спасибо",
+        answer: "Дурак, посмотри, на главной странице сайта все написано!"
+    },{
         date: "12/12/12",
         public: true,
         title: "Как записаться на прием",
         age: 22,
         name: "Сергей",
         backTrace: "example@example.com",
-        text: "Заебался переделывать дизайн",
-
-    }, {
+        text: "Добрый вечер Вечеслав Федорович где можно попасть к вам на консультацию. Спасибо",
+        answer: "Дурак, посмотри, на главной странице сайта все написано!"
+    },{
         date: "12/12/12",
         public: true,
         title: "Как записаться на прием",
         age: 22,
         name: "Сергей",
         backTrace: "example@example.com",
-        text: "Заебался переделывать дизайн",
-
-    }, {
+        text: "Добрый вечер Вечеслав Федорович где можно попасть к вам на консультацию. Спасибо",
+        answer: "Дурак, посмотри, на главной странице сайта все написано!"
+    },{
         date: "12/12/12",
         public: true,
         title: "Как записаться на прием",
         age: 22,
         name: "Сергей",
         backTrace: "example@example.com",
-        text: "Заебался переделывать дизайн",
-
-    }, {
-        date: "12/12/12",
-        public: true,
-        title: "Как записаться на прием",
-        age: 22,
-        name: "Сергей",
-        backTrace: "example@example.com",
-        text: "Заебался переделывать дизайн",
-
-    }, {
-        date: "12/12/12",
-        public: true,
-        title: "Как записаться на прием",
-        age: 22,
-        name: "Сергей",
-        backTrace: "example@example.com",
-        text: "Заебался переделывать дизайн",
-
-    }, {
-        date: "12/12/12",
-        public: true,
-        title: "Как записаться на прием",
-        age: 22,
-        name: "Сергей",
-        backTrace: "example@example.com",
-        text: "Заебался переделывать дизайн",
-
-    }, {
-        date: "12/12/12",
-        public: true,
-        title: "Как записаться на прием",
-        age: 22,
-        name: "Сергей",
-        backTrace: "example@example.com",
-        text: "Заебался переделывать дизайн",
-
+        text: "Добрый вечер Вечеслав Федорович где можно попасть к вам на консультацию. Спасибо",
+        answer: "Дурак, посмотри, на главной странице сайта все написано!"
     }];
 
     const searchInputCls = [classes.SearchInput];
@@ -160,7 +124,7 @@ const Questions = () => {
             shortTitle = shortTitle + "...";
         }
         return(
-            <Question index = {index} key={index} shortTitle={shortTitle}/>
+            <Question index = {index} key={index} shortTitle={shortTitle} text={element.text} answer={element.answer}/>
         )
     });
 
@@ -186,7 +150,7 @@ const Questions = () => {
         <div className={classes.PageWrap}>
             <div className={classes.SearchBarWrap}>
                 <div className={classes.SearchBar}>
-                    <input className={searchInputCls.join(" ")} ref={searchRef} />
+                    <input className={searchInputCls.join(" ")} ref={searchRef} onChange={search}/>
                     <div className={classes.SearchButton}>
                         <div className={classes.LensWrap}>
                             <div className={classes.Circle}/>

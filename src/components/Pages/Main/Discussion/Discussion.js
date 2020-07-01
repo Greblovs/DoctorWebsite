@@ -14,6 +14,7 @@ const Discussion = () => {
         name: "Сергей",
         backTrace: "example@example.com",
         text: "Добрый вечер Вечеслав Федорович где можно попасть к вам на консультацию. Спасибо",
+        answer: "Дурак, посмотри, на главной странице сайта все написано!"
 
     }, {
         date: "12/12/12",
@@ -23,26 +24,23 @@ const Discussion = () => {
         name: "Сергей",
         backTrace: "example@example.com",
         text: "Заебался переделывать дизайн",
+        answer: "Дурак, посмотри, на главной странице сайта все написано!"
 
     }];
 
     const content = discuss.map((element, index) => {
-        var shortText = element.text.slice(0, 60);
-        if (element.text.length > 50) {
-            shortText = shortText + "...";
-        }
-        var shortTitle = element.title.slice(0, 30);
+        let shortTitle = element.title.slice(0, 30);
         if (element.title.length > 30) {
             shortTitle = shortTitle + "...";
         }
 
         return (
             element.public ?
-                < Question index = {index} key={index} shortTitle={shortTitle}/>
+                < Question index = {index} key={index} shortTitle={shortTitle} text={element.text} answer={element.answer}/>
                 : null
         )
     })
-    let marginHeader = (window.innerWidth-1400)/2
+    let marginHeader = (window.innerWidth-1400)/2;
     return (
 
         <>

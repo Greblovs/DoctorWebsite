@@ -10,7 +10,7 @@ function getElementOffset(element) {
     return {top: top, left: left};
 }
 
-const Question = ({shortTitle}) => {
+const Question = ({shortTitle, text, answer}) => {
 
     const [state, setState] = useState({
         isOpen: false,
@@ -92,8 +92,12 @@ const Question = ({shortTitle}) => {
     return (
         <div style={window.innerWidth>660? {display:"inline-block"}:{display: "block"}} className={wrapClasses.join(" ")}>
             <div className={questionCls.join(" ")} ref={questionRef} style={state.translation}>
-                <div className={classes.Text}>
+                <div className={classes.Title}>
                     {shortTitle}
+                </div>
+                <div className={classes.Text}>
+                    <div>{text}</div>
+                    <div>{answer}</div>
                 </div>
                 <button className={classes.Button} onClick={openQuestion}>
                     Читать дальше
