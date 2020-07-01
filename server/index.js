@@ -1,3 +1,4 @@
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -19,5 +20,6 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api', questionRouter)
+
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
