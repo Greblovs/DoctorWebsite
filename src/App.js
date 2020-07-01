@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import Ask from "./components/Pages/AskForm/Ask"
 import {Route, Switch} from 'react-router-dom'
 import Registration from "./components/Pages/Registration"
 import MainPage from "./components/Pages/Main/Main"
@@ -51,6 +51,7 @@ function App() {
         <>
         <Layout>
             <Switch>
+                <Route path= "/Ask" component = {Ask}/>
                 <Route path = "/post/:id" component = {MainPage}/>
                 <Route path = "/Posts" component = {Posts}/>
                 <Route path = "/Questions" component = {Questions}/>

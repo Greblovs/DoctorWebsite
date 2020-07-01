@@ -83,8 +83,8 @@ const Botter = ((props) => {
                         <i className="fa fa-angle-right fa-2x" aria-hidden="true"/></div>
                     <div className={nav.join(" ")}>
                         <NavLink to={state.links[0].to} exact={state.links[0].exact}> <p className={classes.status}>Главная</p></NavLink>
-                        <NavLink to={state.links[1].to} exact={state.links[1].exact}><p className={classes.status}>Статьи</p></NavLink>
-                        <NavLink to={state.links[2].to} exact={state.links[2].exact}><p className={classes.status}>Вопросы</p></NavLink>
+                        <NavLink to={state.links[2].to} exact={state.links[2].exact}><p className={classes.status}>Статьи</p></NavLink>
+                        <NavLink to={state.links[1].to} exact={state.links[1].exact}><p className={classes.status}>Вопросы</p></NavLink>
 
                     </div>
                 </div>
@@ -118,8 +118,8 @@ const Botter = ((props) => {
                             <p className={classes.title}>Навигация сайта</p>
                             <div style={{width: "100%", height: "4px", backgroundColor: "white", marginTop: "10px"}}></div>
                             <NavLink to={state.links[0].to} exact={state.links[0].exact}><p style={{paddingTop: "10px"}} className={classes.text}>Главная</p></NavLink>
-                            <NavLink to={state.links[1].to} exact={state.links[1].exact}> <p className={classes.text}>Статьи</p></NavLink>
-                            <NavLink to={state.links[2].to} exact={state.links[2].exact}> <p className={classes.text}>Вопросы</p></NavLink>
+                            <NavLink to={state.links[2].to} exact={state.links[2].exact}> <p className={classes.text}>Статьи</p></NavLink>
+                            <NavLink to={state.links[1].to} exact={state.links[1].exact}> <p className={classes.text}>Вопросы</p></NavLink>
                         </div>
                     </div>
                 </div>

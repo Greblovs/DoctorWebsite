@@ -1,0 +1,131 @@
+@import "src/strings/colors";
+
+Form{
+
+}
+.FormWrapper{
+  width: calc(100% - 40px);
+  position:fixed;
+  background: linear-gradient(#D183C9, #c859d1);
+  box-shadow: 0 4px 10px #c859d1;
+  border-radius: 30px;
+  max-width: 800px;
+
+  height: 510px;
+  transition-duration: 0.2s;
+
+
+}
+
+.HeaderInput{
+  margin-left: 10px;
+  border-radius: 20px;
+  border:none;
+  width: calc(100% - 40px);
+  margin-top: 10px;
+  padding: 10px;
+  font-weight: 600;
+  color: #D183C9;
+  font-size: 18px;
+}
+
+.HeaderInput:focus{
+  outline: none;
+}
+
+.Name{
+   margin-left: 10px;
+   border-radius: 20px;
+   border:none;
+   width: calc(60% - 40px);
+   margin-top: 20px;
+   padding:5px 10px  5px 10px;
+   font-weight: 600;
+   color: #D183C9;
+   font-size: 18px;
+ }
+
+.Name:focus{
+  outline: none;
+
+}
+.Age{
+  margin-left: 20px;
+  border-radius: 20px;
+  border:none;
+  width: calc(40% - 40px);
+  margin-top: 20px;
+  padding:5px 10px  5px 10px;
+  font-weight: 600;
+  color: #D183C9;
+  font-size: 18px;
+
+}
+
+.Age:focus{
+  outline: none;
+
+}
+
+.Header{
+  padding-top: 10px;
+  font-weight: 600;
+  color:white;
+  height: 70px;
+  line-height: 70px;
+  width: 100%;
+  font-size: 26px;
+  text-align: center;
+}
+
+.TextArea{
+  font-weight: 600;
+  margin-left: 10px;
+  border-radius: 20px;
+  border:none;
+  width: calc(100% - 40px);
+  margin-top: 20px;
+  padding: 10px;
+  color: #D183C9;
+  font-size: 16px;
+  height: 200px;
+}
+
+.TextArea:focus{
+  outline: none;
+
+}
+
+.Button{
+  height: 40px;
+  line-height: 30px;
+  width: calc(100% - 20px);
+  background-color: white;
+  border:none;
+  border-radius: 30px;
+  margin: 20px 0px 0px 10px;
+  transform: scale(1);
+  font-weight: 600;
+  font-size: 20px;
+  outline: none;
+  color:  #D183C9;
+}
+
+
+
+
+.Button:active {
+  transform: scale(.95);
+}
+
+
+.AskClosed{
+  opacity:0 ;
+
+  transform: scale(0);
+}
+.ASkOpened{
+  opacity: 1;
+  z-index: 1300;
+  transform: scale(1);
+}

@@ -22,7 +22,7 @@
   padding-left: 100px;
   font-weight: bold;
   line-height: 100px;
-  font-size: 32px;
+  font-size: 24px;
 }
 .Header{
   overflow: hidden;
@@ -83,8 +83,8 @@
 }
 
 .backTraceDesktop{
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   background: url("../../../images/viber.png") center center;
   background-color: rgb(115,096,242);
   background-size: 90%;
@@ -96,7 +96,7 @@
   margin-top: calc(100vh - 130px);
 }
 .BackTraceMenuDesktop{
-  width: 100px;
+  width: 90px;
   z-index: 999;
   position: fixed;
   margin-left: calc(100% - 150px);
@@ -143,8 +143,8 @@
 .backTraceLinkDesktop{
   box-sizing: border-box;
   margin-bottom: 5px;
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   background: url("../../../images/viber.png") center center;
   background-color: rgb(115,096,242);
   background-size: 90%;

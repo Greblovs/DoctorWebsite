@@ -7,6 +7,7 @@ import Discussion from "./Discussion/Discussion";
 import PostFullSceen from "./SliderFullScreen/Slider"
 import Maps from "./Maps/Maps"
 
+
 const Main = () => {
     let slider = ()=>(
         <PostsSlider/>
