@@ -66,6 +66,8 @@
   border-radius: 200px;
   margin-left: calc(100% - 80px);
   margin-top: calc(100vh - 80px);
+  margin-top: calc(var(--vh, 1vh) * 100 - 80px);
+  transition: margin .1s ease-in-out;
 }
 .BackTraceMenu{
   width: 70px;
@@ -73,6 +75,7 @@
   position: fixed;
   margin-left: calc(100% - 80px);
   margin-top: calc(100vh - 25px);
+  margin-top: calc(var(--vh, 1vh) * 100 - 25px);
   overflow: hidden;
   border-radius: 50px;
   transition: 0.4s;
@@ -118,6 +121,7 @@
 
 .backTraceMenuOpen{
   margin-top: calc(100vh - 320px);
+  margin-top: calc(var(--vh, 1vh) * 100 - 320px);
 
   height: 225px;
   transition: 0.4s;

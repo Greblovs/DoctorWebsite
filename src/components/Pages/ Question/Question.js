@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useRef, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
 import classes from "./Question.module.scss";
 import ScrollingContext from "../../hoc/ScrollingContext";
 
@@ -93,6 +93,11 @@ const Question = ({shortTitle, text, answer}) => {
     }else{
         wrapClasses.push(classes.smartQuestion)
     }
+
+    useEffect(()=>{
+        let vh = window.innerHeight * 0.01;
+        questionRef.current.style.setProperty('--vh', `${vh}px`);
+    });
 
     return (
         <div style={window.innerWidth>660? {display:"inline-block"}:{display: "block"}} className={wrapClasses.join(" ")}>

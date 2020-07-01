@@ -78,6 +78,11 @@ const Post = ({index, title, text, fullText, someAdditor, isPost}) => {
     }
     const postRef = useRef();
 
+    useEffect(()=>{
+        let vh = window.innerHeight * 0.01;
+        postRef.current.style.setProperty('--vh', `${vh}px`);
+    });
+
     const openPost = useCallback(() => {
 
         const offset = getElementOffset(postRef.current);

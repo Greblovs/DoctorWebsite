@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import classes from "./Header.module.scss";
 import MenuButton from "./MenuButton/MenuButton";
 import logo from "../../../images/logo.png";
@@ -97,12 +97,17 @@ const Header = () => {
         backTraceMenu.pop();
     }
 
+    const backTraceRef = useRef();
 
+    useEffect(()=>{
+        let vh = window.innerHeight * 0.01;
+        backTraceRef.current.style.setProperty('--vh', `${vh}px`);
+    });
 
     return (
         window.innerWidth <= 570?
                 <div className={classes.SmartSize}>
-                    <div className={window.innerWidth<1400? classes.BackTrace: classes.backTraceDesktop} onClick={toggleMenu}/>
+                    <div className={window.innerWidth<1400? classes.BackTrace: classes.backTraceDesktop} onClick={toggleMenu} ref={backTraceRef}/>
                     <div className={backTraceMenu.join(' ')}>
                         <div className={classes.backTraceLink}/>
                         <div className={classes.backTraceLink}/>
@@ -119,7 +124,7 @@ const Header = () => {
                 </div>
             :
             <div className={ classes.TabletSize}>
-                <div  className={window.innerWidth<1400? classes.BackTrace: classes.backTraceDesktop} onClick={toggleMenu}></div>
+                <div  className={window.innerWidth<1400? classes.BackTrace: classes.backTraceDesktop} onClick={toggleMenu} ref={backTraceRef}></div>
                 <div className={backTraceMenu.join(' ')}>
                     <div className={window.innerWidth<1400? classes.backTraceLink: classes.backTraceLinkDesktop}/>
                     <div className={window.innerWidth<1400? classes.backTraceLink: classes.backTraceLinkDesktop}/>

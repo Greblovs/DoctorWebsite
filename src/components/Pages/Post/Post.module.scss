@@ -88,10 +88,11 @@
   margin: 0px;
   border-radius: 0px;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   z-index: 1001;
 
   .Text {
-    padding: 0 20px;
+    padding: 0 30px;
     -webkit-mask-image: -webkit-gradient(linear, left top, left bottom,
             from(rgba(0,0,0,1)), to(rgba(0,0,0,1)));
     overflow: auto;
