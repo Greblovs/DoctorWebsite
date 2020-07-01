@@ -3,8 +3,31 @@
 .MapsWrapper{
   padding-bottom: 50px;
   width: calc(100vw - 40px);
-  margin: 20px auto;
+  margin-top: 20px;
+  margin-left: 20px;
 }
+
+@media only screen and (min-width: 1000px) {
+  .MapsWrapper {
+    max-width: 1000px;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .MapsWrapper {
+    max-width: 1200px;
+  }
+}
+
+
+
+@media only screen and (max-width: 1000px) {
+  .MapsWrapper {
+    max-width: 660px;
+  }
+}
+
+
+
 .Text{
   overflow: hidden;
   margin-top: 60px;

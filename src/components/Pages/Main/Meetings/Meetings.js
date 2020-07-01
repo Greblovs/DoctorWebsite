@@ -60,7 +60,7 @@ const Meetings = () => {
 
 
     return (
-        <div className={classes.Wrapper}>
+        <div style={window.innerWidth>=1400? {marginLeft: (window.innerWidth-1400)/2}:null} className={classes.Wrapper}>
             <Heading marginL={"10px"} text={"Консультации"}/>
 
             <div className={classes.topText}>

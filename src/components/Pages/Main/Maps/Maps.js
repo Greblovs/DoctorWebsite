@@ -8,7 +8,7 @@ const Maps = ()=>{
     return(
         <>
             <Heading marginL={window.innerWidth>=1400?marginHeader: 0} text={"Где нас найти?"}/>
-            <div style = {window.innerWidth>=660? window.innerWidth>=1000? window.innerWidth>=1400? {maxWidth: "1200px"}:{maxWidth: "1000px"}:{maxWidth: "660px"}:null}   className={classes.MapsWrapper}>
+            <div style = {window.innerWidth>=660? window.innerWidth>=1000? window.innerWidth>=1400?{marginLeft: (window.innerWidth-1200)/2}:{marginLeft: (window.innerWidth-1000)/2}:{marginLeft: (window.innerWidth-660)/2}:null}   className={classes.MapsWrapper}>
 
                 <div className={window.innerWidth>=660? classes.Map:null}>
                     <div   className={window.innerWidth>=660? window.innerWidth>=1000? window.innerWidth>=1400? classes.textDesktop : classes.textTablet: classes.Text:null}>
