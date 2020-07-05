@@ -57,9 +57,7 @@
 .BackTrace{
   width: 70px;
   height: 70px;
-  background: url("../../../images/viber.png") center center;
-  background-color: rgb(115,096,242);
-  background-size: 90%;
+  background: url("../../../images/chat.svg") center center;
   background-repeat: no-repeat;
   position: fixed;
   z-index: 1000;
@@ -85,9 +83,7 @@
 .backTraceDesktop{
   width: 90px;
   height: 90px;
-  background: url("../../../images/viber.png") center center;
-  background-color: rgb(115,096,242);
-  background-size: 90%;
+  background: url("../../../images/chat.svg") center center;
   background-repeat: no-repeat;
   position: fixed;
   z-index: 1000;
@@ -128,10 +124,6 @@
 }
 
 .backTraceLink{
-  background: url("../../../images/viber.png") center center;
-  background-color: rgb(115,096,242);
-  background-size: 90%;
-  background-repeat: no-repeat;
   justify-content: center;
   margin-bottom: 5px;
   width: 70px;
@@ -145,10 +137,24 @@
   margin-bottom: 5px;
   width: 90px;
   height: 90px;
-  background: url("../../../images/viber.png") center center;
-  background-color: rgb(115,096,242);
-  background-size: 90%;
   background-repeat: no-repeat;
 
   border-radius: 50px;
+}
+
+.backTraceLink.first, .backTraceLinkDesktop.first{
+  background: url("../../../images/call.svg") center center;
+  background-repeat: no-repeat;
+}
+
+
+.backTraceLink.second, .backTraceLinkDesktop.second{
+  background: url("../../../images/viber.svg") center center;
+  background-repeat: no-repeat;
+}
+
+
+.backTraceLink.third, .backTraceLinkDesktop.third{
+  background: url("../../../images/email.svg") center center;
+  background-repeat: no-repeat;
 }

@@ -109,9 +109,9 @@ const Header = () => {
                 <div className={classes.SmartSize}>
                     <div className={window.innerWidth<1400? classes.BackTrace: classes.backTraceDesktop} onClick={toggleMenu} ref={backTraceRef}/>
                     <div className={backTraceMenu.join(' ')}>
-                        <div className={classes.backTraceLink}/>
-                        <div className={classes.backTraceLink}/>
-                        <div className={classes.backTraceLink}/>
+                        <div className={classes.backTraceLink + " " + classes.first}/>
+                        <div className={classes.backTraceLink + " " + classes.second}/>
+                        <div className={classes.backTraceLink + " " + classes.third}/>
                     </div>
                     <div className={classes.Header}>
                         <MenuButton isOpen={state.isMenuOpen} handleClick={openMenu}/>
