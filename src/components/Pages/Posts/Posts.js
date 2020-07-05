@@ -65,7 +65,7 @@ const Posts = () => {
 
     searchedPosts  =  searchedPosts.map((element , index) =>{
         return(
-            <Post title={element.title} text={element.text} key={index} someAdditor={()=>{}} isPost = {true}/>
+            <Post title={element.title} text={element.text} key={index} someAdditor={()=>{}} isPost = {true} notSimple = {true}/>
         )
     });
 

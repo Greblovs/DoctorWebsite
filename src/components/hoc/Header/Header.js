@@ -126,9 +126,9 @@ const Header = () => {
             <div className={ classes.TabletSize}>
                 <div  className={window.innerWidth<1400? classes.BackTrace: classes.backTraceDesktop} onClick={toggleMenu} ref={backTraceRef}></div>
                 <div className={backTraceMenu.join(' ')}>
-                    <div className={window.innerWidth<1400? classes.backTraceLink: classes.backTraceLinkDesktop}/>
-                    <div className={window.innerWidth<1400? classes.backTraceLink: classes.backTraceLinkDesktop}/>
-                    <div className={window.innerWidth<1400? classes.backTraceLink: classes.backTraceLinkDesktop}/>
+                    <div className={window.innerWidth<1400? classes.backTraceLink + " " + classes.first: classes.backTraceLinkDesktop + " " + classes.first}/>
+                    <div className={window.innerWidth<1400? classes.backTraceLink + " " + classes.second: classes.backTraceLinkDesktop + " " + classes.second}/>
+                    <div className={window.innerWidth<1400? classes.backTraceLink + " " + classes.third: classes.backTraceLinkDesktop + " " + classes.third}/>
                 </div>
                 <div className={classes.Header}>
                     <img srcSet={logo} alt=""/>

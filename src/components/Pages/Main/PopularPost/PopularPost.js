@@ -32,7 +32,7 @@ const PopularPost = () => {
     let marginButton = (window.innerWidth-1300)/2;
     const rendPosts = posts.map((element, index) => {
         return (
-            <Post index = {index} title={element.title} text={element.text} key={index} someAdditor={()=>{}}/>
+            <Post index = {index} title={element.title} text={element.text} key={index} someAdditor={()=>{}} notSimple = {true}/>
         )
     });
 
