@@ -11,6 +11,25 @@
 .PostWrap.margin{
   margin-top: 20px;
   position: relative;
+  max-width: none;
+}
+
+@media screen and (min-width: 660px) {
+  .PostWrap.margin{
+    width: 50vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .PostWrap.margin{
+    width: 33vw;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .PostWrap.margin{
+    width: 25%;
+  }
 }
 
 
