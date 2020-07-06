@@ -48,7 +48,7 @@ const PopularPost = () => {
         :
         <>
             <Heading text={"Популярные статьи"}/>
-            <Post index = {0} title={posts[0].title} text={posts[0].text}  someAdditor={() => {}}/>
+            <Post index = {0} title={posts[0].title} text={posts[0].text}  someAdditor={() => {}} notSimple = {true}/>
             <NavLink to={"/Posts"} exact={false}>
                 <button   className={classes.MoreButton}>Больше статей</button>
             </NavLink>
