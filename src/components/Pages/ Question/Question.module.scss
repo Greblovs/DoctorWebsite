@@ -16,6 +16,8 @@
   display: inline-block;
   height: 170px;
   overflow: visible;
+  width: 100vw;
+  max-width: 660px;
 
   .Question {
     position: absolute;
@@ -76,6 +78,27 @@
     .Button:active {
       transform: scale(.95);
     }
+  }
+}
+
+.QuestionWrap.margin{
+}
+
+@media screen and (min-width: 660px) {
+  .QuestionWrap.margin{
+    width: 50vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .QuestionWrap.margin{
+    width: 33vw;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .QuestionWrap.margin{
+    width: 25%;
   }
 }
 

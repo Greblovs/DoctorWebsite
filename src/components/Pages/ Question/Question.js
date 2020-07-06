@@ -11,7 +11,7 @@ function getElementOffset(element) {
     return {top: top, left: left};
 }
 
-const Question = ({shortTitle, text, answer}) => {
+const Question = ({shortTitle, text, answer, isQuestion}) => {
 
     const [state, setState] = useState({
         isOpen: false,
@@ -84,14 +84,18 @@ const Question = ({shortTitle, text, answer}) => {
     }
 
     let wrapClasses = [classes.QuestionWrap]
-    if (window.innerWidth>=660){
-        if (window.innerWidth>=1400){
-            wrapClasses.push(classes.desktopQuestion)
-        }else{
-            wrapClasses.push(classes.tabletQuestion)
+    if (!isQuestion) {
+        if (window.innerWidth >= 660) {
+            if (window.innerWidth >= 1400) {
+                wrapClasses.push(classes.desktopQuestion)
+            } else {
+                wrapClasses.push(classes.tabletQuestion)
+            }
+        } else {
+            wrapClasses.push(classes.smartQuestion)
         }
     }else{
-        wrapClasses.push(classes.smartQuestion)
+        wrapClasses.push(classes.margin);
     }
 
     useEffect(()=>{
@@ -100,7 +104,7 @@ const Question = ({shortTitle, text, answer}) => {
     });
 
     return (
-        <div style={window.innerWidth>660? {display:"inline-block"}:{display: "block"}} className={wrapClasses.join(" ")}>
+        <div style={!isQuestion && window.innerWidth>660? {display:"inline-block"}:{display: "block"}} className={wrapClasses.join(" ")}>
             <div className={questionCls.join(" ")} ref={questionRef} style={state.translation}>
                 <div className={classes.Title}>
                     {shortTitle}
