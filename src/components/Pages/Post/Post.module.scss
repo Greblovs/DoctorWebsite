@@ -10,6 +10,14 @@
 
 .PostWrap.sliding{
 
+  .Post{
+    background: linear-gradient($accent1, $accent1);
+    box-shadow: 0 4px 10px $accent1;
+
+    .Button{
+      color: $accent1;
+    }
+  }
 }
 
 .PostWrap.margin{
@@ -116,7 +124,7 @@
     height: 0vh;
     border-radius: 30px;
     margin-top: 2000px;
-    transition: margin 1s ease-in-out, height 1s ease-in-out, border-radius 1s ease-in-out;
+    transition: margin 1s ease-in-out, border-radius 1s ease-in-out;
     z-index: 100;
     overflow: hidden;
 
@@ -149,6 +157,12 @@
   }
 }
 
+@media screen and (max-width: 700px) {
+  .Post{
+    .Tab{
+    }
+  }
+}
 
 .Post.open {
   width: 100vw !important;

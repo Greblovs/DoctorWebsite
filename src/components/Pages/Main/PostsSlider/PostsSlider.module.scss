@@ -74,13 +74,13 @@
     .Dot{
       width: 15px;
       height: 10px;
-      background: $accent2;
+      background: $accent1;
       border-radius: 4px;
-      box-shadow: 0 1px 3px $accent2;
+      box-shadow: 0 1px 3px $accent1;
     }
 
     .Dot.open{
-      background: $accent2light;
+      background: #59718e;
     }
   }
 }
