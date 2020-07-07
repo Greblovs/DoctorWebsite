@@ -111,7 +111,7 @@ const PostsSlider = () => {
     } else if (window.innerWidth < 1100){
         postWrapCls = [classes.PostWrapBig];
     } else if (window.innerWidth < 1600){
-        postWrapCls = [classes.PostWrapBig];
+        postWrapCls = [classes.PostWrapMediumBig];
     }else{
         postWrapCls = [classes.PostWrapSuperBig];
     }
@@ -125,7 +125,7 @@ const PostsSlider = () => {
                 <div className={classes.Dot} key={number}/> :
                 <div className={classes.Dot + " " + classes.open} key={number}/>
         ));
-    } else if (window.innerWidth < 1600){
+    } else{
         if (state.activePostId === 1){
             state.activePostId = 0
         }else if (state.activePostId === 3){
@@ -139,36 +139,33 @@ const PostsSlider = () => {
                     <div style={{width: "35px"}} className={classes.Dot + " " + classes.open} key={number}/>
                 : null
         ));
-    }else {
-        dots = null;
     }
-    if (window.innerWidth < 1600) {
-        if (state.activePostId == 0) {
+
+    if (state.activePostId == 0) {
+        postWrapCls.push(classes.first);
+    } else if (state.activePostId == 1) {
+        if (window.innerWidth < 660) {
+            postWrapCls.push(classes.second);
+        } else{
             postWrapCls.push(classes.first);
-        } else if (state.activePostId == 1) {
-            if (window.innerWidth < 660) {
-                postWrapCls.push(classes.second);
-            } else{
-                postWrapCls.push(classes.first);
-            }
-        } else if (state.activePostId == 2) {
-            if (window.innerWidth < 660) {
-                postWrapCls.push(classes.third);
-            } else if (window.innerWidth < 1100){
-                postWrapCls.push(classes.thirdBig);
-            } else{
-                // postWrapCls.push(classes.thirdMediumBig)
-                postWrapCls.push(classes.thirdBig);
-            }
-        } else if (state.activePostId == 3) {
-            if (window.innerWidth < 660) {
-                postWrapCls.push(classes.fourth);
-            } else if (window.innerWidth < 1100){
-                postWrapCls.push(classes.thirdBig);
-            } else{
-                // postWrapCls.push(classes.thirdMediumBig)
-                postWrapCls.push(classes.thirdBig);
-            }
+        }
+    } else if (state.activePostId == 2) {
+        if (window.innerWidth < 660) {
+            postWrapCls.push(classes.third);
+        } else if (window.innerWidth < 1100){
+            postWrapCls.push(classes.thirdBig);
+        } else{
+            // postWrapCls.push(classes.thirdMediumBig)
+            postWrapCls.push(classes.thirdBig);
+        }
+    } else if (state.activePostId == 3) {
+        if (window.innerWidth < 660) {
+            postWrapCls.push(classes.fourth);
+        } else if (window.innerWidth < 1100){
+            postWrapCls.push(classes.thirdBig);
+        } else{
+            // postWrapCls.push(classes.thirdMediumBig)
+            postWrapCls.push(classes.thirdBig);
         }
     }
 

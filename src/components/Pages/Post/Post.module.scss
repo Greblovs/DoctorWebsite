@@ -37,7 +37,8 @@
     width: 33.3vw;
   }
   .PostWrap.sliding{
-    width: 50vw;
+    width: 25%;
+    height: 400px;
   }
 }
 
@@ -46,7 +47,16 @@
     width: 25%;
   }
   .PostWrap.sliding{
-    width: 25%;
+    height: 400px;
+
+    .Text{
+      -webkit-mask-image: none;
+      height: calc(100% - 100px);
+    }
+
+    .Button{
+      display: none;
+    }
   }
 }
 
@@ -56,7 +66,7 @@
   width: calc(100% - 20px);
 
   position: absolute;
-  height: 310px;
+  height: inherit;
   background: linear-gradient($accent2light, $accent2);
   margin: 0 10px;
   border-radius: 30px;

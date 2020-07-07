@@ -1,28 +1,34 @@
 @import "../../../../strings/colors";
 .PostsSlider{
-  width: 100vw;
+  width: 100%;
   height: 310px;
   overflow: visible;
   margin-bottom: 50px;
 
   .PostWrap{
     width: 400vw;
-    height: inherit;
+    height: 310px;
     margin-left: 0vw;
     transition: margin-left .5s ease-in-out;
     overflow: visible;
   }
   .PostWrapBig{
     width: 200vw;
-    height: inherit;
+    height: 310px;
     margin-left: 0vw;
     transition: margin-left .5s ease-in-out;
     overflow: visible;
   }
+  .PostWrapMediumBig{
+     width: 200%;
+     height: 400px;
+     margin-left: 0vw;
+     transition: margin-left .5s ease-in-out;
+     overflow: visible;
+   }
   .PostWrapSuperBig{
-    width: 100%;
-    max-width: 1920px;
-    height: inherit;
+    width: 200%;
+    height: 400px;
     margin-left: 0vw;
     transition: margin-left .5s ease-in-out;
     overflow: visible;
@@ -34,21 +40,21 @@
   }
 
   .first{
-    margin-left: 0vw;
+    margin-left: 0%;
   }
 
 
   .second{
-    margin-left: -100vw;
+    margin-left: -100%;
   }
 
 
   .third{
-    margin-left: -200vw;
+    margin-left: -200%;
   }
 
   .thirdBig{
-    margin-left: -100vw;
+    margin-left: -100%;
   }
 
   .thirdMediumBig{
@@ -57,7 +63,7 @@
 
 
   .fourth{
-    margin-left: -300vw;
+    margin-left: -300%;
   }
 
 
