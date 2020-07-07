@@ -11,11 +11,16 @@ const Layout = ({children}) => {
        scrollable: false
     });
 
+    let div = document.createElement('div');
+    div.style.overflowY = 'scroll';
+    div.style.width = '50px';
+    div.style.height = '50px';
+    document.body.append(div);
+    let scrollWidth = div.offsetWidth - div.clientWidth;
+    div.remove();
+
     const layoutCls = [classes.Layout];
 
-    if (state.scrollable === true){
-        layoutCls.push(classes.unscrollable)
-    }
 
     const changeScrolling = useCallback(()=>{
         setState((prev)=>{
@@ -31,13 +36,22 @@ const Layout = ({children}) => {
         let vh = window.innerHeight * 0.01;
         layoutRef.current.style.setProperty('--vh', `${vh}px`);
     });
+    let style = {};
+
+    if (state.scrollable === true){
+        layoutCls.push(classes.unscrollable)
+        style = {paddingRight: `${scrollWidth}px`}
+        console.log(style);
+    }
 
     return (
         <>
             <ScrollingContext.Provider value={()=>{changeScrolling()}}>
             <div className={layoutCls.join(" ")} ref={layoutRef}>
                 <Header/>
-                {children}
+                <div className={classes.Wrapper} style={style}>
+                    {children}
+                </div>
                 <Botter/>
             </div>
             </ScrollingContext.Provider>

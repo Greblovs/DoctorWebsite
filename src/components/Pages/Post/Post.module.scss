@@ -28,13 +28,17 @@
 
 @media screen and (min-width: 700px) {
   .PostWrap{
-    width: 50vw;
+    width: 50%;
+  }
+
+  .PostWrap.sliding{
+    width: 25%;
   }
 }
 
 @media screen and (min-width: 1100px) {
   .PostWrap{
-    width: 33.3vw;
+    width: 33.3%;
   }
   .PostWrap.sliding{
     width: 25%;
