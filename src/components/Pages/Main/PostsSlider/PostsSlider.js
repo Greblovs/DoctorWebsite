@@ -102,26 +102,30 @@ const PostsSlider = () => {
 
         return (
             <Post index={number} title={element.title} text={element.text} fullText={element.fullText} key={number} isOpen={element.isOpen}
-                  someAdditor={changeSlideInterval} id={number}/>
+                  someAdditor={changeSlideInterval} id={number} isSliding={true}/>
         )
     });
     let postWrapCls;
-    if (window.innerWidth < 660) {
+    if (window.innerWidth < 700) {
         postWrapCls = [classes.PostWrap];
-    } else {
+    } else if (window.innerWidth < 1100){
         postWrapCls = [classes.PostWrapBig];
+    } else if (window.innerWidth < 1600){
+        postWrapCls = [classes.PostWrapMediumBig];
+    }else{
+        postWrapCls = [classes.PostWrapSuperBig];
     }
 
     let dots = [0, 0, 0, 0];
 
-    if (increase === 1) {
+    if (window.innerWidth < 700) {
         dots[state.activePostId] = 1;
         dots = dots.map((dot, number) => (
             dot === 0 ?
                 <div className={classes.Dot} key={number}/> :
                 <div className={classes.Dot + " " + classes.open} key={number}/>
         ));
-    } else {
+    } else{
         if (state.activePostId === 1){
             state.activePostId = 0
         }else if (state.activePostId === 3){
@@ -138,33 +142,31 @@ const PostsSlider = () => {
     }
 
     if (state.activePostId == 0) {
-        if (window.innerWidth < 660) {
-            postWrapCls.push(classes.first);
-        } else {
-            postWrapCls.push(classes.first);
-
-        }
+        postWrapCls.push(classes.first);
     } else if (state.activePostId == 1) {
         if (window.innerWidth < 660) {
-
             postWrapCls.push(classes.second);
-        } else {
+        } else{
             postWrapCls.push(classes.first);
         }
     } else if (state.activePostId == 2) {
         if (window.innerWidth < 660) {
             postWrapCls.push(classes.third);
-        } else {
+        } else if (window.innerWidth < 1100){
+            postWrapCls.push(classes.thirdBig);
+        } else{
+            // postWrapCls.push(classes.thirdMediumBig)
             postWrapCls.push(classes.thirdBig);
         }
-
     } else if (state.activePostId == 3) {
         if (window.innerWidth < 660) {
             postWrapCls.push(classes.fourth);
-        } else {
+        } else if (window.innerWidth < 1100){
+            postWrapCls.push(classes.thirdBig);
+        } else{
+            // postWrapCls.push(classes.thirdMediumBig)
             postWrapCls.push(classes.thirdBig);
         }
-
     }
 
     if (state.disableAnimations) {

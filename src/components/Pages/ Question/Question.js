@@ -11,7 +11,7 @@ function getElementOffset(element) {
     return {top: top, left: left};
 }
 
-const Question = ({shortTitle, text, answer}) => {
+const Question = ({shortTitle, text, answer, isQuestion}) => {
 
     const [state, setState] = useState({
         isOpen: false,
@@ -84,15 +84,6 @@ const Question = ({shortTitle, text, answer}) => {
     }
 
     let wrapClasses = [classes.QuestionWrap]
-    if (window.innerWidth>=660){
-        if (window.innerWidth>=1400){
-            wrapClasses.push(classes.desktopQuestion)
-        }else{
-            wrapClasses.push(classes.tabletQuestion)
-        }
-    }else{
-        wrapClasses.push(classes.smartQuestion)
-    }
 
     useEffect(()=>{
         let vh = window.innerHeight * 0.01;
@@ -100,7 +91,7 @@ const Question = ({shortTitle, text, answer}) => {
     });
 
     return (
-        <div style={window.innerWidth>660? {display:"inline-block"}:{display: "block"}} className={wrapClasses.join(" ")}>
+        <div style={!isQuestion && window.innerWidth>660? {display:"inline-block"}:{display: "block"}} className={wrapClasses.join(" ")}>
             <div className={questionCls.join(" ")} ref={questionRef} style={state.translation}>
                 <div className={classes.Title}>
                     {shortTitle}

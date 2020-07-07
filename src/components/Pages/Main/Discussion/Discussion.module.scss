@@ -3,10 +3,9 @@
 .CommentWrapper{
   overflow: visible;
   padding-bottom: 30px;
-  width: 100vw;
+  width: 100%;
 }
 .MoreButton {
-  max-width: 1300px;
   margin: 0px 20px;
   font-size: 22px;
   width: calc(100% - 40px);
@@ -29,6 +28,20 @@
 .MoreButton:active {
   transform: scale(.95);
 }
+
 a{
   text-decoration: none;
+}
+
+@media screen and (min-width: 1100px) {
+  .MoreButton{
+    width: calc(100% - 20px);
+    margin: 0px 10px 30px;
+  }
+}
+
+
+.PostsWrapper{
+  height: 170px;
+  overflow: visible;
 }

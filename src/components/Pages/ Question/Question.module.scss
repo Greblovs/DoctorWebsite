@@ -16,6 +16,8 @@
   display: inline-block;
   height: 170px;
   overflow: visible;
+  width: 100vw;
+  max-width: 660px;
 
   .Question {
     position: absolute;
@@ -27,7 +29,7 @@
     box-shadow: 0 4px 10px #c859d1;
     margin-left: 10px;
     transition-delay: 0.01s;
-    transition: transform .5s ,  border-radius .2s ease-in-out,  width .55s ease-in-out, height .45s ease-in-out;
+    transition: transform .5s ease-in-out,  border-radius .5s ease-in-out,  width .5s ease-in-out, height .5s ease-in-out, margin .5s ease-in-out;
 
     .Title {
       text-align: center;
@@ -76,6 +78,24 @@
     .Button:active {
       transform: scale(.95);
     }
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .QuestionWrap{
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .QuestionWrap{
+    width: 33.3%;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .QuestionWrap{
+    width: 25%;
   }
 }
 

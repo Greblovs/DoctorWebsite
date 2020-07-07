@@ -60,8 +60,8 @@ const Meetings = () => {
 
 
     return (
-        <div style={window.innerWidth>=1400? {marginLeft: (window.innerWidth-1400)/2}:null} className={classes.Wrapper}>
-            <Heading marginL={"10px"} text={"Консультации"}/>
+        <div className={classes.Wrapper}>
+            <Heading text={"Консультации"}/>
 
             <div className={classes.topText}>
                 {text}
@@ -69,7 +69,7 @@ const Meetings = () => {
             <div  className={textClasses.join(" ")}>
                 {hidden}
             </div>
-            <button onClick={open} style={window.innerWidth>1400? {width: "300px"} : {width: "calc(100% - 40px)"}  } className={classes.Button} >{mouseText}</button>
+            <button onClick={open} className={classes.Button} >{mouseText}</button>
         </div>
     )
 }

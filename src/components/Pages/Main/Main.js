@@ -6,25 +6,20 @@ import Meetings from "./Meetings/Meetings";
 import Discussion from "./Discussion/Discussion";
 import PostFullSceen from "./SliderFullScreen/Slider"
 import Maps from "./Maps/Maps"
+import classes from "./Main.module.scss"
 
 
 const Main = () => {
-    let slider = ()=>(
-        <PostsSlider/>
-    )
-    if (window.innerWidth>1900) {
-        slider = () => (
-            <PostFullSceen/>
-        )
-    }
     return (
         <>
             <Banner/>
-            {slider()}
-            <Meetings/>
-            < PopularPost />
-            <Discussion  />
-            <Maps/>
+            <div className={classes.PageWrap}>
+                <PostsSlider/>
+                <Meetings/>
+                < PopularPost />
+                <Discussion  />
+                <Maps/>
+            </div>
         </>
     );
 };

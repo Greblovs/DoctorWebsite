@@ -6,6 +6,10 @@
   height: calc(var(--vh, 1vh) * 100);
   overflow-x: hidden;
   background: $background;
+
+  .Wrapper{
+    overflow: visible;
+  }
 }
 
 .Layout.unscrollable{

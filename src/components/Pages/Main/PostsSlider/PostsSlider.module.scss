@@ -1,20 +1,34 @@
 @import "../../../../strings/colors";
 .PostsSlider{
-  width: 100vw;
-  height: 310px;
+  width: 100%;
+  height: auto;
   overflow: visible;
   margin-bottom: 50px;
 
   .PostWrap{
     width: 400vw;
-    height: inherit;
+    height: 310px;
     margin-left: 0vw;
     transition: margin-left .5s ease-in-out;
     overflow: visible;
   }
   .PostWrapBig{
-    width: 200vw;
-    height: inherit;
+    width: 200%;
+    height: 310px;
+    margin-left: 0vw;
+    transition: margin-left .5s ease-in-out;
+    overflow: visible;
+  }
+  .PostWrapMediumBig{
+     width: 200%;
+     height: 400px;
+     margin-left: 0vw;
+     transition: margin-left .5s ease-in-out;
+     overflow: visible;
+   }
+  .PostWrapSuperBig{
+    width: 200%;
+    height: 400px;
     margin-left: 0vw;
     transition: margin-left .5s ease-in-out;
     overflow: visible;
@@ -26,26 +40,30 @@
   }
 
   .first{
-    margin-left: 0vw;
+    margin-left: 0%;
   }
 
 
   .second{
-    margin-left: -100vw;
+    margin-left: -100%;
   }
 
 
   .third{
-    margin-left: -200vw;
+    margin-left: -200%;
   }
 
   .thirdBig{
-    margin-left: -100vw;
+    margin-left: -100%;
+  }
+
+  .thirdMediumBig{
+    margin-left: -33.3vw;
   }
 
 
   .fourth{
-    margin-left: -300vw;
+    margin-left: -300%;
   }
 
 
@@ -62,13 +80,13 @@
     .Dot{
       width: 15px;
       height: 10px;
-      background: $accent2;
+      background: $accent1;
       border-radius: 4px;
-      box-shadow: 0 1px 3px $accent2;
+      box-shadow: 0 1px 3px $accent1;
     }
 
     .Dot.open{
-      background: $accent2light;
+      background: #59718e;
     }
   }
 }

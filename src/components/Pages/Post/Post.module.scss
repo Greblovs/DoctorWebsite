@@ -3,14 +3,65 @@
 .PostWrap {
   position: relative;
   width: 100vw;
-  max-width: 660px;
   height: 310px;
   overflow: visible;
+  float: left;
+}
+
+.PostWrap.sliding{
+
+  .Post{
+    background: linear-gradient($accent1, $accent1);
+    box-shadow: 0 4px 10px $accent1;
+
+    .Button{
+      color: $accent1;
+    }
+  }
 }
 
 .PostWrap.margin{
   margin-top: 20px;
   position: relative;
+  max-width: none;
+}
+
+@media screen and (min-width: 700px) {
+  .PostWrap{
+    width: 50%;
+  }
+
+  .PostWrap.sliding{
+    width: 25%;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .PostWrap{
+    width: 33.3%;
+  }
+  .PostWrap.sliding{
+    width: 25%;
+    height: 400px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .PostWrap{
+    width: 25%;
+  }
+  .PostWrap.sliding{
+    height: 400px;
+
+    .Text{
+      -webkit-mask-image: none;
+      height: calc(100% - 100px);
+    }
+
+    .Button{
+      display: none;
+    }
+  }
 }
 
 
@@ -19,9 +70,9 @@
   width: calc(100% - 20px);
 
   position: absolute;
-  height: 310px;
+  height: inherit;
   background: linear-gradient($accent2light, $accent2);
-  margin:  10px;
+  margin: 0 10px;
   border-radius: 30px;
   box-shadow: 0 4px 10px $accent2;
   display: flex;
@@ -44,7 +95,7 @@
   }
 
   .Text {
-    padding: 0 20px;
+    padding: 0px 20px;
     color: $background;
     font-weight: 600;
     text-align: left;
@@ -56,9 +107,13 @@
             from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
   }
 
+  .Text.notSimple{
+    padding-top: 20px !important;
+  }
+
   .Button {
-    margin: 0px auto;
     margin-top: 10px;
+    margin-left: 20px;
     font-size: 22px;
     width: calc(100% - 40px);
     height: 50px;
@@ -69,11 +124,46 @@
     color: $accent2;
     font-weight: 600;
     transform: scale(1);
-    transition: transform .1s ease-in-out, box-shadow .1s ease-in-out, margin .5s ease-in-out;
+    transition: transform .1s ease-in-out, box-shadow .1s ease-in-out, margin .5s ease-in-out, width .5s ease-in-out, background .3s ease-in-out;
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+  }
+
+  .Tab{
+    position: absolute;
+    width: 100vw;
+    height: 0vh;
+    border-radius: 30px;
+    margin-top: 2000px;
+    transition: margin 1s ease-in-out, border-radius 1s ease-in-out;
+    z-index: 100;
+    overflow: hidden;
+
+    .Title{
+      color: $background;
+      font-size: 27px;
+      font-weight: 600;
+      width: 100%;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+    }
+
+    .Text{
+      padding: 20px 20px !important;
+      color: $background;
+      font-weight: 600;
+      text-align: left;
+      font-size: 18px;
+      visibility: hidden;
+      height: calc(100% - 140px);
+      overflow: hidden !important;
+    }
   }
 
   .Button:active {
@@ -81,6 +171,12 @@
   }
 }
 
+@media screen and (max-width: 700px) {
+  .Post{
+    .Tab{
+    }
+  }
+}
 
 .Post.open {
   width: 100vw !important;
@@ -98,8 +194,99 @@
     overflow: auto;
   }
 
-  .Button{
+  .Tab{
+    .Title{
+      visibility: visible;
+    }
+    .Text{
+      visibility: visible;
+    }
   }
+
+  .Button.plus{
+    position: absolute;
+    top: calc(100% - 90px);
+    margin-top: calc(-100vh + 110px);
+    margin-top: calc(var(--vh, 1vh) * -100 + 110px);
+    font-size: 50px;
+    background: transparent;
+    color: white;
+    width: 50px;
+    z-index: 99;
+  }
+
+
+  .Tab.first{
+    margin-top: 100px;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+  }
+
+  .Tab.second{
+    margin-top: 190px;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+  }
+
+  .Tab.third{
+    margin-top: 280px;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+  }
+
+  .Tab.fourth{
+    margin-top: 370px;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+  }
+
+  .Tab.fifth{
+    margin-top: 460px;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+  }
+
+  .Tab.fifthColor{
+    box-shadow: 0 0px 5px $accent1;
+    background: $accent1;
+  }
+
+  .Tab.top{
+    margin-top: 0px !important;
+  }
+
+  .Tab.bottom{
+    margin-top: 2000px !important;
+  }
+
+  .Tab.focused{
+    border-radius: 0px;
+
+    .Text{
+      overflow: auto !important;
+    }
+  }
+}
+
+.Tab.firstColor{
+  box-shadow: 0 0px 5px #169873;
+  background: #169873;
+}
+.Tab.secondColor{
+  box-shadow: 0 0px 5px #664E4C;
+  background: #664E4C;
+}
+.Tab.thirdColor{
+  box-shadow: 0 0px 5px #6B9AC4;
+  background: #6B9AC4;
+}
+.Tab.fourthColor{
+  box-shadow: 0 0px 5px $accent2;
+  background: $accent2;
+}
+
+.Post.notSimple{
+  overflow: hidden;
 }
 
 .Post.fullyOpen{
