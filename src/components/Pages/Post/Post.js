@@ -24,7 +24,7 @@ function debounce(fn, ms) {
 }
 
 
-const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple}) => {
+const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple, isSliding}) => {
     const [dimensions, setDimensions] = useState({
         height: window.innerHeight,
         width: window.innerWidth
@@ -175,6 +175,9 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple}) =>
     const postWrapCls = [classes.PostWrap];
     if (isPost){
         postWrapCls.push(classes.margin)
+    }
+    if (isSliding){
+        postWrapCls.push(classes.sliding)
     }
 
     return (

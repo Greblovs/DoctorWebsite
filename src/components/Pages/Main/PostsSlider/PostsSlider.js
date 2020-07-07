@@ -102,7 +102,7 @@ const PostsSlider = () => {
 
         return (
             <Post index={number} title={element.title} text={element.text} fullText={element.fullText} key={number} isOpen={element.isOpen}
-                  someAdditor={changeSlideInterval} id={number}/>
+                  someAdditor={changeSlideInterval} id={number} isSliding={true}/>
         )
     });
     let postWrapCls;
@@ -157,7 +157,8 @@ const PostsSlider = () => {
             } else if (window.innerWidth < 1100){
                 postWrapCls.push(classes.thirdBig);
             } else{
-                postWrapCls.push(classes.thirdMediumBig)
+                // postWrapCls.push(classes.thirdMediumBig)
+                postWrapCls.push(classes.thirdBig);
             }
         } else if (state.activePostId == 3) {
             if (window.innerWidth < 660) {
@@ -165,7 +166,8 @@ const PostsSlider = () => {
             } else if (window.innerWidth < 1100){
                 postWrapCls.push(classes.thirdBig);
             } else{
-                postWrapCls.push(classes.thirdMediumBig)
+                // postWrapCls.push(classes.thirdMediumBig)
+                postWrapCls.push(classes.thirdBig);
             }
         }
     }

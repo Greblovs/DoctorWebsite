@@ -8,6 +8,10 @@
   float: left;
 }
 
+.PostWrap.sliding{
+
+}
+
 .PostWrap.margin{
   margin-top: 20px;
   position: relative;
@@ -24,10 +28,16 @@
   .PostWrap{
     width: 33.3vw;
   }
+  .PostWrap.sliding{
+    width: 50vw;
+  }
 }
 
 @media screen and (min-width: 1600px) {
   .PostWrap{
+    width: 25%;
+  }
+  .PostWrap.sliding{
     width: 25%;
   }
 }
