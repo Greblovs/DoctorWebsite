@@ -3,9 +3,9 @@
 .PostWrap {
   position: relative;
   width: 100vw;
-  max-width: 660px;
   height: 310px;
   overflow: visible;
+  float: left;
 }
 
 .PostWrap.margin{
@@ -14,20 +14,20 @@
   max-width: none;
 }
 
-@media screen and (min-width: 660px) {
-  .PostWrap.margin{
+@media screen and (min-width: 700px) {
+  .PostWrap{
     width: 50vw;
   }
 }
 
-@media screen and (min-width: 1200px) {
-  .PostWrap.margin{
-    width: 33vw;
+@media screen and (min-width: 1100px) {
+  .PostWrap{
+    width: 33.3vw;
   }
 }
 
-@media screen and (min-width: 1800px) {
-  .PostWrap.margin{
+@media screen and (min-width: 1600px) {
+  .PostWrap{
     width: 25%;
   }
 }
@@ -40,7 +40,7 @@
   position: absolute;
   height: 310px;
   background: linear-gradient($accent2light, $accent2);
-  margin:  10px;
+  margin: 0 10px;
   border-radius: 30px;
   box-shadow: 0 4px 10px $accent2;
   display: flex;

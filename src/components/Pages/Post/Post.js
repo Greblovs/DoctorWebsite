@@ -67,19 +67,6 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple}) =>
 
     let textCls = [classes.Text];
 
-    if (!isPost) {
-        if (window.innerWidth < 660) {
-            postCls = [classes.Post];
-        }
-        if (window.innerWidth >= 660) {
-            if (window.innerWidth > 1400) {
-                postCls.push(classes.PostFLoated)
-            } else {
-                postCls.push(classes.Fullscreen);
-            }
-        }
-    }
-
     if (state.canOpen === false) {
         postCls.push(classes.recentlyClosed);
     }
@@ -98,7 +85,7 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple}) =>
         someAdditor();
         setState((prev) => {
             if (prev.canOpen) {
-                let translation = {transform: `translate3d(${-offset.left + 10}px,${-offset.top + 10}px,0)`};
+                let translation = {transform: `translate3d(${-offset.left + 10}px,${-offset.top}px,0)`};
                 let fullyOpen = prev.fullyOpen;
                 if (prev.isOpen) {
                     translation = {transform: "translate3d(0,0,0)"};
@@ -185,27 +172,13 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple}) =>
         });
     },[])
 
-
-
-    let marg = index * 50;
-    let widthWindow = window.innerWidth
-    marg = marg + "vw";
-
-    let styles = ()=>(!isPost ? {
-        float: widthWindow < 660 || (window.innerWidth >= 660 && index % 2 === 0) ? "left" : null,
-        marginLeft: widthWindow >= 660 ? marg : null,
-        marginTop: (window.innerWidth >= 660 && (index % 2 === 0 && index === 2 || index === 3)) ? "-310px" : null,
-        width: window.innerWidth >= 660 ? "50vw" : "100vw"
-    } : {})
-
     const postWrapCls = [classes.PostWrap];
     if (isPost){
         postWrapCls.push(classes.margin)
     }
 
     return (
-        <div style={styles()} className={postWrapCls.join(" ")}>
-            <div style={!isPost && window.innerWidth>1400 && index%2 ===0? {marginLeft: marginLetPost}:window.innerWidth>1400 && index%2 ===1? {marginLeft: "10px"}:null}>
+        <div className={postWrapCls.join(" ")}>
                 <div className={postCls.join(" ")} ref={postRef} style={state.translation}>
                     <div className={classes.Title}>
                         {title}
@@ -266,7 +239,6 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple}) =>
                     </button>
 
                 </div>
-            </div>
         </div>
     );
 };

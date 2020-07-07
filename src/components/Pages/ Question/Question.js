@@ -84,19 +84,6 @@ const Question = ({shortTitle, text, answer, isQuestion}) => {
     }
 
     let wrapClasses = [classes.QuestionWrap]
-    if (!isQuestion) {
-        if (window.innerWidth >= 660) {
-            if (window.innerWidth >= 1400) {
-                wrapClasses.push(classes.desktopQuestion)
-            } else {
-                wrapClasses.push(classes.tabletQuestion)
-            }
-        } else {
-            wrapClasses.push(classes.smartQuestion)
-        }
-    }else{
-        wrapClasses.push(classes.margin);
-    }
 
     useEffect(()=>{
         let vh = window.innerHeight * 0.01;

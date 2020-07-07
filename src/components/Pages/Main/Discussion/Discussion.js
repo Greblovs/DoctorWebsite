@@ -6,7 +6,27 @@ import {NavLink} from "react-router-dom";
 
 
 const Discussion = () => {
-    const discuss = [{
+    let questions = [{
+        date: "12/12/12",
+        public: true,
+        title: "Как записаться на прием",
+        age: 22,
+        name: "Сергей",
+        backTrace: "example@example.com",
+        text: "Добрый вечер Вечеслав Федорович где можно попасть к вам на консультацию. Спасибо",
+        answer: "Дурак, посмотри, на главной странице сайта все написано!"
+
+    }, {
+        date: "12/12/12",
+        public: true,
+        title: "Как записаться на прием",
+        age: 22,
+        name: "Сергей",
+        backTrace: "example@example.com",
+        text: "Заебался переделывать дизайн",
+        answer: "Дурак, посмотри, на главной странице сайта все написано!"
+
+    },{
         date: "12/12/12",
         public: true,
         title: "Как записаться на прием",
@@ -28,7 +48,15 @@ const Discussion = () => {
 
     }];
 
-    const content = discuss.map((element, index) => {
+    if (window.innerWidth < 700){
+        questions = questions.slice(0,1)
+    }else if (window.innerWidth < 1100){
+        questions = questions.slice(0,2)
+    }else if (window.innerWidth < 1600){
+        questions = questions.slice(0,3)
+    }
+
+    questions = questions.map((element, index) => {
         let shortTitle = element.title.slice(0, 30);
         if (element.title.length > 30) {
             shortTitle = shortTitle + "...";
@@ -40,18 +68,17 @@ const Discussion = () => {
                 : null
         )
     })
-    let marginHeader = (window.innerWidth-1400)/2;
+
     return (
 
         <>
-            <Heading marginL = {marginHeader}  style = {{float: "left"}} text={"Популярные вопросы"}/>
-            <div style={{textAlign: "center"}} className={classes.CommentWrapper}>
-                {content}
+            <Heading text={"Популярные вопросы"}/>
+                <div className={classes.PostsWrapper}>
+                    {questions}
+                </div>
                 <NavLink to={"/Questions"} exact={false}>
                     <button  className={classes.MoreButton}>Больше вопросов</button>
                 </NavLink>
-            </div>
-
         </>
     )
 }

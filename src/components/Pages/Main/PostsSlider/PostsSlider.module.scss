@@ -19,6 +19,14 @@
     transition: margin-left .5s ease-in-out;
     overflow: visible;
   }
+  .PostWrapSuperBig{
+    width: 100%;
+    max-width: 1920px;
+    height: inherit;
+    margin-left: 0vw;
+    transition: margin-left .5s ease-in-out;
+    overflow: visible;
+  }
 
 
   .PostWrap.disAnim{
@@ -41,6 +49,10 @@
 
   .thirdBig{
     margin-left: -100vw;
+  }
+
+  .thirdMediumBig{
+    margin-left: -33.3vw;
   }
 
 

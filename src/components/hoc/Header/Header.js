@@ -133,7 +133,7 @@ const Header = () => {
                 <div className={classes.Header}>
                     <img srcSet={logo} alt=""/>
                     <div className={classes.MenuButtons}>
-                        <NavLink to={state.links[0].to} exact={state.links[0].to.exact}><div className={window.innerWidth <= 1440 ? classes.ButtonSmart: classes.ButtonDesktop} style={{marginLeft: "50px"}}>Главная</div></NavLink>
+                        <NavLink to={state.links[0].to} exact={state.links[0].to.exact}><div className={window.innerWidth <= 1440 ? classes.ButtonSmart: classes.ButtonDesktop}>Главная</div></NavLink>
                         <NavLink to={state.links[1].to} exact={state.links[1].to.exact}><div className={window.innerWidth <= 1440 ? classes.ButtonSmart: classes.ButtonDesktop}>Вопросы</div></NavLink>
                         <NavLink to={state.links[2].to} exact={state.links[2].to.exact}><div className={window.innerWidth <= 1440 ? classes.ButtonSmart: classes.ButtonDesktop}>Статьи</div></NavLink>
                     </div>
