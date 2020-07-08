@@ -56,7 +56,7 @@ const Questions = () => {
         public: true,
         title: "Лечение неврита",
         age: 22,
-        name: "Сергей",
+        name: "Сергей Горабчев Василевичь",
         backTrace: "example@example.com",
         text: "Подскажите, пожалуйста, какие есть методики успешного лечения неврита слухового нерва, или хотя бы остановки процесса потери слуха?",
         answer: "Когда речь идет о неврите слухового нерва (сенсоневральная тугоухость), в первую очередь, необходимо четко определить тип сенсоневральной тугоухости (острая, хроническая, прогрессирующая, инфекционного или сосудистого происхождения и т.д.), в зависимости от чего, будет более эффективна та или иная схема лечения. По степени и уровню повреждения слухового анализатора и давности заболевания можно предположить о возможной эффективности лечения в каждом конкретном случае заболевания.\n" +
@@ -547,7 +547,7 @@ const Questions = () => {
             shortTitle = shortTitle + "...";
         }
         return(
-            <Question index = {index} key={index} shortTitle={shortTitle} text={element.text} answer={element.answer} isQuestion={true}/>
+            <Question index = {index} key={index} age = {element.age} name = {element.name} shortTitle={shortTitle} text={element.text} answer={element.answer} isQuestion={true}/>
         )
     });
 

@@ -11,7 +11,7 @@ function getElementOffset(element) {
     return {top: top, left: left};
 }
 
-const Question = ({shortTitle, text, answer, isQuestion}) => {
+const Question = ({shortTitle, text, answer, isQuestion, name, age}) => {
 
     const [state, setState] = useState({
         isOpen: false,
@@ -90,15 +90,25 @@ const Question = ({shortTitle, text, answer, isQuestion}) => {
         questionRef.current.style.setProperty('--vh', `${vh}px`);
     });
 
+    name = "Имя: " + name
+    age = "Возраст: " + age + " лет"
+
     return (
         <div style={!isQuestion && window.innerWidth>660? {display:"inline-block"}:{display: "block"}} className={wrapClasses.join(" ")}>
             <div className={questionCls.join(" ")} ref={questionRef} style={state.translation}>
-                <div className={classes.Title}>
+                <div style={state.isOpen? {fontSize: "26px"}: null } className={classes.Title}>
                     {shortTitle}
                 </div>
                 <div className={classes.Text}>
-                    <div>{state.isOpen ? text : null}</div>
-                    <div>{state.isOpen ? answer : null}</div>
+                    <div className={classes.Filler}>{state.isOpen ? "Вопрос    ": null}</div>
+                    <div className={classes.SubTitle}>
+                        <div>{state.isOpen ? name : null}</div>
+                        <div >{state.isOpen ? age: null}</div>
+                    </div>
+                    <div className={classes.quest}>{state.isOpen ? text : null}</div>
+                    <div className={classes.Filler}>{state.isOpen ? "Ответ     ": null}</div>
+                    <div className={classes.answ}>{state.isOpen ? answer : null}</div>
+                    <div className={classes.Sub}>{state.isOpen ? "Кот Вячеслав Федоровичь": null}</div>
                 </div>
                 <button className={classes.Button} onClick={openQuestion}>
                     Читать дальше

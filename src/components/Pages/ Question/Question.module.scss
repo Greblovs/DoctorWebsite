@@ -10,6 +10,40 @@
   width: 689px  !important;
 }
 
+.SubTitle{
+  width: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: space-between;
+}
+.SubTitle > div{
+  padding-top: 20px;
+  line-height: 30px;
+  padding-left: 20px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: left;
+  transition: padding .5s ease-in-out;
+}
+
+.Filler{
+  color: $background;
+  padding-left: 20px;
+  padding-top: 20px;
+  font-size: 22px;
+}
+.Sub{
+  color: $background;
+  float: right;
+  margin-right: 40px;
+  font-style: italic;
+  padding-bottom: 20px;
+  margin-top: -10px;
+  font-size: 22px;
+}
+
 .QuestionWrap {
 
   position: relative;
@@ -32,6 +66,7 @@
     transition: transform .5s ease-in-out,  border-radius .5s ease-in-out,  width .5s ease-in-out, height .5s ease-in-out, margin .5s ease-in-out;
 
     .Title {
+      transition-duration: 0.2s;
       text-align: center;
       width: calc(100%);
       font-size: 23px;
@@ -49,7 +84,11 @@
       font-size: 18px;
       transition: padding .5s ease-in-out;
 
-      div{
+      .quest{
+        color: $background;
+        padding: 20px;
+      }
+      .answ{
         color: $background;
         padding: 20px;
       }

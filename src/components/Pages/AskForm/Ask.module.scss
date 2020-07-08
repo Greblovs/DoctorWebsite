@@ -1,5 +1,8 @@
 @import "src/strings/colors";
-
+*{
+  margin: 0;
+  padding: 0;
+}
 Form{
 
 }
@@ -27,6 +30,11 @@ Form{
   font-weight: 600;
   color: $accent1;
   font-size: 18px;
+}
+
+
+.Highlight{
+  color: red !important;
 }
 
 .HeaderInput:focus{
