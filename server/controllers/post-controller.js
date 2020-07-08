@@ -52,6 +52,11 @@ updatePost = async (req, res) => {
         }
         Post.title = body.title
         Post.text = body.text
+        Post.disease = body.disease
+        Post.classification = body.classification
+        Post.practice = body.practice
+        Post.important = body.important
+        Post.recommendation = body.recommendation
         Post.public = body.public
         Post
             .save()
