@@ -92,11 +92,17 @@
         color: $background;
         padding: 20px;
       }
+
+      .Answer{
+        background: #600047;
+        border-radius: 30px 30px 0px 0px;
+        flex-grow: 3;
+      }
     }
 
     .Button {
-      margin: 0px auto;
       margin-top: 5px;
+      margin-left: 30px;
       font-size: 18px;
       width: calc(100% - 60px);
       height: 40px;
@@ -107,11 +113,25 @@
       color: #c859d1;
       font-weight: 600;
       transform: scale(1);
-      transition: transform .1s ease-in-out, box-shadow .1s ease-in-out;
+      transition: transform .1s ease-in-out, box-shadow .1s ease-in-out, margin .5s ease-in-out, width .5s ease-in-out, background .3s ease-in-out, height .5s ease-in-out;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+    }
+
+    .Button.plus{
+      position: absolute;
+      top: calc(100% - 90px);
+      margin-top: calc(-100vh + 110px);
+      margin-top: calc(var(--vh, 1vh) * -100 + 110px);
+      font-size: 50px;
+      background: transparent;
+      color: white;
+      width: 50px;
+      z-index: 99;
+      height: 50px;
     }
 
     .Button:active {
@@ -144,6 +164,10 @@
   border-radius: 0px;
   height: calc(var(--vh, 1vh) * 100);
   z-index: 1005;
+
+  .Text{
+    height: calc(100% - 80px);
+  }
 }
 
 .Question.fullyOpen {

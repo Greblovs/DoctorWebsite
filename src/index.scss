@@ -14,8 +14,9 @@ code {
     monospace;
 }
 
-.root{
+#root{
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 *{

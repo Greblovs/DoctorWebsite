@@ -3,12 +3,33 @@ import classes from "./Question.module.scss";
 import ScrollingContext from "../../hoc/ScrollingContext";
 
 function getElementOffset(element) {
-
-    const de = document.documentElement;
     const box = element.getBoundingClientRect();
-    const top = box.top + window.pageYOffset - de.clientTop;
-    const left = box.left + window.pageXOffset - de.clientLeft;
+    const top = box.top;
+    const left = box.left;
     return {top: top, left: left};
+}
+
+let scrollable = true;
+
+const changeScrolling = ()=>{
+    if (scrollable) {
+        document.getElementsByTagName("html")[0].style.overflow = "hidden";
+
+        let div = document.createElement('div');
+        div.style.overflowY = 'scroll';
+        div.style.width = '50px';
+        div.style.height = '50px';
+        document.body.append(div);
+        let scrollWidth = div.offsetWidth - div.clientWidth;
+        div.remove();
+        console.log(scrollWidth);
+        document.getElementsByClassName("layout")[0].style.paddingRight = `${scrollWidth}px`;
+        scrollable = false;
+    }else{
+        document.getElementsByTagName("html")[0].style.overflowY = "auto";
+        document.getElementsByClassName("layout")[0].style.paddingRight = `0px`;
+        scrollable = true;
+    }
 }
 
 const Question = ({shortTitle, text, answer, isQuestion, name, age}) => {
@@ -22,24 +43,21 @@ const Question = ({shortTitle, text, answer, isQuestion, name, age}) => {
 
     const questionRef = useRef();
 
-    const changeScrolling = useContext(ScrollingContext);
-
     const openQuestion = useCallback(() => {
         const offset = getElementOffset(questionRef.current);
         const top = offset.top;
         const left = offset.left;
         setState((prev) => {
             if (prev.canOpen) {
+                changeScrolling();
                 let translation = {transform: `translate3d(${-offset.left + 10}px,${-offset.top}px,0)`};
                 let fullyOpen = prev.fullyOpen;
                 if (prev.isOpen) {
                     translation = {};
                     fullyOpen = false;
                 } else {
-                    changeScrolling();
                     setTimeout(() => {
                         setState((prev) => {
-                            changeScrolling();
                             return {
                                 ...prev,
                                 fullyOpen: true
@@ -49,7 +67,6 @@ const Question = ({shortTitle, text, answer, isQuestion, name, age}) => {
                 }
                 setTimeout(() => {
                     setState((prev) => {
-                        changeScrolling();
                         return {
                             ...prev,
                             canOpen: true
@@ -73,8 +90,10 @@ const Question = ({shortTitle, text, answer, isQuestion, name, age}) => {
     }, []);
 
     const questionCls = [classes.Question];
+    const buttonCls = [classes.Button];
     if (state.isOpen) {
         questionCls.push(classes.open)
+        buttonCls.push(classes.plus);
     }
     if (state.fullyOpen) {
         questionCls.push(classes.fullyOpen)
@@ -106,12 +125,14 @@ const Question = ({shortTitle, text, answer, isQuestion, name, age}) => {
                         <div >{state.isOpen ? age: null}</div>
                     </div>
                     <div className={classes.quest}>{state.isOpen ? text : null}</div>
-                    <div className={classes.Filler}>{state.isOpen ? "Ответ     ": null}</div>
-                    <div className={classes.answ}>{state.isOpen ? answer : null}</div>
-                    <div className={classes.Sub}>{state.isOpen ? "Кот Вячеслав Федоровичь": null}</div>
+                    <div className={classes.Answer}>
+                        <div className={classes.Filler}>{state.isOpen ? "Ответ     ": null}</div>
+                        <div className={classes.answ}>{state.isOpen ? answer : null}</div>
+                        <div className={classes.Sub}>{state.isOpen ? "Кот Вячеслав Федоровичь": null}</div>
+                    </div>
                 </div>
-                <button className={classes.Button} onClick={openQuestion}>
-                    Читать дальше
+                <button className={buttonCls.join(" ")} onClick={openQuestion}>
+                    {!state.isOpen ? "Читать дальше" : "X"}
                 </button>
             </div>
         </div>

@@ -7,8 +7,8 @@ function getElementOffset(element) {
 
     const de = document.documentElement;
     const box = element.getBoundingClientRect();
-    const top = box.top + window.pageYOffset - de.clientTop;
-    const left = box.left + window.pageXOffset - de.clientLeft;
+    const top = box.top;
+    const left = box.left;
     return {top: top, left: left};
 }
 
@@ -21,6 +21,29 @@ function debounce(fn, ms) {
             fn.apply(this, arguments)
         }, ms)
     };
+}
+
+let scrollable = true;
+
+const changeScrolling = ()=>{
+    if (scrollable) {
+        document.getElementsByTagName("html")[0].style.overflow = "hidden";
+
+        let div = document.createElement('div');
+        div.style.overflowY = 'scroll';
+        div.style.width = '50px';
+        div.style.height = '50px';
+        document.body.append(div);
+        let scrollWidth = div.offsetWidth - div.clientWidth;
+        div.remove();
+        console.log(scrollWidth);
+        document.getElementsByClassName("layout")[0].style.paddingRight = `${scrollWidth}px`;
+        scrollable = false;
+    }else{
+        document.getElementsByTagName("html")[0].style.overflowY = "auto";
+        document.getElementsByClassName("layout")[0].style.paddingRight = `0px`;
+        scrollable = true;
+    }
 }
 
 
@@ -58,8 +81,6 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple, isS
         tabClicked: -1
     });
 
-    const changeScrolling = useContext(ScrollingContext);
-
     let postCls = [classes.Post];
     let buttonCls = [classes.Button];
 
@@ -80,21 +101,18 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple, isS
     const openPost = useCallback(() => {
 
         const offset = getElementOffset(postRef.current);
-        const top = offset.top;
-        const left = offset.left;
         someAdditor();
         setState((prev) => {
             if (prev.canOpen) {
+                changeScrolling();
                 let translation = {transform: `translate3d(${-offset.left + 10}px,${-offset.top}px,0)`};
                 let fullyOpen = prev.fullyOpen;
                 if (prev.isOpen) {
                     translation = {transform: "translate3d(0,0,0)"};
                     fullyOpen = false;
                 } else {
-                    changeScrolling();
                     setTimeout(() => {
                         setState((prev) => {
-                            changeScrolling();
                             return {
                                 ...prev,
                                 fullyOpen: true
@@ -104,7 +122,6 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple, isS
                 }
                 setTimeout(() => {
                     setState((prev) => {
-                        changeScrolling();
                         return {
                             ...prev,
                             canOpen: true
