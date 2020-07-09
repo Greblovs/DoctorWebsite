@@ -7,7 +7,7 @@ const db = require('./db')
 const questionRouter = require('./routes/question-router')
 
 const app = express()
-const apiPort = 3001
+const apiPort = 3002
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())

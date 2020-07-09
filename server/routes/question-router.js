@@ -2,7 +2,7 @@ const express = require('express')
 
 const QuestionCtrl = require('../controllers/question-controller')
 const PostCtrl = require('../controllers/post-controller')
-
+const AdminCtrl = require('../controllers/admin-controller')
 const router = express.Router()
 
 router.post('/question', QuestionCtrl.createQuestion)
@@ -16,4 +16,10 @@ router.put('/post/:id', PostCtrl.updatePost)
 router.delete('/post/:id', PostCtrl.deletePost)
 router.get('/post/:id', PostCtrl.getPostById)
 router.get('/posts', PostCtrl.getPosts)
+
+router.post('/signin',AdminCtrl.signIn)
+router.get('/admins',AdminCtrl.getAdmins)
+router.post('/admin', AdminCtrl.createAdmin)
+
+
 module.exports = router
