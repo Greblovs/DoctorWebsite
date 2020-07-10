@@ -3,6 +3,7 @@ const express = require('express')
 const QuestionCtrl = require('../controllers/question-controller')
 const PostCtrl = require('../controllers/post-controller')
 const AdminCtrl = require('../controllers/admin-controller')
+const AuthMiddleware = require('../middleware/auth')
 const router = express.Router()
 
 router.post('/question', QuestionCtrl.createQuestion)
@@ -19,7 +20,7 @@ router.get('/posts', PostCtrl.getPosts)
 
 router.post('/signin',AdminCtrl.signIn)
 router.get('/admins',AdminCtrl.getAdmins)
-router.post('/admin', AdminCtrl.createAdmin)
+router.post('/admin', AuthMiddleware,AdminCtrl.createAdmin)
 
 
 module.exports = router
