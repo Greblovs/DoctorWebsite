@@ -1,0 +1,77 @@
+@import "src/strings/colors";
+
+
+.Login{
+  width: calc(100% - 30px);
+  padding: 10px;
+  font-size: 24px;
+  border-radius: 50px;
+  margin: auto;
+  border: 3px solid $accent1;
+}
+
+.Header{
+  padding-bottom: 30px;
+  line-height: 30px;
+  height: 30px;
+  display:  block;
+  width: 100%;
+  text-align: center;
+  font-size: 36px;
+  color: $accent1;
+}
+
+.Login:focus{
+  outline: none;
+}
+
+.Password{
+  border: 3px solid $accent1;
+  width: calc(100% - 30px);
+  padding: 10px;
+  font-size: 24px;
+  border-radius: 50px;
+  margin: 20px auto;
+}
+
+.Password:focus{
+  outline: none;
+}
+
+.Button{
+
+}
+form{
+  padding-top: 100px;
+  height: fit-content;
+  max-width: calc(100vw - 40px);
+  width: 800px;
+  margin: 100px auto;
+}
+.Button{
+  max-width: calc(100vw - 40px);
+  display: block;
+  width: 400px;
+  height: 60px;
+  background-color: $accent1;
+  border-radius: 30px;
+  color: white;
+  font-size: 26px;
+  margin: auto;
+  box-shadow: none;
+  border:none;
+  transition: transform 0.2s;
+  transform: scale(1);
+}
+
+.Button:focus{
+  outline: none;
+}
+
+.Button:active{
+  outline: none;
+  transform: scale(0.95);
+}
+.Button:hover{
+  outline: none;
+}

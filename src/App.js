@@ -6,7 +6,7 @@ import MainPage from "./components/Pages/Main/Main"
 import Posts from "./components/Pages/Posts/Posts"
 import Questions from "./components/Pages/Questions/Questions"
 import Layout from "./components/hoc/Layout/Layout";
-
+import AdminLogin from "./components/Pages/AdminLogin/AdminLogin"
 
 
 
@@ -51,6 +51,7 @@ function App() {
         <>
         <Layout>
             <Switch>
+                <Route path= "/Login" component = {AdminLogin}/>
                 <Route path= "/Ask" component = {Ask}/>
                 <Route path = "/post/:id" component = {MainPage}/>
                 <Route path = "/Posts" component = {Posts}/>

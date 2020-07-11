@@ -70,7 +70,7 @@ const Ask = (props)=>{
         setState((prev)=>{
             return{
                 ...prev,
-                titleValue: title.current.value.length >50? false: title.current.value !== ""
+                titleValue: title.current.value.length >40? false: title.current.value !== ""
             }
         })
     },[]);
