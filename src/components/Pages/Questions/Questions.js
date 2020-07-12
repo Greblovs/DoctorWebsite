@@ -4,7 +4,7 @@ import axios from 'axios';
 import Post from "../Post/Post";
 import Question from "../ Question/Question";
 
-const API = 'http://localhost:3001/api';
+const API = 'http://localhost:3002/api';
 const DEFAULT_QUERY = '/questions';
 
 

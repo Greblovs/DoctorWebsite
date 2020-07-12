@@ -2,7 +2,7 @@ import React, {useCallback, useRef, useState} from "react";
 import classes from "./Ask.module.scss"
 import axios from 'axios';
 
-const API = 'http://localhost:3001/api';
+const API = 'http://localhost:3002/api';
 const DEFAULT_QUERY = '/question';
 
  function addQuestion(props){

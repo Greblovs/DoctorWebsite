@@ -1,8 +1,12 @@
 //const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const {jwtSecret} = require('../config/app')
+
 
 const Admin = require('../models/admin-model');
+
+
 
 getAdmins = async (req, res) => {
     await Admin.find({}, (err, Admins) => {
@@ -31,8 +35,9 @@ const signIn = (req,res)=>{
             else{
             const isValid = bcrypt.compareSync(password,admin.password);
             if(isValid){
-                const token = jwt.sign(admin._id.toString(),'secKey');
-                res.json({token});
+                const token = jwt.sign({_id : admin._id.toString()},jwtSecret);
+                //res.json({token});
+                res.header('auth-token').send(token);
             }
             else {
                 res.status(401).json({message: 'Invalid password'});
@@ -40,6 +45,17 @@ const signIn = (req,res)=>{
         })
         .catch(err=> res.status(500).json({message:err.message}))
 };
+checkToken = (req, res) => {
+    Admin.findById(req.userId, { password: 0 }, function (err, user) {
+        if (err) return res.status(500).send("There was a problem finding the user.");
+        if (!user) return res.status(404).send("No user found.");
+
+        res.status(200).send(user);
+    });
+
+
+
+}
 
 createAdmin = (req, res) => {
     const body = req.body;
@@ -77,6 +93,9 @@ createAdmin = (req, res) => {
 module.exports = {
     signIn,
     getAdmins,
-    createAdmin
+    createAdmin,
+    checkToken
+
+
 }
 
