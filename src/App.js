@@ -7,7 +7,10 @@ import Posts from "./components/Pages/Posts/Posts"
 import Questions from "./components/Pages/Questions/Questions"
 import Layout from "./components/hoc/Layout/Layout";
 import AdminLogin from "./components/Pages/AdminLogin/AdminLogin"
+import AuthenticatedComponent from "./AuthenticatedComponent";
+import AdminPart from "./components/Pages/AdminLogin/AdminPart/AdminPart"
 import Slider from "./components/Pages/Main/SliderFullScreen/Slider";
+
 
 
 
@@ -46,8 +49,6 @@ function App() {
     })
 
 
-
-
     return (
         <>
         <Layout>
@@ -58,6 +59,11 @@ function App() {
                 <Route path = "/Questions" component = {Questions}/>
                 <Route path = "/Registration" component = {Registration}/>
                 <Route path = "/" component = {MainPage}/>
+                {/*<Route path = "/Login" component = {AdminLogin}/>*/}
+                {/*<AuthenticatedComponent>*/}
+                {/*    <Route path = "/admin/Pages" component = {AdminPart}/>*/}
+                {/*</AuthenticatedComponent>*/}
+
             </Switch>
          </Layout>
         </>
@@ -65,3 +71,4 @@ function App() {
 }
 
 export default App;
+

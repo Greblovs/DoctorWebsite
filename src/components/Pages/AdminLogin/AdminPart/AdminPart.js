@@ -1,7 +1,12 @@
 import classes from "./AdminPart.module.scss"
 import React from "react";
+import AuthenticatedComponent from "../../../../AuthenticatedComponent";
+
+import axios from "axios";
+
 import Questions from "./subPages/Questions/adminQuestions"
 import {BrowserRouter, Route, Switch, NavLink} from "react-router-dom";
+
 
 const AdminPart = () => {
     let ip = require("ip");
@@ -27,11 +32,12 @@ const AdminPart = () => {
                 <Route path = "/admin/Pages/Contacts">
 
                 </Route>
+               {/*<AuthenticatedComponent>*/}
                 <Route path = "/admin/Pages">
                     <p className={classes.Title}>Добро пожаловать Кот Вячеслав Федоровичь</p>
                     <p className={classes.IP}>{string}</p>
-
                 </Route>
+               {/*</AuthenticatedComponent>*/}
             </Switch>
         </>
     );
