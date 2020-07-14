@@ -55,7 +55,7 @@ const Ask = (props)=>{
         classesWrapper.push(classes.AskClosed)
     }
 
-    let marginTopAsk = (window.innerHeight - 610)/2
+    let marginTopAsk = (window.innerHeight - 510)/2
     if (marginTopAsk<0) {
         marginTopAsk = 0
     }
@@ -135,8 +135,9 @@ const Ask = (props)=>{
 
     return(
         <div className={classesWrapper.join(" ")} style= {{marginLeft: marginLeftAsk, marginTop: marginTopAsk }}>
-            <div className={classes.Header}>Задайте Вопрос</div>
-            <form onSubmit={validation}>
+
+            <form className={classes.Form} onSubmit={validation}>
+                <div className={classes.Header}>Задайте Вопрос</div>
                 <input id = "title" placeholder={"Тема вопроса"} className = {headerClasses.join(" ")} type={"text"} ref={title} onChange={titleUpdate}/>
                 <input id = "name" placeholder={"Ваше имя"} className={nameClasses.join(" ")} type={"text"} ref={name} onChange={nameUpdate}/>
                 <input id = "age" placeholder={"Возраст"} className={ageClasses.join(" ")} type = {"number"} ref={age} onChange={ageUpdate} />

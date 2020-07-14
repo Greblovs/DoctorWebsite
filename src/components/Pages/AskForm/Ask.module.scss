@@ -3,10 +3,12 @@
   margin: 0;
   padding: 0;
 }
-Form{
+.Form{
+
 
 }
 .FormWrapper{
+
   width: calc(100% - 40px);
   position:fixed;
   background: linear-gradient($accent1, $accent1);
@@ -21,6 +23,7 @@ Form{
 }
 
 .HeaderInput{
+
   margin-left: 10px;
   border-radius: 20px;
   border:none;
