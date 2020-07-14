@@ -4,6 +4,7 @@ import AuthenticatedComponent from "../../../../AuthenticatedComponent";
 
 import axios from "axios";
 
+import Questions from "./subPages/Questions/adminQuestions"
 import {BrowserRouter, Route, Switch, NavLink} from "react-router-dom";
 
 
@@ -23,7 +24,7 @@ const AdminPart = () => {
             </div>
             <Switch>
                 <Route path="/admin/Pages/Questions" >
-
+                    {Questions}
                 </Route>
                 <Route path="/admin/Pages/Posts" >
 

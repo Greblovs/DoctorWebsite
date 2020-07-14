@@ -110,7 +110,7 @@ const Question = ({shortTitle, text, answer, isQuestion, name, age}) => {
     });
 
     name = "Имя: " + name
-    age = "Возраст: " + age + " лет"
+    age = "Воз раст: " + age + " лет"
 
     return (
         <div style={!isQuestion && window.innerWidth>660? {display:"inline-block"}:{display: "block"}} className={wrapClasses.join(" ")}>

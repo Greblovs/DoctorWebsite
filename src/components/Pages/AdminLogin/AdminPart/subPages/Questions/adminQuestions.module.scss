@@ -1,0 +1,22 @@
+.wrapper{
+  width: calc(100vw - 20px);
+  max-width: 1000px;
+  margin: 50px auto;
+}
+
+.subTexts{
+  width: content-box;
+  display: inline-block;
+  font-size: 18px;
+
+}
+.title{
+  font-size: 26px;
+}
+.Answer{
+  width: 100%;
+  height: fit-content;
+  min-height: 200px ;
+  border: none;
+  margin-top: 20px;
+}
