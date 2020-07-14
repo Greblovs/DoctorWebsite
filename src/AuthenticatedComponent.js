@@ -6,6 +6,9 @@ const API = 'http://localhost:3002/api';
 const DEFAULT_QUERY = '/auth';
 
 class AuthenticatedComponent extends Component{
+
+
+    
     constructor(props) {
         super(props);
         this.state={
