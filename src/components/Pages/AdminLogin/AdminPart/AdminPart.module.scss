@@ -1,0 +1,33 @@
+@import "../../../../strings/colors";
+
+.Menu{
+  width: 100vw;
+  height: 100px;
+  background: $accent1;
+
+}
+
+.Button{
+  width: 150px;
+  height: 100px;
+  color: white;
+  display: inline-block;
+  line-height: 100px;
+  text-align: center;
+  font-size: 20px;
+}
+.ButtonWrapper{
+  margin-left: 40px;
+}
+.Title{
+  width: 100vw;
+  text-align: center;
+  margin-top: 100px;
+  font-size: 30px;
+}
+.IP{
+  width: 100vw;
+  text-align: center;
+  margin-top: 100px;
+  font-size: 28px;
+}

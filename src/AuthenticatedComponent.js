@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-//import {getjwt} from "/jwt";
+
 import axios from 'axios';
 
 const API = 'http://localhost:3002/api';
@@ -15,13 +15,15 @@ class AuthenticatedComponent extends Component{
     componentDidMount(){
         const jwt = localStorage.getItem('cool-jwt');
         if(!jwt){
+            console.log('no jwt');
             this.props.history.push('/components/Pages/AdminLogin/AdminLogin');
         }
         axios.get(API + DEFAULT_QUERY, {headers :{
-            'auth-token' : jwt}}).then(res=>this.setState({
+            Authorization : `Bearer ${jwt}`}}).then(res=>this.setState({
             user: res.data
         })).catch(err=>
         {
+            console.log(err.message);
             localStorage.removeItem('cool-jwt');
             this.props.history.push('/components/Pages/AdminLogin/AdminLogin');
         })

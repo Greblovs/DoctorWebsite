@@ -2,8 +2,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {jwtSecret} = require('../config/app')
-
-
 const Admin = require('../models/admin-model');
 
 
@@ -37,7 +35,7 @@ const signIn = (req,res)=>{
             if(isValid){
                 const token = jwt.sign({_id : admin._id.toString()},jwtSecret);
                 //res.json({token});
-                res.header('auth-token').send(token);
+                res.header('Authorization').send(token);
             }
             else {
                 res.status(401).json({message: 'Invalid password'});

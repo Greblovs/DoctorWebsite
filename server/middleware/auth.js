@@ -3,7 +3,7 @@ const {jwtSecret} = require('../config/app')
 
 module.exports=(req, res, next)=>{
 
-    var token = req.headers['auth-token'];
+    var token = req.headers['Authorization'].split(' ')[1];
     if (!token)
         return res.status(403).send({ message: 'No token provided.' });
 
