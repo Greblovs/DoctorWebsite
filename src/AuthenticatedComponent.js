@@ -1,14 +1,28 @@
 import React, {Component} from "react";
 import {withRouter} from "react-router-dom";
 import axios from 'axios';
+import AdminLogin from "./components/Pages/AdminLogin/AdminLogin";
 
 const API = 'http://localhost:3002/api';
 const DEFAULT_QUERY = '/auth';
 
 class AuthenticatedComponent extends Component{
+    state = {
+        redirect: false,
+    }
 
 
-    
+    refresh = ()=> {
+        this.setState(()=>{
+            return(
+                {
+                    redirect: true,
+                }
+            )
+        })
+    }
+
+
     constructor(props) {
         super(props);
         this.state={
@@ -19,8 +33,9 @@ class AuthenticatedComponent extends Component{
         const jwt = localStorage.getItem('cool-jwt');
         alert(jwt);
         if(!jwt){
-            console.log('no jwt');
-            this.props.history= '/admin';
+            console.log('no jwt')
+            this.props.history.push("/admin")
+            //написть переход в вход !
         }
         axios.get(API + DEFAULT_QUERY, {headers :{
             Authorization : `Bearer ${jwt}`}}).then(res=>this.setState({
@@ -30,18 +45,18 @@ class AuthenticatedComponent extends Component{
         {
             console.log(err.message);
             localStorage.removeItem('cool-jwt');
-            this.props.history.push('/components/Pages/AdminLogin/AdminLogin');
         })
     }
     render(){
         if(this.state.user == undefined){
             return(
-                <div><h1>Loading...</h1></div>
+                <AdminLogin refresh = {this.refresh}  />
+            )
+        }else {
+            return (
+                <div>{this.props.children}</div>
             )
         }
-        return(
-            <div>{this.props.children}</div>
-        )
     }
 }
 

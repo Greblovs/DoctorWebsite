@@ -5,8 +5,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import MainPage from "./components/Pages/Main/Main";
-import Login from  "./components/Pages/AdminLogin/AdminLogin"
-import AdminLogin from "./components/Pages/AdminLogin/AdminLogin";
+
+
 import AuthenticatedComponent from "./AuthenticatedComponent";
 import AdminPart from "./components/Pages/AdminLogin/AdminPart/AdminPart";
 
@@ -15,13 +15,12 @@ const app = (
 
     <BrowserRouter>
 
-
         <Switch>
-        <Route path = "/admin" component = {AdminLogin}>
-        <AuthenticatedComponent>
-            <Route path = "/admin/Pages" component = {AdminPart}/>
-        </AuthenticatedComponent>
-        </Route>
+            <Route path = "/admin">
+                <AuthenticatedComponent>
+                    <AdminPart/>
+                </AuthenticatedComponent>
+            </Route>
             <Route path="/">
                 <App/>
             </Route>
