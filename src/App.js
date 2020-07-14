@@ -59,10 +59,7 @@ function App() {
                 <Route path = "/Questions" component = {Questions}/>
                 <Route path = "/Registration" component = {Registration}/>
                 <Route path = "/" component = {MainPage}/>
-                {/*<Route path = "/Login" component = {AdminLogin}/>*/}
-                {/*<AuthenticatedComponent>*/}
-                {/*    <Route path = "/admin/Pages" component = {AdminPart}/>*/}
-                {/*</AuthenticatedComponent>*/}
+
 
             </Switch>
          </Layout>

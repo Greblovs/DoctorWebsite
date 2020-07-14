@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-
+import {withRouter} from "react-router-dom";
 import axios from 'axios';
 
 const API = 'http://localhost:3002/api';
@@ -17,14 +17,16 @@ class AuthenticatedComponent extends Component{
     }
     componentDidMount(){
         const jwt = localStorage.getItem('cool-jwt');
+        alert(jwt);
         if(!jwt){
             console.log('no jwt');
-            this.props.history.push('/components/Pages/AdminLogin/AdminLogin');
+            this.props.history= '/admin';
         }
         axios.get(API + DEFAULT_QUERY, {headers :{
             Authorization : `Bearer ${jwt}`}}).then(res=>this.setState({
             user: res.data
-        })).catch(err=>
+         }))
+            .catch(err=>
         {
             console.log(err.message);
             localStorage.removeItem('cool-jwt');
@@ -43,4 +45,4 @@ class AuthenticatedComponent extends Component{
     }
 }
 
-export default AuthenticatedComponent;
+export default withRouter(AuthenticatedComponent);

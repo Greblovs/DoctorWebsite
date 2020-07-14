@@ -32,12 +32,12 @@ const AdminPart = () => {
                 <Route path = "/admin/Pages/Contacts">
 
                 </Route>
-               {/*<AuthenticatedComponent>*/}
+               <AuthenticatedComponent>
                 <Route path = "/admin/Pages">
                     <p className={classes.Title}>Добро пожаловать Кот Вячеслав Федоровичь</p>
                     <p className={classes.IP}>{string}</p>
                 </Route>
-               {/*</AuthenticatedComponent>*/}
+               </AuthenticatedComponent>
             </Switch>
         </>
     );
