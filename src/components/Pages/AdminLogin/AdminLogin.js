@@ -9,7 +9,7 @@ const AdminLogin = () => {
     const nextPath = () => {
         history.push("./admin/Pages");
     }
-
+    
 
     return (
         <>
