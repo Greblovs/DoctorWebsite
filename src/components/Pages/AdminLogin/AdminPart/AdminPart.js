@@ -1,5 +1,6 @@
 import classes from "./AdminPart.module.scss"
 import React from "react";
+import Questions from "./subPages/Questions/adminQuestions"
 import {BrowserRouter, Route, Switch, NavLink} from "react-router-dom";
 
 const AdminPart = () => {
@@ -18,7 +19,7 @@ const AdminPart = () => {
             </div>
             <Switch>
                 <Route path="/admin/Pages/Questions" >
-
+                    {Questions}
                 </Route>
                 <Route path="/admin/Pages/Posts" >
 
