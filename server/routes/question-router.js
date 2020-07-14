@@ -20,7 +20,7 @@ router.get('/posts', PostCtrl.getPosts)
 
 router.post('/signin',AdminCtrl.signIn)
 router.get('/admins',AuthMiddleware, AdminCtrl.getAdmins)
-router.post('/admin', AuthMiddleware,AdminCtrl.createAdmin)
+router.post('/admin',AdminCtrl.createAdmin)
 router.get('/auth',AuthMiddleware, AdminCtrl.checkToken)
 
 
