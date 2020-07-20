@@ -1,7 +1,7 @@
 //const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const {jwtSecret} = require('../config/app')
+const {jwtSecret} = require('../config/app');
 const Admin = require('../models/admin-model');
 
 
@@ -57,7 +57,7 @@ checkToken = (req, res) => {
 
 createAdmin = (req, res) => {
     const body = req.body;
-    //   delete body._id;
+    body.password = bcrypt.hashSync(req.body.password,10);
     if (!body) {
         return res.status(400).json({
             success: false,

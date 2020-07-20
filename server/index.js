@@ -4,10 +4,10 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const db = require('./db')
-const questionRouter = require('./routes/question-router')
+const Router = require('./routes/router')
 
 const app = express()
-const apiPort = 3002
+const {apiPort} = require('./config/app')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.use('/api', questionRouter)
+app.use('/api', Router)
 
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))

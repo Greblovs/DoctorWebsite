@@ -19,7 +19,7 @@ router.get('/post/:id', PostCtrl.getPostById)
 router.get('/posts', PostCtrl.getPosts)
 
 router.post('/signin',AdminCtrl.signIn)
-router.get('/admins',AuthMiddleware, AdminCtrl.getAdmins)
+//router.get('/admins',AuthMiddleware, AdminCtrl.getAdmins)
 router.post('/admin',AdminCtrl.createAdmin)
 router.get('/auth',AuthMiddleware, AdminCtrl.checkToken)
 
