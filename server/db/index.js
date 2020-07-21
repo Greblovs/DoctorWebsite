@@ -1,8 +1,8 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const {mongoUri} = require('../config/app')
 
 mongoose
-    .connect('mongodb://127.0.0.1:27017/questions', { useNewUrlParser: true })
-   // .connect("paste db link", {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
+    .connect(mongoUri, { useNewUrlParser: true })
     .catch(e => {
         console.error('Connection error', e.message)
     })

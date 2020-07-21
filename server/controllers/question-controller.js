@@ -2,7 +2,6 @@ const Question = require('../models/Question-model')
 
 createQuestion = (req, res) => {
     const body = req.body;
- //   delete body._id;
     if (!body) {
         return res.status(400).json({
             success: false,
@@ -51,12 +50,11 @@ updateQuestion = async (req, res) => {
             })
         }
         Question.title = body.title
-        Question.questionId = body.questionId
         Question.text = body.text
         Question.name = body.name
         Question.age = body.age
-        Question.email = body.email
-        Question.public = body.public
+        Question.answer = body.answer
+
         Question
             .save()
             .then(() => {
@@ -102,7 +100,7 @@ getQuestionById = async (req, res) => {
 }
 
 getQuestions = async (req, res) => {
-    await Question.find({}, (err, Questions) => {
+    await Question.find({questionId: null}, (err, Questions) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }

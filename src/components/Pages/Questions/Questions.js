@@ -10,13 +10,32 @@ const DEFAULT_QUERY = '/questions';
 
 const Questions = () => {
 
+
+
+
     const [state, setState] = useState({
         searchValue: "",
         showedRows: 1,
         questions: [],
         isLoading: false,
+
         error: null,
-    });
+})
+         axios.get(API + DEFAULT_QUERY)
+             .then(result  => setState((prev)=>{
+                 return {
+                     ...prev,
+                     questions: result.data.data,
+                     isLoading: false
+                 }
+             }))
+            .catch(error => setState((prev)=>{
+                 return {
+                     ...prev,
+                     error,
+                     isLoading: false
+                 }
+             }));
 
     useEffect(() => {
 

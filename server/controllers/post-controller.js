@@ -2,7 +2,6 @@ const Post = require('../models/post-model')
 
 createPost = (req, res) => {
     const body = req.body;
-    //   delete body._id;
     if (!body) {
         return res.status(400).json({
             success: false,

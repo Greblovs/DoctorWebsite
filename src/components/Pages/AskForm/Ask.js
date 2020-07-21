@@ -5,18 +5,14 @@ import axios from 'axios';
 const API = 'http://localhost:3002/api';
 const DEFAULT_QUERY = '/question';
 
- function addQuestion(props){
-
-
+ function addQuestion(){
 
      axios.post(API + DEFAULT_QUERY, {
         title: document.getElementById('title').value.trim(),
         age: document.getElementById('age').value.trim(),
         name: document.getElementById('name').value.trim(),
         text: document.getElementById('text').value.trim(),
-        questionId: null,
-        public:true,
-        email : "example@example.com"
+         answer: null
 
     })
         .then(function (response) {
