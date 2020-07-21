@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "set HTTPS=true&&react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts byuild",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -50,6 +50,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:3002"
+  }
 }
