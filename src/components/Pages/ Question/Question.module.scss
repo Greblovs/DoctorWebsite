@@ -76,7 +76,7 @@
     }
 
     .Text {
-      overflow: hidden !important;
+
       color: $background;
       font-weight: 600;
       text-align: left;
@@ -167,10 +167,14 @@
 
   .Text{
     height: calc(100% - 80px);
+    overflow: hidden;
   }
 }
 
 .Question.fullyOpen {
+  .Text{
+    overflow: visible !important;
+  }
 
   //position: fixed;
 }
