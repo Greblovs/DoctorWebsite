@@ -28,20 +28,24 @@ const signIn = (req,res)=>{
         .then((admin)=>
         {
             if(!admin){
-                 res.status(401).json({massage: 'Admin does not exist'});
+                return  res.status(401).json({massage: 'Admin does not exist'});
             }
             else{
             const isValid = bcrypt.compareSync(password,admin.password);
             if(isValid){
+
                 const token = jwt.sign({_id : admin._id.toString()},jwtSecret);
-                //res.json({token});
-                res.header('Authorization').send(token);
+                 return res.status(201).json({
+                    success: true,
+                    token: token.toString()});
+
             }
             else {
-                res.status(401).json({message: 'Invalid password'});
+                return res.status(401).json({message: 'Invalid password'});
             }}
         })
-        .catch(err=> res.status(500).json({message:err.message}))
+      .catch(err=>
+          res.status(500).json({message:err.message}))
 };
 const checkToken = (req, res) => {
     Admin.findById(req.userId, { password: 0 }, function (err, user) {

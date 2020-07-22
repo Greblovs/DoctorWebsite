@@ -36,15 +36,16 @@ class AuthenticatedComponent extends Component{
             this.props.history.push("/admin")
             //написть переход в вход !
         }
+        else{
         axios.get(API + DEFAULT_QUERY, {headers :{
-            Authorization : `Bearer ${jwt}`}}).then(res=>this.setState({
+            authorization : `Bearer ${jwt}`}}).then(res=>this.setState({
             user: res.data
          }))
             .catch(err=>
         {
             console.log(err.message);
             localStorage.removeItem('cool-jwt');
-        })
+        })}
     }
     render(){
         if(this.state.user == undefined){
