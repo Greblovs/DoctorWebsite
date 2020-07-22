@@ -3,7 +3,7 @@ import {withRouter} from "react-router-dom";
 import axios from 'axios';
 import AdminLogin from "./components/Pages/AdminLogin/AdminLogin";
 
-const API = 'http://localhost:3002/api';
+const API = 'http://localhost:3001/api';
 const DEFAULT_QUERY = '/auth';
 
 class AuthenticatedComponent extends Component{
@@ -31,7 +31,6 @@ class AuthenticatedComponent extends Component{
     }
     componentDidMount(){
         const jwt = localStorage.getItem('cool-jwt');
-        alert(jwt);
         if(!jwt){
             console.log('no jwt')
             this.props.history.push("/admin")

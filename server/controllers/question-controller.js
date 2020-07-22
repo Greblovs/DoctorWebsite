@@ -1,6 +1,6 @@
 const Question = require('../models/Question-model')
 
-createQuestion = (req, res) => {
+const createQuestion = (req, res, err) => {
     const body = req.body;
     if (!body) {
         return res.status(400).json({
@@ -32,7 +32,7 @@ createQuestion = (req, res) => {
         })
 }
 
-updateQuestion = async (req, res) => {
+const updateQuestion = async (req, res) => {
     const body = req.body
 
     if (!body) {
@@ -73,7 +73,7 @@ updateQuestion = async (req, res) => {
     })
 }
 
-deleteQuestion = async (req, res) => {
+const deleteQuestion = async (req, res) => {
     await Question.findOneAndDelete({ _id: req.params.id }, (err, Question) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
@@ -89,7 +89,7 @@ deleteQuestion = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-getQuestionById = async (req, res) => {
+const getQuestionById = async (req, res) => {
     await Question.findOne({ _id: req.params.id }, (err, Question) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
@@ -99,7 +99,7 @@ getQuestionById = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-getQuestions = async (req, res) => {
+const getQuestions = async (req, res) => {
     await Question.find({questionId: null}, (err, Questions) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })

@@ -1,45 +1,74 @@
-import React, {useState} from 'react';
+import React, {Component, useCallback, useEffect, useRef, useState} from "react";
 import classes from "./adminQuestions.module.scss"
-
+import axios from 'axios';
+import Question from "./adminQuestion";
+const API = 'http://localhost:3001/api';
+const DEFAULT_QUERY = '/questions';
 
 
 const AdminQuestions = () =>{
 
-    const questions = [{
-        date: "12/12/12",
-        public: true,
-        title: "Лечение неврита",
-        age: 22,
-        name: "Сергей Горабчев Василевичь",
-        backTrace: "example@example.com",
-        text: "Подскажите, пожалуйста, какие есть методики успешного лечения неврита слухового нерва, или хотя бы остановки процесса потери слуха?",
-        answer: "Когда речь идет о неврите слухового нерва (сенсоневральная тугоухость), в первую очередь, необходимо четко определить тип сенсоневральной тугоухости (острая, хроническая, прогрессирующая, инфекционного или сосудистого происхождения и т.д.), в зависимости от чего, будет более эффективна та или иная схема лечения. По степени и уровню повреждения слухового анализатора и давности заболевания можно предположить о возможной эффективности лечения в каждом конкретном случае заболевания.\n" +
-            "Очень важно, в каждом случае заболевания, провести инструментальное обследование слухового анализатора (аудиометрия, импедансометрия, отоакустическая эмиссия, костно-стволовые вызванные потенциалы, импедансометрия и др.), без которого невозможно правильно установить диагноз и, соответственно, правильно подобрать схему лечения.\n" +
-            "Схема лечения, в любом случае, должна быть комплексной, когда на ряду с медикаментозными препаратами используются физиотерапевтические методы лечения. В большинстве случаев требуется длительный курс лечения (до нескольких месяцев), в ряде случаев требуются повторные поддерживающие курсы приема медикаментов и контрольные инструментальные обследования в динамике. Более эффективным будет лечение, если прием медикаментов начат с внутривенного и внутримышечного введения препаратов (от 10 дней до 6 недель), а затем продолжен прием таблетированных препаратов.\n" +
-            "Если повреждения слухового анализатора имеют необратимый характер, то во всех случаях требуется поддерживающее медикаментозное лечение или же слухопротезирование с помощью современных слуховых аппаратов, которые могут социально адаптировать практически любую степень снижения слуха, а так же, что очень важно, устранить шумовые эффекты.\n" +
-            "Наиболее эффективно лечение, начатое в максимально ранние сроки от начала заболевания и в наиболее полном объеме."
-    }]
+    const [state, setState] = useState({
+        searchValue: "",
+        showedRows: 1,
+        questions: [],
+        isLoading: false,
+        error: null,
+    })
 
-  const  questionParse =  questions.map((element, index)=>{
+
+    axios.get(API + DEFAULT_QUERY)
+        .then(result  => setState((prev)=>{
+            return {
+                ...prev,
+                questions: result.data.data,
+                isLoading: false
+            }
+        }))
+        .catch(error => setState((prev)=>{
+            return {
+                ...prev,
+                error,
+                isLoading: false
+            }
+        }));
+
+    useEffect(() => {
+
+        setState((prev) => {
+            return {
+                ...prev,
+                isLoading: true
+            }
+        });
+
+        axios.get(API + DEFAULT_QUERY)
+            .then(result  => setState((prev)=>{
+                return {
+                    ...prev,
+                    questions: result.data.data,
+                    isLoading: false
+                }
+            }))
+            .catch(error => setState((prev)=>{
+                return {
+                    ...prev,
+                    error,
+                    isLoading: false
+                }
+            }));
+    }, []);
+
+  const  questionParse =  state.questions.map((element, index)=>{
+
+
 
       return(
           <>
-
-            <div className={classes.wrapper}>
-                <p className={classes.title}>{element.title}</p>
-                <div>
-                    <p className={classes.subTexts}>{element.name}</p>
-                    <p style={window.innerWidth > 1000?{marginLeft: "50px"}: null} className={classes.subTexts}>Возраст:  {element.age}</p>
-                </div>
-                <p>{element.text}</p>
-                <form>
-                    <textarea  value={element.answer} id = "text" className={classes.Answer} />
-                    <input  value={"Ответить"} className={classes.Button} type = {"submit"} />
-                </form>
-            </div>
+            <Question title = {element.title} name = {element.name} text = {element.text} answer = {element.answer} age ={element.age}/>
           </>
       )
-    })
+    });
 
     return(
         <>
@@ -48,6 +77,6 @@ const AdminQuestions = () =>{
     )
 
 
-}
+};
 
 export default AdminQuestions

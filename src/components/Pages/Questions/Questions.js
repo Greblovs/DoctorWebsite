@@ -4,7 +4,7 @@ import axios from 'axios';
 import Post from "../Post/Post";
 import Question from "../ Question/Question";
 
-const API = 'http://localhost:3002/api/question';
+const API = 'http://localhost:3001/api';
 const DEFAULT_QUERY = '/questions';
 
 
@@ -18,9 +18,8 @@ const Questions = () => {
         showedRows: 1,
         questions: [],
         isLoading: false,
-
         error: null,
-})
+    })
          axios.get(API + DEFAULT_QUERY)
              .then(result  => setState((prev)=>{
                  return {
@@ -101,8 +100,6 @@ const Questions = () => {
     });
 
 
-
-    alert(searchedQuestions)
 
     const search = useCallback(()=>{
         setState((prev)=>{

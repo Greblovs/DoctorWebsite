@@ -1,5 +1,5 @@
 import classes from "./AdminPart.module.scss"
-import React from "react";
+import React, {useState} from "react";
 import AuthenticatedComponent from "../../../../AuthenticatedComponent";
 
 import axios from "axios";
@@ -23,13 +23,12 @@ const AdminPart = () => {
                 </div>
             </div>
             <Switch>
-                <Route path="/admin/Pages/Questions" >
-                    {Questions}
+                <Route exact path="/admin/Pages/Questions" component={Questions} >
                 </Route>
-                <Route path="/admin/Pages/Posts" >
+                <Route exact path="/admin/Pages/Posts" >
 
                 </Route>
-                <Route path = "/admin/Pages/Contacts">
+                <Route exact path = "/admin/Pages/Contacts">
 
                 </Route>
                <AuthenticatedComponent>

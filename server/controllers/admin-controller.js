@@ -6,7 +6,7 @@ const Admin = require('../models/admin-model');
 
 
 
-getAdmins = async (req, res) => {
+const getAdmins = async (req, res) => {
     await Admin.find({}, (err, Admins) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
@@ -43,7 +43,7 @@ const signIn = (req,res)=>{
         })
         .catch(err=> res.status(500).json({message:err.message}))
 };
-checkToken = (req, res) => {
+const checkToken = (req, res) => {
     Admin.findById(req.userId, { password: 0 }, function (err, user) {
         if (err) return res.status(500).send("There was a problem finding the user.");
         if (!user) return res.status(404).send("No user found.");
@@ -55,7 +55,7 @@ checkToken = (req, res) => {
 
 }
 
-createAdmin = (req, res) => {
+const createAdmin = (req, res) => {
     const body = req.body;
     body.password = bcrypt.hashSync(req.body.password,10);
     if (!body) {

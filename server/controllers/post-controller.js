@@ -1,6 +1,6 @@
 const Post = require('../models/post-model')
 
-createPost = (req, res) => {
+const createPost = (req, res) => {
     const body = req.body;
     if (!body) {
         return res.status(400).json({
@@ -32,7 +32,7 @@ createPost = (req, res) => {
         })
 }
 
-updatePost = async (req, res) => {
+const updatePost = async (req, res) => {
     const body = req.body
 
     if (!body) {
@@ -75,7 +75,7 @@ updatePost = async (req, res) => {
     })
 }
 
-deletePost = async (req, res) => {
+const deletePost = async (req, res) => {
     await Post.findOneAndDelete({ _id: req.params.id }, (err, Post) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
@@ -91,7 +91,7 @@ deletePost = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-getPostById = async (req, res) => {
+const getPostById = async (req, res) => {
     await Post.findOne({ _id: req.params.id }, (err, Post) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
@@ -101,7 +101,7 @@ getPostById = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-getPosts = async (req, res) => {
+const getPosts = async (req, res) => {
     await Post.find({}, (err, Posts) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })

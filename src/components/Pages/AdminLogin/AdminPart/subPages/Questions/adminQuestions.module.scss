@@ -17,6 +17,31 @@
   width: 100%;
   height: fit-content;
   min-height: 200px ;
-  border: none;
+  font-size: 18px;
+  box-sizing: border-box;
   margin-top: 20px;
+  border: 1px solid black;
+}
+
+.deleteButton{
+  width: 100px;
+  background-color: red;
+  color:black;
+  border: 1px solid black;
+  height: 40px;
+  line-height: 40px;
+  box-sizing: content-box;
+  border-radius: 2px;
+  position: absolute;
+  margin-top: -42px;
+  margin-left: 110px;
+}
+
+.Button{
+  border: 1px solid black;
+  box-sizing: content-box;
+  line-height: 40px;
+  height: 40px;
+  width: 100px;
+
 }

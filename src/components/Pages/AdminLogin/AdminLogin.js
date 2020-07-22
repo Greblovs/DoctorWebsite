@@ -6,20 +6,15 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import AdminPart, {AdminPage} from "./AdminPart/AdminPart"
 
 
-const API = 'http://localhost:3002/api';
+const API = 'http://localhost:3001/api';
 const DEFAULT_QUERY = '/signin';
-
-
-
-
-
 
 
 
 const AdminLogin = (props) => {
 
 
-     const login = () =>{
+     const login = (event) =>{
 
         axios.post(API + DEFAULT_QUERY, {
             email: document.getElementById('login').value.trim(),

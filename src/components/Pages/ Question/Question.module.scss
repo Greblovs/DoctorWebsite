@@ -45,7 +45,6 @@
 }
 
 .QuestionWrap {
-
   position: relative;
   display: inline-block;
   height: 170px;
@@ -77,6 +76,7 @@
     }
 
     .Text {
+      overflow: hidden !important;
       color: $background;
       font-weight: 600;
       text-align: left;
