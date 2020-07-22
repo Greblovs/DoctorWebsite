@@ -1,9 +1,8 @@
 import classes from "./AdminPart.module.scss"
 import React, {useState} from "react";
 import AuthenticatedComponent from "../../../../AuthenticatedComponent";
-
 import axios from "axios";
-
+import contacts from "./subPages/contacts/contact";
 import Questions from "./subPages/Questions/adminQuestions"
 import {BrowserRouter, Route, Switch, NavLink} from "react-router-dom";
 
@@ -25,18 +24,20 @@ const AdminPart = () => {
             <Switch>
                 <Route exact path="/admin/Pages/Questions" component={Questions} >
                 </Route>
-                <Route exact path="/admin/Pages/Posts" >
+                <Route exact path="/admin/Pages/Posts"  >
 
                 </Route>
-                <Route exact path = "/admin/Pages/Contacts">
+                <Route exact path = "/admin/Pages/Contacts" component={contacts}>
+                </Route>
+
+                <Route  path = "/admin">
+                    <>
+                        <p className={classes.Title}>Добро пожаловать Кот Вячеслав Федоровичь</p>
+                        <p className={classes.IP}>{string}</p>
+                    </>
 
                 </Route>
-               <AuthenticatedComponent>
-                <Route path = "/admin/Pages">
-                    <p className={classes.Title}>Добро пожаловать Кот Вячеслав Федоровичь</p>
-                    <p className={classes.IP}>{string}</p>
-                </Route>
-               </AuthenticatedComponent>
+
             </Switch>
         </>
     );
