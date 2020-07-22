@@ -2,9 +2,9 @@ import classes from "./contact.module.scss"
 import React, {useCallback, useRef, useState} from "react";
 
 
-const contacts = (props) =>{
+const Contacts = (props) =>{
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+
     const [state, setState] = useState({
         viber: "viber",
         phone: "+38022222222",
@@ -12,7 +12,6 @@ const contacts = (props) =>{
 
     })
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const viberUpdate = useCallback(()=>{
         setState((prev)=>{
             return{
@@ -22,7 +21,6 @@ const contacts = (props) =>{
         })
     },[]);
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const phoneUpdate = useCallback(()=>{
         setState((prev)=>{
             return{
@@ -32,7 +30,7 @@ const contacts = (props) =>{
         })
     },[]);
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+
     const emailUpdate = useCallback(()=>{
         setState((prev)=>{
             return{
@@ -41,11 +39,9 @@ const contacts = (props) =>{
             }
         })
     },[]);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+
     const viber = useRef();
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const phone = useRef();
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const email = useRef()
 
     return(
@@ -70,4 +66,4 @@ const contacts = (props) =>{
 
 };
 
-export default contacts;
+export default Contacts;

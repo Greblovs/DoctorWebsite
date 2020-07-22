@@ -1,0 +1,37 @@
+.textArea{
+  display: block;
+  max-width: 100%;
+  width: 800px;
+  height: 100px;
+  box-sizing: content-box;
+  margin-bottom: 15px;
+  padding-bottom: 30px;
+}
+
+.title{
+  margin-bottom: 15px;
+  display: block;
+  max-width: 100%;
+  width: 800px;
+  height: 50px;
+}
+.titleWriting{
+  padding-bottom: 5px;
+}
+.postForm{
+  width: 802px;
+  height: fit-content;
+  margin: 50px auto;
+}
+
+.Button{
+  width: 120px;
+  height: 40px;
+}
+
+.addButton{
+  display: block;
+  margin: 50px auto;
+  width: 250px;
+  height: 40px;
+}

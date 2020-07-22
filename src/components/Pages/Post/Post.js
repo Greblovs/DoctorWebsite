@@ -47,7 +47,7 @@ const changeScrolling = ()=>{
 }
 
 
-const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple, isSliding}) => {
+const Post = (props) => {
     const [dimensions, setDimensions] = useState({
         height: window.innerHeight,
         width: window.innerWidth
@@ -101,7 +101,7 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple, isS
     const openPost = useCallback(() => {
 
         const offset = getElementOffset(postRef.current);
-        someAdditor();
+        props.someAdditor();
         setState((prev) => {
             if (prev.canOpen) {
                 changeScrolling();
@@ -147,7 +147,7 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple, isS
 
     if (state.isOpen) {
         postCls.push(classes.open)
-        if (notSimple){
+        if (props.notSimple){
             buttonCls.push(classes.plus);
             textCls.push(classes.notSimple);
         }
@@ -162,7 +162,7 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple, isS
         postCls.push(classes.fullyOpen)
     }
 
-    if (notSimple){
+    if (props.notSimple){
         postCls.push(classes.notSimple)
     }
 
@@ -190,10 +190,10 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple, isS
     },[])
 
     const postWrapCls = [classes.PostWrap];
-    if (isPost){
+    if (props.isPost){
         postWrapCls.push(classes.margin)
     }
-    if (isSliding){
+    if (props.isSliding){
         postWrapCls.push(classes.sliding)
     }
 
@@ -201,19 +201,19 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple, isS
         <div className={postWrapCls.join(" ")}>
                 <div className={postCls.join(" ")} ref={postRef} style={state.translation}>
                     <div className={classes.Title}>
-                        {title}
+                        {props.title}
                     </div>
                     <div className={textCls.join(" ")}>
-                        {!notSimple? fullText: text}
+                        {!props.notSimple? props.fullText: props.text}
                     </div>
-                    {notSimple ?
+                    {props.notSimple ?
                         <>
                             <div className={tabClss[0].join(" ")} onClick={()=>{tabClick(0)}}>
                                 <div className={classes.Title}>
                                     Заболевание
                                 </div>
                                 <div className={classes.Text}>
-                                    Боль в горле – самая частая жалоба в кабинете ЛОР врача. Большинство пациентов с порога безапелляционно называют и ее причину: «Доктор, у меня ангина!»
+                                    {props.illnes}
                                 </div>
                             </div>
                             <div className={tabClss[1].join(" ")} onClick={()=>{tabClick(1)}}>
@@ -221,7 +221,7 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple, isS
                                     Классификация
                                 </div>
                                 <div className={classes.Text}>
-                                    Путаница при использовании термина «ангина» встречается очень часто даже среди врачей, не говоря уже о пациентах. Она возникает по причине существования достаточно большого количества классификаций, используемых на свое усмотрение врачами разных специальностей, родоначальниками различных медицинских школ отоларингологии, терапевтов, инфекционистов, международными медицинскими ассоциациями.
+                                    {props.classif}
                                 </div>
                             </div>
                             <div className={tabClss[2].join(" ")} onClick={()=>{tabClick(2)}}>
@@ -229,7 +229,7 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple, isS
                                     Практика
                                 </div>
                                 <div className={classes.Text}>
-                                    В поликлинической практике ЛОР врача, жалобу на острую боль в горле указывают две трети всех, пришедших на прием, пациентов (66%). При этом, в 80% случаев, жалоба связана с заболеваниями только слизистой оболочки глотки, боковых валиков глотки, надгортанника, слизистой мягкого неба, слизистой носоглотки и т.д.
+                                    {props.practicy}
                                 </div>
                             </div>
                             <div className={tabClss[3].join(" ")} onClick={()=>{tabClick(3)}}>
@@ -237,7 +237,7 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple, isS
                                     Важно
                                 </div>
                                 <div className={classes.Text}>
-                                    Учитывая вышесказанное, крайне важно как для самого пациента, так и для всех врачей, в первую очередь смежных с ЛОР специальностей, четко отличать «настоящую» бактериальную ангину от схожего «как две капли воды» по многим признакам, но противоположного по сути и серьезности осложнений хронического тонзиллита, острого фарингита и других заболеваний ротоглотки.
+                                    {props.important}
                                 </div>
                             </div>
                             <div className={tabClss[4].join(" ")} onClick={()=>{tabClick(4)}}>
@@ -245,17 +245,13 @@ const Post = ({index, title, text, fullText, someAdditor, isPost, notSimple, isS
                                     Рекомендации
                                 </div>
                                 <div className={classes.Text}>
-                                    Обобщая, сформулирую практический совет/рекомендации:
-                                    1. Если общее состояние, при заболевании, не было нарушено с первых дней, а боль в горле Вам удалось устранить самостоятельно в домашних условиях за 3-4 дня то, очевидно, вы перенесли ОРВИ (острый вирусный фарингит с вероятностью 95%). Вам следует посетить ЛОР врача в плановом порядке, для обнаружения и предупреждения возможных осложнений, постановки правильного диагноза и назначения эффективного лечения, профилактики (особенно это касается детей). Здесь все зависит от личного отношения к своему здоровью: насколько Вы его цените или можете позволить себе бережно к нему относиться.
-                                    2. Если же заболевание начинается с высокой температуры, острой боли в горле, болезненности шейных лимфоузлов, видны белые налеты на миндалинах – это повод заподозрить тяжелую форму бактериальной инфекции в ротоглотке (с наибольшей вероятностью «ангину») и незамедлительно обратиться на консультацию к ЛОР врачу, что бы значительно сократить сроки лечения и количество возможных осложнений, в том числе и обезопасить своих, еще не подвергшихся инфицированию близких.
-
-                                    Будьте здоровы. Умейте ценить данное Вам природой и родителями здоровье.
+                                    {props.recomendations}
                                 </div>
                             </div>
                         </>
                         : null}
                     <button onClick={openPost} className={buttonCls.join(" ")}>
-                        {state.isOpen ? notSimple ? "X" : "закрыть" : "Читать дальше"}
+                        {state.isOpen ? props.notSimple ? "X" : "закрыть" : "Читать дальше"}
                     </button>
 
                 </div>
