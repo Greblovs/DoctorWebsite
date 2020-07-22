@@ -9,11 +9,7 @@ const DEFAULT_QUERY = '/questions';
 const AdminQuestions = () =>{
 
     const [state, setState] = useState({
-        searchValue: "",
-        showedRows: 1,
         questions: [],
-        isLoading: false,
-        error: null,
     })
 
 
@@ -60,9 +56,6 @@ const AdminQuestions = () =>{
     }, []);
 
   const  questionParse =  state.questions.map((element, index)=>{
-
-
-
       return(
           <>
             <Question title = {element.title} name = {element.name} text = {element.text} answer = {element.answer} age ={element.age}/>
@@ -75,8 +68,6 @@ const AdminQuestions = () =>{
             {questionParse}
         </>
     )
-
-
 };
 
 export default AdminQuestions

@@ -1,16 +1,11 @@
-import React, {useCallback, useRef, useState} from "react";
-import classes from "./posts.module.scss"
-import Post from "./../Post/Post";
-import {NavLink} from "react-router-dom";
+import React, {Component, useCallback, useEffect, useRef, useState} from "react";
+import classes from "./post.module.scss"
+import Post from "./post"
 
 
 
-
-
-const Posts = () => {
-
-    const row = 5;
-
+const posts = () =>{
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [state, setState] = useState({
         searchValue: "",
         showedRows: 1,
@@ -27,80 +22,24 @@ const Posts = () => {
                 ]
             }
         ]
-    });
+    })
 
-
-
-    const searchInputCls = [classes.SearchInput];
-
-    let searchedPosts = [];
-    if (state.searchValue === ""){
-        searchedPosts = state.posts
-    }else{
-        for (let i = 0; i < state.posts.length; i++){
-            if (state.posts[i].title.toUpperCase().includes(state.searchValue.toUpperCase())){
-                searchedPosts.push(state.posts[i]);
-            }
-        }
-        if (searchedPosts.length === 0){
-            searchedPosts = state.posts
-            searchInputCls.push(classes.error);
-        }
-    }
-
-    const length = searchedPosts.length;
-    searchedPosts = searchedPosts.slice(0,Math.min(row*state.showedRows, length));
-
-
-    searchedPosts  =  searchedPosts.map((element , index) =>{
+    const postsArray = state.posts.map((element, index)=>{
         return(
-            <Post title={element.title} text={element.text} key={index} someAdditor={()=>{}} isPost = {true} notSimple = {true} illnes={element.paragraphs[0]} classif={element.paragraphs[1]} practicy ={element.paragraphs[2]} important = {element.paragraphs[3]} recomendations = {element.paragraphs[4]} />
+            <>
+                <Post key={index} title = {element.title}  text={element.text} illnes={element.paragraphs[0]} classif={element.paragraphs[1]} practicy ={element.paragraphs[2]} important = {element.paragraphs[3]} recomendations = {element.paragraphs[4]} />
+            </>
         )
-    });
-
-    const searchRef = useRef();
-
-    const search = useCallback(()=>{
-        setState((prev)=>{
-            return{
-                ...prev,
-                searchValue: searchRef.current.value
-            }
-        })
-    },[]);
-
-    const showMoreRows = useCallback(()=>{
-        setState((prev)=>{
-            return{
-                ...prev,
-                showedRows: prev.showedRows + 1
-            }
-        })
-    },[]);
-
+    })
     return(
-        <div className={classes.PageWrap}>
-            <div className={classes.SearchBarWrap}>
-                <div className={classes.SearchBar}>
-                    <input className={searchInputCls.join(" ")} ref={searchRef} onChange={search}/>
-                    <div className={classes.SearchButton}>
-                        <div className={classes.LensWrap}>
-                            <div className={classes.Circle}/>
-                            <div className={classes.Line}/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {searchedPosts}
-            {length <= row * state.showedRows ? <></> :
-                <div className={classes.MoreButtonWrap}>
-                    <div className={classes.MoreButton} onClick={showMoreRows}>
-                        Показать больше
-                    </div>
-                </div>
-            }
-        </div>
+        <>
+            <form>
+                <input className={classes.addButton}  value={"Добавить Статью"}  type = {"submit"}  />
+            </form>
+            {postsArray}
+        </>
     )
-};
 
-export default Posts;
+}
+
+export default posts;
