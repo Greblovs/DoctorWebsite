@@ -9,26 +9,45 @@ import AdminPart, {AdminPage} from "./AdminPart/AdminPart"
 const API = 'http://localhost:3001/api';
 const DEFAULT_QUERY = '/signin';
 
+// function login() {
+//
+//     axios.post(API + DEFAULT_QUERY, {
+//         email: document.getElementById('login').value.trim(),
+//         password: document.getElementById('password').value.trim()
+//
+//     })
+//         .then(function (response){
+//
+//             console.log(response.data.token);
+//             localStorage.setItem('cool-jwt',response.data.token);
+//            // props.refresh();
+//         }).catch(function (error) {
+//
+//         console.log(error.response);
+//
+//     });
+//
+// }
+function login() {
+
+    axios.post(API + DEFAULT_QUERY, {
+        email: document.getElementById('login').value.trim(),
+        password: document.getElementById('password').value.trim()
+
+    })
+        .then(function (response) {
+            console.log(response.data.token);
+            localStorage.setItem('cool-jwt', response.data.token);
 
 
-const AdminLogin = (props) => {
-
-
-     const login = (event) =>{
-
-        axios.post(API + DEFAULT_QUERY, {
-            email: document.getElementById('login').value.trim(),
-            password: document.getElementById('password').value.trim(),
-    
         })
-            .then(function (res){
-                console.log(res.data);
-                localStorage.setItem('cool-jwt',res.data);
-                props.refresh();
-            })
+        .catch(function (error) {
 
-    }
+            console.log(error.response);
 
+        });
+}
+const AdminLogin = (props) => {
 
 
     return (

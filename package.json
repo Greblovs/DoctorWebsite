@@ -31,9 +31,8 @@
     "yarn": "^1.22.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set HTTPS=true&&react-scripts start",
     "build": "react-scripts build",
-
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -51,5 +50,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:3001"
 }
