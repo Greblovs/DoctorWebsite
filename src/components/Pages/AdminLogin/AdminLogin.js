@@ -40,14 +40,7 @@ const AdminLogin = (props) => {
                             <input  value={"Войти"} className={classes.Button} type = {"submit"} />
             </form>
 
-            {/*<Switch>*/}
-            {/*    <Route path="/admin/Pages">*/}
-            {/*        <AdminPart/>*/}
-            {/*    </Route>*/}
-            {/*    <Route path="/admin">*/}
-            {/*
-            {/*    </Route>*/}
-            {/*</Switch>*/}
+    =
 
         </>
     )
