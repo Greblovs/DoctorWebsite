@@ -126,8 +126,8 @@ const Questions = () => {
                     <input className={searchInputCls.join(" ")} ref={searchRef} onChange={search}/>
                     <div className={classes.SearchButton}>
                         <div className={classes.LensWrap}>
-                            <div className={classes.Circle}/>
                             <div className={classes.Line}/>
+                            <div className={classes.Circle}/>
                         </div>
                     </div>
                 </div>
