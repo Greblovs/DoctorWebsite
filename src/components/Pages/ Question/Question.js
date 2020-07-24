@@ -125,11 +125,10 @@ const Question = ({shortTitle, text, answer, isQuestion, name, age}) => {
                         <div >{state.isOpen ? age: null}</div>
                     </div>
                     <div className={classes.quest}>{state.isOpen ? text : null}</div>
-                    <div className={classes.Answer}>
-                        <div className={classes.Filler}>{state.isOpen ? "Ответ     ": null}</div>
-                        <div className={classes.answ}>{state.isOpen ? answer : null}</div>
-                        <div className={classes.Sub}>{state.isOpen ? "Кот Вячеслав Федоровичь": null}</div>
-                    </div>
+
+                    <div className={classes.Filler}>{state.isOpen ? "Ответ     ": null}</div>
+                    <div className={classes.answ}>{state.isOpen ? answer : null}</div>
+                    <div className={classes.Sub}>{state.isOpen ? "Кот Вячеслав Федоровичь": null}</div>
                 </div>
                 <button className={buttonCls.join(" ")} onClick={openQuestion}>
                     {!state.isOpen ? "Читать дальше" : "X"}
