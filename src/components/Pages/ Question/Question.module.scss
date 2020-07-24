@@ -58,11 +58,11 @@
     border-radius: 30px;
     width: calc(100% - 20px);
     margin-bottom: 20px;
-    background: linear-gradient(#D183C9, #c859d1);
-    box-shadow: 0 4px 10px #c859d1;
+    background: linear-gradient(#EE8E73, #DB87AC);
+    box-shadow: 0 4px 10px #DB87AC;
     margin-left: 10px;
     transition-delay: 0.01s;
-    transition: transform .5s ease-in-out,  border-radius .5s ease-in-out,  width .5s ease-in-out, height .5s ease-in-out, margin .5s ease-in-out;
+    transition: transform .5s ease-in-out,  border-radius .5s ease-in-out,  width .5s ease-in-out, height .5s ease-in-out, margin .5s ease-in-out, background .5s ease-in-out;
 
     .Title {
       transition-duration: 0.2s;
@@ -94,7 +94,7 @@
       }
 
       .Answer{
-        background: #600047;
+        //background: #600047;
         border-radius: 30px 30px 0px 0px;
         flex-grow: 3;
       }

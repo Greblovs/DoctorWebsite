@@ -11,7 +11,7 @@
 .PostWrap.sliding{
 
   .Post{
-    background: linear-gradient($accent1, $accent1);
+    background: linear-gradient($accent1light, $accent1);
     box-shadow: 0 4px 10px $accent1;
 
     .Button{
@@ -247,8 +247,8 @@
   }
 
   .Tab.fifthColor{
-    box-shadow: 0 0px 5px $accent1;
-    background: $accent1;
+    box-shadow: 0 0px 5px #0009;
+    background: #ED8F58;
   }
 
   .Tab.top{
@@ -269,20 +269,20 @@
 }
 
 .Tab.firstColor{
-  box-shadow: 0 0px 5px #169873;
-  background: #169873;
+  box-shadow: 0 0px 5px #0009;
+  background: #C38262;
 }
 .Tab.secondColor{
-  box-shadow: 0 0px 5px #664E4C;
-  background: #664E4C;
+  box-shadow: 0 0px 5px #0009;
+  background: #CD8560;
 }
 .Tab.thirdColor{
-  box-shadow: 0 0px 5px #6B9AC4;
-  background: #6B9AC4;
+  box-shadow: 0 0px 5px #0009;
+  background: #D8885D;
 }
 .Tab.fourthColor{
-  box-shadow: 0 0px 5px $accent2;
-  background: $accent2;
+  box-shadow: 0 0px 5px #0009;
+  background: #E28B5B;
 }
 
 .Post.notSimple{
