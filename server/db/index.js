@@ -1,12 +1,19 @@
-const mongoose = require('mongoose');
-const {mongoUri} = require('../config/app')
+const {mysqlpass} = require('../config/app')
+const Sequelize = require("sequelize");
+const sequelize = new Sequelize("EntSiteDatabase", "root", mysqlpass, {
+    host: "localhost",
+    dialect: "mysql",
+    operatorsAliases: false,
 
-mongoose
-    .connect(mongoUri, { useNewUrlParser: true })
-    .catch(e => {
-        console.error('Connection error', e.message)
-    })
+});
 
-const db = mongoose.connection
+const db = {};
 
-module.exports = db
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+
+db.questions = require('../models/question-model')(sequelize, Sequelize);
+db.posts = require('../models/post-model')(sequelize, Sequelize);
+db.contacts = require('../models/contact-model')(sequelize, Sequelize);
+module.exports = db;
+
