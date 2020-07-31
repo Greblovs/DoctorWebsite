@@ -35,3 +35,16 @@
   width: 250px;
   height: 40px;
 }
+.deleteButton{
+  width: 100px;
+  background-color: red;
+  color:black;
+  border: 1px solid black;
+  height: 40px;
+  line-height: 40px;
+  box-sizing: content-box;
+  border-radius: 2px;
+  position: absolute;
+
+  margin-left: 20px;
+}
