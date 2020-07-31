@@ -1,23 +1,23 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
 
-const Question = new Schema(
-    {
-        title: { type: String,required: true},
-        text: { type: String, required: true },
-        age :{
-            type: Number
-            },
-        name :{
-            type : String
+module.exports = (sequelize, Sequelize) => {
+    const {DataTypes} = require('sequelize')
+    const Question = sequelize.define("question", {
+        title: {
+            type: DataTypes.STRING
         },
-        answer:{
-            type: String
+        text: {
+            type: DataTypes.TEXT
+        },
+        age: {
+            type: DataTypes.INTEGER
+        },
+        name: {
+            type: Sequelize.STRING
+        },
+        answer: {
+            type: DataTypes.TEXT
         }
+    });
 
-
-    },
-    { timestamps: true },
-)
-
-module.exports = mongoose.model('questions', Question)
+    return Question;
+};

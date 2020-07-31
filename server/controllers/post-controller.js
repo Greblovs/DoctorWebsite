@@ -1,120 +1,123 @@
-const Post = require('../models/post-model')
+
+const db = require("../db/index");
+const Post = db.posts;
+const Op = db.Sequelize.Op;
+
 
 const createPost = (req, res) => {
-    const body = req.body;
-    if (!body) {
-        return res.status(400).json({
+
+    if (!req.body) {
+        res.status(400).json({
             success: false,
             error: 'You must provide a Post',
-        })
+        });
+        return;
     }
 
-    var post = new Post(body)
+    const post = {
+        title: req.body.title,
+        text: req.body.text,
+        disease: req.body.disease,
+        classification: req.body.classification,
+        practice: req.body.practice,
+        recommendation: req.body.recommendation,
+        public: req.body.public,
 
-    if (!post) {
-        return res.status(400).json({ success: false, error: err })
-    }
+    };
 
-    post
-        .save()
+    Post.create(post)
         .then(() => {
             return res.status(201).json({
                 success: true,
-                id: post._id,
+                id: post.id,
                 message: 'Post created!',
             })
         })
-        .catch(error => {
+        .catch(err => {
             return res.status(400).json({
-                error,
-                message: 'Post not created!',
-            })
-        })
-}
-
-const updatePost = async (req, res) => {
-    const body = req.body
-
-    if (!body) {
+                err,
+                message: 'Post not created!'});
+        });
+};
+const updatePost = (req, res) => {
+    if (!req.body) {
         return res.status(400).json({
             success: false,
             error: 'You must provide a body to update',
         })
     }
+    const id = req.params.id;
 
-    Post.findOne({ _id: req.params.id }, (err, Post) => {
-        if (err) {
-            return res.status(404).json({
-                err,
-                message: 'Post not found!',
-            })
-        }
-        Post.title = body.title
-        Post.text = body.text
-        Post.disease = body.disease
-        Post.classification = body.classification
-        Post.practice = body.practice
-        Post.important = body.important
-        Post.recommendation = body.recommendation
-        Post.public = body.public
-        Post
-            .save()
-            .then(() => {
+    Post.update(req.body, {
+        where: { id: id }
+    })
+        .then(num => {
+            if(num==1){
                 return res.status(200).json({
                     success: true,
-                    id: Post._id,
+                    id: Post.id,
                     message: 'Post updated!',
-                })
-            })
-            .catch(error => {
+                })}
+            else {
                 return res.status(404).json({
-                    error,
-                    message: 'Post not updated!',
+                    message: 'Post not found!',
                 })
+            }
+        })
+        .catch(err => {
+            return res.status(404).json({
+                err,
+                message: 'Post not updated!',
             })
+        });
+};
+
+const deletePost = (req, res) => {
+    const id = req.params.id;
+
+    Post.destroy({
+        where: { id: id }
     })
-}
-
-const deletePost = async (req, res) => {
-    await Post.findOneAndDelete({ _id: req.params.id }, (err, Post) => {
-        if (err) {
+        .then(num => {
+            if (num == 1) {
+                return res.status(200).json({ success: true, message: 'Post deleted'});
+            } else {
+                return res.status(404).json({ success: false, error: `Post not found` });
+            }
+        })
+        .catch(err => {
             return res.status(400).json({ success: false, error: err })
-        }
+        });
+};
 
-        if (!Post) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Post not found` })
-        }
+const getPostById = (req, res) => {
+    const id = req.params.id;
 
-        return res.status(200).json({ success: true, data: Post })
-    }).catch(err => console.log(err))
-}
-
-const getPostById = async (req, res) => {
-    await Post.findOne({ _id: req.params.id }, (err, Post) => {
-        if (err) {
+    Post.findByPk(id)
+        .then(data => {
+            if(data==null){
+                return res.status(400).json({success: false, message: "no post found"})
+            }
+            return res.status(200).json({ success: true, data: data })
+        })
+        .catch(err => {
             return res.status(400).json({ success: false, error: err })
-        }
+        });
 
-        return res.status(200).json({ success: true, data: Post })
-    }).catch(err => console.log(err))
-}
+};
 
-const getPosts = async (req, res) => {
-    await Post.find({}, (err, Posts) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
-        }
-        if (!Posts.length) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Post not found` })
-        }
-        return res.status(200).json({ success: true, data: Posts })
-    }).catch(err => console.log(err))
-}
+const getPosts =  (req, res) => {
 
+    Post.findAll()
+        .then(data => {
+            return res.status(200).json({ success: true, data: data})
+        })
+        .catch(err => {
+            return res.status(400).json({ success: false, error: err });
+        });
+};
+
+//
 module.exports = {
     createPost,
     updatePost,
