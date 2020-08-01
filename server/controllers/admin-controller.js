@@ -2,29 +2,62 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {jwtSecret} = require('../config/app');
-const Admin = require('../models/admin-model');
+
+const db = require("../db/index");
+const Admin = db.admins;
+const Op = db.Sequelize.Op;
 
 
+const createAdmin = (req, res) => {
 
-const getAdmins = async (req, res) => {
-    await Admin.find({}, (err, Admins) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
-        }
-        if (!Admins.length) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Admin not found` })
-        }
-        return res.status(200).json({ success: true, data: Admins })
-    }).catch(err => console.log(err))
-}
+    if (!req.body) {
+        res.status(400).json({
+            success: false,
+            error: 'You must provide an Admin',
+        });
+        return;
+    }
+
+    const admin = {
+        email: req.body.email,
+        password : bcrypt.hashSync(req.body.password,10)
+
+    };
+
+    Admin.create(admin)
+        .then(() => {
+            return res.status(201).json({
+                success: true,
+                message: 'Admin created!',
+            })
+        })
+        .catch(err => {
+            return res.status(400).json({
+                err,
+                message: 'Admin not created!'});
+        });
+};
+const getAdmins =  (req, res) => {
+
+    Admin.findAll()
+        .then(data => {
+            return res.status(200).json({ success: true, data: data})
+        })
+        .catch(err => {
+            return res.status(400).json({ success: false, error: err });
+        });
+};
+
+
 
 const signIn = (req,res)=>{
-    const email = req.body.email;
+
     const password = req.body.password;
-    Admin.findOne({email})
-        .exec()
+    Admin.findOne({
+        where:{
+            email : req.body.email
+        }
+    })
         .then((admin)=>
         {
             if(!admin){
@@ -33,8 +66,7 @@ const signIn = (req,res)=>{
             else{
             const isValid = bcrypt.compareSync(password,admin.password);
             if(isValid){
-
-                const token = jwt.sign({_id : admin._id.toString()},jwtSecret);
+                const token = jwt.sign({id : admin.id.toString(),email:admin.email},jwtSecret);
                  return res.status(201).json({
                     success: true,
                     token: token.toString()});
@@ -48,49 +80,25 @@ const signIn = (req,res)=>{
           res.status(500).json({message:err.message}))
 };
 const checkToken = (req, res) => {
-    Admin.findById(req.userId, { password: 0 }, function (err, user) {
-        if (err) return res.status(500).send("There was a problem finding the user.");
-        if (!user) return res.status(404).send("No user found.");
+    Admin.findOne({
+        where :{
+            id: req.userId,
+            email: req.userEmail
 
-        res.status(200).send(user);
-    });
-
-
-
-}
-
-const createAdmin = (req, res) => {
-    const body = req.body;
-    body.password = bcrypt.hashSync(req.body.password,10);
-    if (!body) {
-        return res.status(400).json({
-            success: false,
-            error: 'You must provide an Admin',
+        }})
+        .then((user)=>{
+            //user.password = null;
+            if (!user) return res.status(404).send("No user found.");
+            return res.status(200).json({
+                id: user.id,
+                email:user.email
+            });
         })
-    }
+        .catch (err=>
+        res.status(500).send("There was a problem finding the user."))
 
-    var admin = new Admin(body)
+    };
 
-    if (!admin) {
-        return res.status(400).json({ success: false, error: err })
-    }
-
-    admin
-        .save()
-        .then(() => {
-            return res.status(201).json({
-                success: true,
-                id: admin._id,
-                message: 'Admin created!',
-            })
-        })
-        .catch(error => {
-            return res.status(400).json({
-                error,
-                message: 'Admin not created!',
-            })
-        })
-}
 
 module.exports = {
     signIn,
