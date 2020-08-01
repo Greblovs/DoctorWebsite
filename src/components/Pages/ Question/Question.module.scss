@@ -84,6 +84,7 @@
       height: calc(100% - 150px);
       font-size: 18px;
       transition: padding .5s ease-in-out;
+      overflow: hidden;
 
       .quest{
         color: $background;
@@ -122,17 +123,21 @@
       overflow: hidden;
     }
 
+    //.Button.plus{
+    //  position: absolute;
+    //  top: calc(100% - 90px);
+    //  margin-top: calc(-100vh + 110px);
+    //  margin-top: calc(var(--vh, 1vh) * -100 + 110px);
+    //  font-size: 50px;
+    //  background: transparent;
+    //  color: white;
+    //  width: 50px;
+    //  z-index: 99;
+    //  height: 50px;
+    //}
+
     .Button.plus{
-      position: absolute;
-      top: calc(100% - 90px);
-      margin-top: calc(-100vh + 110px);
-      margin-top: calc(var(--vh, 1vh) * -100 + 110px);
-      font-size: 50px;
-      background: transparent;
-      color: white;
-      width: 50px;
-      z-index: 99;
-      height: 50px;
+      margin-top: 15px;
     }
 
     .Button:active {
@@ -167,14 +172,14 @@
   z-index: 1005;
 
   .Text{
-    height: calc(100% - 80px);
+    height: calc(100% - 150px);
     overflow: hidden;
   }
 }
 
 .Question.fullyOpen {
   .Text{
-    overflow: visible !important;
+    overflow: auto !important;
   }
 
   //position: fixed;
