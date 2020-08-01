@@ -29,8 +29,6 @@ const Question = (props) =>{
             <form>
                 <textarea ref={inpRef}   value={state.text} id = "text" className={classes.Answer} onChange={input} />
                 <input  value={"Ответить"} className={classes.Button} type = {"submit"}  />
-            </form>
-            <form>
                 <input value = {"удалить"} type={"submit"} className={classes.deleteButton}/>
             </form>
         </div>

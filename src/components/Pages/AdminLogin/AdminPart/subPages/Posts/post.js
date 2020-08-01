@@ -101,6 +101,7 @@ const Posts = (props) =>{
                 <p className={classes.titleWriting}>Рекомендации</p>
                 <textarea className={classes.textArea}  ref={recomendatiosRef}  value={state.recomendations} id = "text"  onChange={recomendationChange} />
                 <input className={classes.Button}  value={"Изменить"} className={classes.Button} type = {"submit"}  />
+                <input value = {"удалить"} type={"submit"} className={classes.deleteButton}/>
             </form>
         </div>
         )

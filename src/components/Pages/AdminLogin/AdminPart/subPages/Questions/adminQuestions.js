@@ -55,7 +55,7 @@ const AdminQuestions = () =>{
             }));
     }, []);
 
-  const  questionParse =  state.questions.map((element, index)=>{
+  const  questionParse =  state.questions.slice(0).reverse().map((element, index)=>{
       return(
           <>
             <Question title = {element.title} name = {element.name} text = {element.text} answer = {element.answer} age ={element.age}/>
