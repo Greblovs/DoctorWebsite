@@ -3,7 +3,9 @@ const express = require('express')
 const QuestionCtrl = require('../controllers/question-controller')
 const PostCtrl = require('../controllers/post-controller')
 const AdminCtrl = require('../controllers/admin-controller')
-const  ContactCtrl = require('../controllers/contact-controller')
+const ContactCtrl = require('../controllers/contact-controller')
+const PostSliderCtrl = require('../controllers/postSlider-controller')
+
 const AuthMiddleware = require('../middleware/auth')
 const router = express.Router()
 
@@ -18,6 +20,12 @@ router.put('/post/:id', PostCtrl.updatePost)
 router.delete('/post/:id', PostCtrl.deletePost)
 router.get('/post/:id', PostCtrl.getPostById)
 router.get('/posts', PostCtrl.getPosts)
+
+router.post('/postSlider', PostSliderCtrl.createPost)
+router.put('/postSlider/:id', PostSliderCtrl.updatePost)
+router.delete('/postSlider/:id', PostSliderCtrl.deletePost)
+router.get('/postSlider/:id', PostSliderCtrl.getPostById)
+router.get('/postsSlider', PostSliderCtrl.getPosts)
 
 router.post('/contact', ContactCtrl.createContact)
 router.put('/contact/:id', ContactCtrl.updateContact)
