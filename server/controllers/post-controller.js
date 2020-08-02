@@ -20,8 +20,9 @@ const createPost = (req, res) => {
         disease: req.body.disease,
         classification: req.body.classification,
         practice: req.body.practice,
-        recommendation: req.body.recommendation,
-        public: req.body.public,
+        important: req.body.important,
+        recommendation: req.body.recommendation
+
 
     };
 

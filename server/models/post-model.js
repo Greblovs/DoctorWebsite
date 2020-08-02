@@ -37,6 +37,9 @@ module.exports = (sequelize, Sequelize) => {
                 practice: {
                         type: DataTypes.TEXT
                 },
+                important: {
+                        type: DataTypes.TEXT
+                },
                 recommendation: {
                         type: DataTypes.TEXT
                 },

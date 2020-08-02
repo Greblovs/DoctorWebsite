@@ -5,8 +5,7 @@ import { useHistory } from "react-router-dom";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import AdminPart, {AdminPage} from "./AdminPart/AdminPart"
 
-
-const API = 'http://localhost:3001/api';
+const API = 'http://localhost:3002/api';
 const DEFAULT_QUERY = '/signin';
 
 // function login() {

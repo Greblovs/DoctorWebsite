@@ -3,7 +3,7 @@ import {withRouter} from "react-router-dom";
 import axios from 'axios';
 import AdminLogin from "./components/Pages/AdminLogin/AdminLogin";
 
-const API = 'http://localhost:3001/api';
+const API = 'http://localhost:3002/api';
 const DEFAULT_QUERY = '/auth';
 
 class AuthenticatedComponent extends Component{
