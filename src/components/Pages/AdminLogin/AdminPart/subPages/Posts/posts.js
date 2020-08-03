@@ -4,9 +4,10 @@ import Post from "./post"
 
 
 
-const posts = () =>{
+const Posts = () =>{
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [state, setState] = useState({
+        postEdit : 0,
         searchValue: "",
         showedRows: 1,
         posts  :[
@@ -24,6 +25,27 @@ const posts = () =>{
         ]
     })
 
+
+    const AddForm = useCallback(()=>{
+
+
+        setState((prev) => {
+            return {
+                ...prev,
+                postEdit: 1
+            }
+        })
+
+    },[])
+
+    let postEditElement  = null;
+    if (state.postEdit ===1){
+        postEditElement =   <>
+                                <p className={classes.warning}>Пожалуйста, закончите форматирование этой статью и нажмите кнопку изменить перед добавлением новой</p>
+                                <Post key={""} title = {""}  text={""} illnes={""} classif={""} practicy ={""} important = {""} recomendations = {""}/>
+                            </>
+    }
+
     const postsArray = state.posts.map((element, index)=>{
         return(
             <>
@@ -33,13 +55,12 @@ const posts = () =>{
     })
     return(
         <>
-            <form>
-                <input className={classes.addButton}  value={"Добавить Статью"}  type = {"submit"}  />
-            </form>
+            <div onClick={AddForm} className={classes.addButton}>Добавить статью</div>
+            {postEditElement}
             {postsArray}
         </>
     )
 
 }
 
-export default posts;
+export default Posts;
