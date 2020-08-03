@@ -92,8 +92,8 @@ const Question = ({shortTitle, text, answer, isQuestion, name, age}) => {
     const questionCls = [classes.Question];
     const buttonCls = [classes.Button];
     if (state.isOpen) {
-        questionCls.push(classes.open)
         buttonCls.push(classes.plus);
+        questionCls.push(classes.open);
     }
     if (state.fullyOpen) {
         questionCls.push(classes.fullyOpen)
@@ -131,7 +131,7 @@ const Question = ({shortTitle, text, answer, isQuestion, name, age}) => {
                     <div className={classes.Sub}>{state.isOpen ? "Кот Вячеслав Федоровичь": null}</div>
                 </div>
                 <button className={buttonCls.join(" ")} onClick={openQuestion}>
-                    {!state.isOpen ? "Читать дальше" : "X"}
+                    {!state.isOpen ? "Читать дальше" : "Закрыть"}
                 </button>
             </div>
         </div>

@@ -4,13 +4,11 @@ import axios from 'axios';
 import Post from "../Post/Post";
 import Question from "../ Question/Question";
 
-const API = 'http://localhost:3001/api';
+const API = 'http://localhost:3002/api';
 const DEFAULT_QUERY = '/questions';
 
 
 const Questions = () => {
-
-
 
 
     const [state, setState] = useState({
@@ -20,12 +18,13 @@ const Questions = () => {
         isLoading: false,
         error: null,
     })
+    if(!state.isLoading){
          axios.get(API + DEFAULT_QUERY)
              .then(result  => setState((prev)=>{
                  return {
                      ...prev,
                      questions: result.data.data,
-                     isLoading: false
+                     isLoading: true
                  }
              }))
             .catch(error => setState((prev)=>{
@@ -34,7 +33,7 @@ const Questions = () => {
                      error,
                      isLoading: false
                  }
-             }));
+             }));}
 
     useEffect(() => {
 
@@ -45,21 +44,6 @@ const Questions = () => {
             }
         });
 
-        axios.get(API + DEFAULT_QUERY)
-            .then(result  => setState((prev)=>{
-                return {
-                    ...prev,
-                    questions: result.data.data,
-                    isLoading: false
-                }
-            }))
-            .catch(error => setState((prev)=>{
-                return {
-                    ...prev,
-                    error,
-                    isLoading: false
-                }
-            }));
     }, []);
 
     const row = 10;

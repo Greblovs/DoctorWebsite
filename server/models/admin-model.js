@@ -1,13 +1,16 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
 
+module.exports = (sequelize, Sequelize) => {
+    const {DataTypes} = require('sequelize')
+    const Admin = sequelize.define("admin", {
+        email: {
+            type: DataTypes.STRING
 
-const Admin = new Schema(
-    {
-        email: { type: String,required: true},
-        password: { type: String, required: true }
+        },
+        password: {
+            type: DataTypes.STRING
+        }
 
-    },
-    { timestamps: true },
-)
-module.exports = mongoose.model('admins', Admin)
+    });
+
+    return Admin;
+};

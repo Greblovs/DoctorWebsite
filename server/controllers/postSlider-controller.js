@@ -1,6 +1,5 @@
-
 const db = require("../db/index");
-const Post = db.posts;
+const PostSlider = db.postsliders;
 const Op = db.Sequelize.Op;
 
 
@@ -17,16 +16,12 @@ const createPost = (req, res) => {
     const post = {
         title: req.body.title,
         text: req.body.text,
-        disease: req.body.disease,
-        classification: req.body.classification,
-        practice: req.body.practice,
-        important: req.body.important,
-        recommendation: req.body.recommendation
+        alltext: req.body.alltext
 
 
     };
 
-    Post.create(post)
+    PostSlider.create(post)
         .then(() => {
             return res.status(201).json({
                 success: true,
@@ -49,14 +44,13 @@ const updatePost = (req, res) => {
     }
     const id = req.params.id;
 
-    Post.update(req.body, {
+    PostSlider.update(req.body, {
         where: { id: id }
     })
         .then(num => {
             if(num==1){
                 return res.status(200).json({
                     success: true,
-                    id: Post.id,
                     message: 'Post updated!',
                 })}
             else {
@@ -76,7 +70,7 @@ const updatePost = (req, res) => {
 const deletePost = (req, res) => {
     const id = req.params.id;
 
-    Post.destroy({
+    PostSlider.destroy({
         where: { id: id }
     })
         .then(num => {
@@ -94,7 +88,7 @@ const deletePost = (req, res) => {
 const getPostById = (req, res) => {
     const id = req.params.id;
 
-    Post.findByPk(id)
+    PostSlider.findByPk(id)
         .then(data => {
             if(data==null){
                 return res.status(400).json({success: false, message: "no post found"})
@@ -109,7 +103,7 @@ const getPostById = (req, res) => {
 
 const getPosts =  (req, res) => {
 
-    Post.findAll()
+    PostSlider.findAll()
         .then(data => {
             return res.status(200).json({ success: true, data: data})
         })

@@ -1,7 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import classes from "./Botter.module.scss";
-import 'font-awesome/css/font-awesome.min.css';
-import {NavLink, useLocation} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 
 const Botter = ((props) => {
@@ -9,68 +8,67 @@ const Botter = ((props) => {
         contacts: false,
         address: false,
         nav: false,
-        links : [
+        links: [
             {to: "/", label: "Главная", exact: true,},
             {to: "/Questions", label: "Вопросы", exact: false},
             {to: "/Posts", label: "Статьи", exact: false},
         ],
     });
-    let contacts =  [classes.Contacts];
-    if (state.contacts === true){
+    let contacts = [classes.Contacts];
+    if (state.contacts === true) {
         contacts = [classes.ContactsOpen]
     }
-    let address =  [classes.Adress]
-    if (state.address === true){
+    let address = [classes.Adress]
+    if (state.address === true) {
         address = [classes.AdressOpen]
     }
-    let nav =  [classes.Nav]
-    if (state.nav === true){
+    let nav = [classes.Nav]
+    if (state.nav === true) {
         nav = [classes.NavOpen]
     }
-    const openContacts = useCallback(()=> {
+    const openContacts = useCallback(() => {
         setState(prev => {
             return {
                 ...prev,
                 contacts: !prev.contacts
             }
         })
-    },[])
-    const openAdress = useCallback(()=> {
+    }, [])
+    const openAdress = useCallback(() => {
         setState(prev => {
             return {
                 ...prev,
                 address: !prev.address
             }
         })
-    },[])
-    const openNav = useCallback(()=> {
+    }, [])
+    const openNav = useCallback(() => {
         setState(prev => {
             return {
                 ...prev,
                 nav: !prev.nav
             }
         })
-    },[])
-
+    }, [])
 
 
     return (
-        window.innerWidth<1400?
-            <div style={{marginTop:props.top, marginLeft: props.left}} className={classes.Botter}>
+        window.innerWidth < 1400 ?
+            <div style={{marginTop: props.top, marginLeft: props.left}} className={classes.Botter}>
                 <div className={classes.Wrapper}>
                     <div onClick={openContacts} className={classes.Button}>Контакты
-                        <i className="fa fa-angle-right fa-2x" aria-hidden="true"/>
+                        <i className={state.contacts ? classes.open : null}/>
                     </div>
                     <div className={contacts.join(" ")}>
                         <p className={classes.name}>Кот Вячеслав Федорович</p>
-                        <p className={classes.info}>(067) 5065206  (8.00 — 20.00)</p>
+                        <p className={classes.info}>(067) 5065206 (8.00 — 20.00)</p>
                         <p className={classes.info}>example@example.com</p>
                         <p className={classes.info}>@theBestDoctor</p>
                         <p className={classes.info}>Задайте Вопрос</p>
 
                     </div>
                     <div onClick={openAdress} className={classes.Button}>Адресс
-                        <i className="fa fa-angle-right fa-2x" aria-hidden="true"/></div>
+                        <i className={state.address ? classes.open : null}/></div>
                     <div className={address.join(" ")}>
                         <p className={classes.info}>клиника Медиком на Печерске</p>
                         <p className={classes.info}>ул. Василия Тютюнника (Анри Барбюса) 37/1</p>
@@ -80,46 +78,69 @@ const Botter = ((props) => {
 
                     </div>
                     <div onClick={openNav} className={classes.Button}>Навигация сайта
-                        <i className="fa fa-angle-right fa-2x" aria-hidden="true"/></div>
+                        <i className={state.nav ? classes.open : null}/></div>
                     <div className={nav.join(" ")}>
-                        <NavLink to={state.links[0].to} exact={state.links[0].exact}> <p className={classes.status}>Главная</p></NavLink>
-                        <NavLink to={state.links[2].to} exact={state.links[2].exact}><p className={classes.status}>Статьи</p></NavLink>
-                        <NavLink to={state.links[1].to} exact={state.links[1].exact}><p className={classes.status}>Вопросы</p></NavLink>
+                        <NavLink to={state.links[0].to} exact={state.links[0].exact}><p
+                            className={classes.status}>Главная</p></NavLink>
+                        <NavLink to={state.links[2].to} exact={state.links[2].exact}><p
+                            className={classes.status}>Статьи</p></NavLink>
+                        <NavLink to={state.links[1].to} exact={state.links[1].exact}><p
+                            className={classes.status}>Вопросы</p></NavLink>
 
                     </div>
                 </div>
-                <p style={{fontWeight:"600", marginLeft: "20px", marginTop: "20px", paddingBottom: "30px"}}  className={classes.info}>@ALL RIGHTS RESERVED | 2020</p>
+                <p style={{fontWeight: "600", marginLeft: "20px", marginTop: "20px", paddingBottom: "30px"}}
+                   className={classes.info}>@ALL RIGHTS RESERVED | 2020</p>
             </div>
             :
             <div className={classes.Botter}>
                 <div style={{width: "1400px", margin: "0 auto"}}>
-                    <div   className={classes.Column}>
-                        <div style={{width:"300px", height: "240px", textAlign: "left", marginLeft: "25px"}}>
+                    <div className={classes.Column}>
+                        <div style={{width: "300px", height: "240px", textAlign: "left", marginLeft: "25px"}}>
                             <p className={classes.title}>Контакты</p>
-                            <div style={{width: "100%", height: "4px", backgroundColor: "white", marginTop: "10px"}}></div>
-                            <p style={{paddingTop: "10px"}} className={classes.text}>(067) 5065206  (8.00 — 20.00)</p>
+                            <div style={{
+                                width: "100%",
+                                height: "4px",
+                                backgroundColor: "white",
+                                marginTop: "10px"
+                            }}></div>
+                            <p style={{paddingTop: "10px"}} className={classes.text}>(067) 5065206 (8.00 — 20.00)</p>
                             <p className={classes.text}>example@example.com</p>
                             <p className={classes.text}>@theBestDoctor</p>
                             <p className={classes.text}>Задайте Вопрос</p>
                         </div>
                     </div>
                     <div className={classes.Column}>
-                        <div style={{width:"400px", height: "240px", textAlign: "left", marginLeft: "25px"}}>
+                        <div style={{width: "400px", height: "240px", textAlign: "left", marginLeft: "25px"}}>
                             <p className={classes.title}>Где нас найти?</p>
-                            <div style={{width: "100%", height: "4px", backgroundColor: "white", marginTop: "10px"}}></div>
+                            <div style={{
+                                width: "100%",
+                                height: "4px",
+                                backgroundColor: "white",
+                                marginTop: "10px"
+                            }}></div>
                             <p style={{paddingTop: "10px"}} className={classes.text}>клиника Медиком на Печерске</p>
                             <p className={classes.text}>ул. Василия Тютюнника (Анри Барбюса) 37/1</p>
                             <p style={{paddingTop: "20px"}} className={classes.text}>клиника Медиком на Оболони</p>
                             <p className={classes.text}>ул. Героев Сталинграда 6-Д</p>
                         </div>
                     </div>
-                    <div  className={classes.Column}>
-                        <div style={{width:"300px", height: "240px", textAlign: "left",  marginLeft: "125px"}}>
+                    <div className={classes.Column}>
+                        <div style={{width: "300px", height: "240px", textAlign: "left", marginLeft: "125px"}}>
                             <p className={classes.title}>Навигация сайта</p>
-                            <div style={{width: "100%", height: "4px", backgroundColor: "white", marginTop: "10px"}}></div>
-                            <NavLink to={state.links[0].to} exact={state.links[0].exact}><p style={{paddingTop: "10px"}} className={classes.text}>Главная</p></NavLink>
-                            <NavLink to={state.links[2].to} exact={state.links[2].exact}> <p className={classes.text}>Статьи</p></NavLink>
-                            <NavLink to={state.links[1].to} exact={state.links[1].exact}> <p className={classes.text}>Вопросы</p></NavLink>
+                            <div style={{
+                                width: "100%",
+                                height: "4px",
+                                backgroundColor: "white",
+                                marginTop: "10px"
+                            }}></div>
+                            <NavLink to={state.links[0].to} exact={state.links[0].exact}><p style={{paddingTop: "10px"}}
+                                                                                            className={classes.text}>Главная</p>
+                            </NavLink>
+                            <NavLink to={state.links[2].to} exact={state.links[2].exact}><p
+                                className={classes.text}>Статьи</p></NavLink>
+                            <NavLink to={state.links[1].to} exact={state.links[1].exact}><p
+                                className={classes.text}>Вопросы</p></NavLink>
                         </div>
                     </div>
                 </div>

@@ -1,63 +1,48 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from "./PopularPost.module.scss"
 import Heading from "../Heading/Heading";
 import Post from "../../Post/Post";
 import {NavLink} from "react-router-dom";
-
+import axios from "axios";
+const API = 'http://localhost:3002/api';
+const DEFAULT_QUERY = '/posts';
 const PopularPost = () => {
 
-    let posts = [
-        {
-            title: "Ангина",
-            // text: "Большинство пациентов безаплеляционно заявляют: 'Доктор у меня ангина'. Но так ли однозначна причина боли?",
-            text: "Большинство пациентов заявляют: 'Доктор у меня ангина'. Но так ли однозначна причина боли?",
-            paragraphs: [
-                {first: "sadf"},
-                {second: "dsfdsf"},
-                {third: "dsfdf"}
-            ]
-        },
-            {
-                title: "Ангина",
-                // text: "Большинство пациентов безаплеляционно заявляют: 'Доктор у меня ангина'. Но так ли однозначна причина боли?",
-                text: "Большинство пациентов заявляют: 'Доктор у меня ангина'. Но так ли однозначна причина боли?",
-                paragraphs: [
-                    {first: "sadf"},
-                    {second: "dsfdsf"},
-                    {third: "dsfdf"}
-                ]
-            },{
-            title: "Ангина",
-            // text: "Большинство пациентов безаплеляционно заявляют: 'Доктор у меня ангина'. Но так ли однозначна причина боли?",
-            text: "Большинство пациентов заявляют: 'Доктор у меня ангина'. Но так ли однозначна причина боли?",
-            paragraphs: [
-                {first: "sadf"},
-                {second: "dsfdsf"},
-                {third: "dsfdf"}
-            ]
-        },
-        {
-            title: "Ангина",
-            // text: "Большинство пациентов безаплеляционно заявляют: 'Доктор у меня ангина'. Но так ли однозначна причина боли?",
-            text: "Большинство пациентов заявляют: 'Доктор у меня ангина'. Но так ли однозначна причина боли?",
-            paragraphs: [
-                {first: "sadf"},
-                {second: "dsfdsf"},
-                {third: "dsfdf"}
-            ]
-        }];
+    const [state, setState] = useState({
+        searchValue: "",
+        showedRows: 1,
+        posts: [],
+        isLoading: false,
+        error: null,
+    })
+    if(!state.isLoading){
+        axios.get(API + DEFAULT_QUERY)
+            .then(result  => setState((prev)=>{
+                return {
+                    ...prev,
+                    posts: result.data.data,
+                    isLoading: true
+                }
+            }))
+            .catch(error => setState((prev)=>{
+                return {
+                    ...prev,
+                    error,
+                    isLoading: false
+                }
+            }));}
 
     if (window.innerWidth < 700){
-        posts = posts.slice(0,1)
+        state.posts = state.posts.slice(0,1)
     }else if (window.innerWidth < 1100){
-        posts = posts.slice(0,2)
+        state.posts = state.posts.slice(0,2)
     }else if (window.innerWidth < 1600){
-        posts = posts.slice(0,3)
+        state.posts = state.posts.slice(0,3)
     }
 
-        const rendPosts = posts.map((element, index) => {
+        const rendPosts = state.posts.map((element, index) => {
         return (
-            <Post index = {index} title={element.title} text={element.text} key={index} someAdditor={()=>{}} notSimple = {true}/>
+            <Post index = {index} title={element.title} text={element.text} key={index} someAdditor={()=>{}} notSimple = {true} illnes={element.disease} classif={element.classification} practicy ={element.practice} important = {element.important} recomendations = {element.recommendation}/>
         )
     });
 
