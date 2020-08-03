@@ -1,6 +1,6 @@
 module.exports = {
-    apiPort: 3002,
+    apiPort: 3001,
     mongoUri: 'mongodb://127.0.0.1:27017/EntSiteDatabase',
     jwtSecret: 'secKey',
-    mysqlpass:'RootSecPass1'
+    mysqlpass:'MakeMoreRobots'
 };
