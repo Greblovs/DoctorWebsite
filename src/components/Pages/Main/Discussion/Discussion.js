@@ -31,7 +31,8 @@ const Discussion = () => {
                     error,
                     isLoading: false
                 }
-            }));}
+            }));
+}
     if (window.innerWidth < 700){
         state.questions = state.questions.slice(0,1)
     }else if (window.innerWidth < 1100){
@@ -40,29 +41,32 @@ const Discussion = () => {
         state.questions = state.questions.slice(0,3)
     }
 
-    state.questions = state.questions.map((element, index) => {
-        let shortTitle = element.title.slice(0, 30);
-        if (element.title.length > 30) {
-            shortTitle = shortTitle + "...";
-        }
+    let parserdQuestions = null;
+    if (state.isLoading == true){
+        parserdQuestions = state.questions.map((element, index) => {
+            let shortTitle = element.title.slice(0, 30);
+            if (element.title.length > 30) {
+                shortTitle = shortTitle + "...";
+            }
 
-        return (
+            return (
 
                 < Question index = {index} key={index} shortTitle={shortTitle} text={element.text} answer={element.answer}/>
 
-        )
-    })
+            )
+        })
+    }
 
     return (
 
         <>
             <Heading text={"Популярные вопросы"}/>
-                <div className={classes.PostsWrapper}>
-                    {state.questions}
-                </div>
-                <NavLink to={"/Questions"} exact={false}>
-                    <button  className={classes.MoreButton}>Больше вопросов</button>
-                </NavLink>
+            <div className={classes.PostsWrapper}>
+                {parserdQuestions}
+            </div>
+            <NavLink to={"/Questions"} exact={false}>
+                <button  className={classes.MoreButton}>Больше вопросов</button>
+            </NavLink>
         </>
     )
 }
