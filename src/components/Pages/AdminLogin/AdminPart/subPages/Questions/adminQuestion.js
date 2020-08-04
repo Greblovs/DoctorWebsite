@@ -34,6 +34,16 @@ const Question = (props) =>{
                 console.log(error.response.data.error.errors);
 
             });}
+    function deleteQuestion(){
+        axios.delete(API + DEFAULT_QUERY+state.id.toString())
+            .then(function (response) {
+            console.log(response.data);
+            console.log(response.status);
+            console.log(response.statusText);
+        })
+            .catch((err=>
+            console.log(err.response.data.error.errors)))
+    }
 
     const input = useCallback(()=>{
         setState((prev)=>{
@@ -56,7 +66,7 @@ const Question = (props) =>{
             <form >
                 <textarea ref={inpRef}   value={state.text} id = "text" className={classes.Answer} onChange={input} />
                 <input  value={"Ответить"} onClick={addAnswer} className={classes.Button} type = {"submit"}  />
-                <input value = {"удалить"} type={"submit"} className={classes.deleteButton}/>
+                <input value = {"удалить"} onClick={deleteQuestion} type={"submit"} className={classes.deleteButton}/>
             </form>
         </div>
     )

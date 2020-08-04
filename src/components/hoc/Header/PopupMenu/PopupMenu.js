@@ -2,7 +2,9 @@ import React, {useCallback, useState} from 'react';
 import classes from "./PopupMenu.module.scss"
 import {NavLink} from "react-router-dom"
 import Botter from "../../Botter/Botter";
-
+import axios from "axios";
+const API = 'http://localhost:3002/api';
+const DEFAULT_QUERY = '/contacts';
 
 const PopupMenu = ({isOpen, handleClick}) => {
     const [state, setState] = useState({
@@ -12,9 +14,28 @@ const PopupMenu = ({isOpen, handleClick}) => {
             {to: "/Posts", label: "Статьи", exact: false},
         ],
         contacts:
-            {link: "link", name: "Контакты"}
+            {link: "link", name: "Контакты"},
+        contact:[],
+        isLoading: false
 
     });
+    // if(!state.isLoading){
+    //     axios.get(API + DEFAULT_QUERY)
+    //         .then(result  => setState((prev)=>{
+    //             return {
+    //                 ...prev,
+    //                 contact: result.data.data[0],
+    //                 isLoading: true
+    //             }
+    //         }))
+    //         .catch(error => setState((prev)=>{
+    //             return {
+    //                 ...prev,
+    //                 error,
+    //                 isLoading: false
+    //             }
+    //         }));
+    // }
     const popupMenuCls = [classes.PopupMenu];
 
     if (isOpen) {
@@ -37,7 +58,7 @@ const PopupMenu = ({isOpen, handleClick}) => {
                 <div style={{marginTop:BotterTop, marginLeft: "40px",zIndex: "1000"}} className={classes.Botter}>
                 <div className={classes.Wrapper}>
                     <p className={classes.name}>Контакты:</p>
-                    <p className={classes.info}>(067) 5065206  (8.00 — 20.00)</p>
+                    <p className={classes.info}>(067) 000000 (8.00 — 20.00)</p>
                     <p className={classes.info}>example@example.com</p>
                     <br/>
                     <p style={{fontWeight:"600"}} className={classes.info}>@ALL RIGHTS RESERVED | 2020</p>
