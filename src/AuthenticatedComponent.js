@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 import {withRouter} from "react-router-dom";
 import axios from 'axios';
 import AdminLogin from "./components/Pages/AdminLogin/AdminLogin";
@@ -9,8 +9,38 @@ const DEFAULT_QUERY = '/auth';
 class AuthenticatedComponent extends Component{
     state = {
         redirect: false,
+        isLoading:false
     }
 
+    login=()=>{
+        
+        axios.post(API + DEFAULT_QUERY, {
+            email: document.getElementById('login').value.trim(),
+            password: document.getElementById('password').value.trim(),
+
+
+        })
+            .then(function (response) {
+                console.log(response.data.token);
+                localStorage.setItem('cool-jwt', response.data.token);
+                this.setState(()=>{
+                        return {
+                            isLoading: true
+                        }}
+                )
+
+
+
+            })
+            .catch(function (error) {
+                console.log(error.response);
+                this.setState(()=>{
+                        return {
+                            isLoading: false
+                        }}
+                )
+
+            });}
 
     refresh = ()=> {
         this.setState(()=>{
@@ -30,6 +60,7 @@ class AuthenticatedComponent extends Component{
         }
     }
     componentDidMount(){
+        if(this.state.isLoading==true){
         const jwt = localStorage.getItem('cool-jwt');
         if(!jwt){
             console.log('no jwt')
@@ -45,12 +76,12 @@ class AuthenticatedComponent extends Component{
         {
             console.log(err.message);
             localStorage.removeItem('cool-jwt');
-        })}
+        })}}
     }
     render(){
         if(this.state.user == undefined){
             return(
-                <AdminLogin refresh = {this.refresh}  />
+                <AdminLogin login = {this.login} refresh = {this.refresh}  />
             )
         }else {
             return (
