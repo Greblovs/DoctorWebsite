@@ -2,7 +2,7 @@ import React, {Component, useCallback, useEffect, useRef, useState} from "react"
 import classes from "./adminQuestions.module.scss"
 import axios from 'axios';
 import Question from "./adminQuestion";
-const API = 'http://localhost:3001/api';
+const API = 'http://localhost:3002/api';
 const DEFAULT_QUERY = '/questions';
 
 
@@ -10,15 +10,16 @@ const AdminQuestions = () =>{
 
     const [state, setState] = useState({
         questions: [],
+        isLoading : false
     })
 
-
+    if(!state.isLoading){
     axios.get(API + DEFAULT_QUERY)
         .then(result  => setState((prev)=>{
             return {
                 ...prev,
                 questions: result.data.data,
-                isLoading: false
+                isLoading: true
             }
         }))
         .catch(error => setState((prev)=>{
@@ -28,6 +29,7 @@ const AdminQuestions = () =>{
                 isLoading: false
             }
         }));
+    }
 
     useEffect(() => {
 
@@ -38,27 +40,13 @@ const AdminQuestions = () =>{
             }
         });
 
-        axios.get(API + DEFAULT_QUERY)
-            .then(result  => setState((prev)=>{
-                return {
-                    ...prev,
-                    questions: result.data.data,
-                    isLoading: false
-                }
-            }))
-            .catch(error => setState((prev)=>{
-                return {
-                    ...prev,
-                    error,
-                    isLoading: false
-                }
-            }));
+
     }, []);
 
   const  questionParse =  state.questions.slice(0).reverse().map((element, index)=>{
       return(
           <>
-            <Question title = {element.title} name = {element.name} text = {element.text} answer = {element.answer} age ={element.age}/>
+            <Question id={element.id} title = {element.title} name = {element.name} text = {element.text} answer = {element.answer} age ={element.age}/>
           </>
       )
     });

@@ -6,10 +6,8 @@ import MainPage from "./components/Pages/Main/Main"
 import Posts from "./components/Pages/Posts/Posts"
 import Questions from "./components/Pages/Questions/Questions"
 import Layout from "./components/hoc/Layout/Layout";
-import AdminLogin from "./components/Pages/AdminLogin/AdminLogin"
-import AuthenticatedComponent from "./AuthenticatedComponent";
-import AdminPart from "./components/Pages/AdminLogin/AdminPart/AdminPart"
-import Slider from "./components/Pages/Main/SliderFullScreen/Slider";
+
+
 
 
 

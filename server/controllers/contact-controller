@@ -102,7 +102,7 @@ const getContactById = (req, res) => {
 
 const getContacts =  (req, res) => {
 
-    Contact.findAll()
+    Contact.findAll({limit:1})
         .then(data => {
             return res.status(200).json({ success: true, data: data})
         })

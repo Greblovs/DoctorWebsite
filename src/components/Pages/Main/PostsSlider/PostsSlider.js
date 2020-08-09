@@ -28,7 +28,7 @@ const PostsSlider = () => {
             .then(result  => setState((prev)=>{
                 return {
                     ...prev,
-                    posts: result.data.data,
+                    posts: result.data.data.slice(0,4),
                     isLoading: true
                 }
             }))

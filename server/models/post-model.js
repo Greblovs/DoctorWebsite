@@ -22,10 +22,8 @@ module.exports = (sequelize, Sequelize) => {
                 },
                 recommendation: {
                         type: DataTypes.TEXT
-                },
-                public:{
-                        type: DataTypes.BOOLEAN
                 }
+
         });
 
         return Post;

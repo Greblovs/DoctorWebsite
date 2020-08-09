@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from "./AdminLogin.module.scss";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -8,47 +8,51 @@ import AdminPart, {AdminPage} from "./AdminPart/AdminPart"
 const API = 'http://localhost:3002/api';
 const DEFAULT_QUERY = '/signin';
 
-// function login() {
-//
-//     axios.post(API + DEFAULT_QUERY, {
-//         email: document.getElementById('login').value.trim(),
-//         password: document.getElementById('password').value.trim()
-//
-//     })
-//         .then(function (response){
-//
-//             console.log(response.data.token);
-//             localStorage.setItem('cool-jwt',response.data.token);
-//            // props.refresh();
-//         }).catch(function (error) {
-//
-//         console.log(error.response);
-//
-//     });
-//
-// }
-function login() {
+const AdminLogin = (props) => {
 
-    axios.post(API + DEFAULT_QUERY, {
-        email: document.getElementById('login').value.trim(),
-        password: document.getElementById('password').value.trim()
+    const [state, setState] = useState({
+        isLoading:false
+    });
 
-    })
-        .then(function (response) {
-            console.log(response.data.token);
-            localStorage.setItem('cool-jwt', response.data.token);
+    function login() {
+
+        setState((prev=>{
+                return {
+                    ...prev,
+                    isLoading: true
+                }}
+        ))
+
+        axios.post(API + DEFAULT_QUERY, {
+            email: document.getElementById('login').value.trim(),
+            password: document.getElementById('password').value.trim(),
 
 
         })
-        .catch(function (error) {
+            .then(function (response) {
+                console.log(response.data.token);
+                localStorage.setItem('cool-jwt', response.data.token);
+                setState((prev=>{
+                    return {
+                        ...prev,
+                        isLoading: false
+                    }}
+                ))
 
-            console.log(error.response);
-
-        });
-}
-const AdminLogin = (props) => {
 
 
+            })
+            .catch(function (error) {
+                console.log(error.response);
+                setState((prev=>{
+                        return {
+                            ...prev,
+                            isLoading: false
+                        }}
+                ))
+
+            });}
+            if(state.isLoading==false){
     return (
         <>
             <form className={classes.form} onSubmit={login}>
@@ -57,11 +61,9 @@ const AdminLogin = (props) => {
                             <input id = "password" placeholder={"Пароль"} className={classes.Password} type={"password"} />
                             <input  value={"Войти"} className={classes.Button} type = {"submit"} />
             </form>
-
     =
-
         </>
-    )
+    )}
 }
 
 export default AdminLogin;
