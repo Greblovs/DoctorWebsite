@@ -50,14 +50,14 @@ const Posts = () =>{
     if (state.postEdit ===1){
         postEditElement =   <>
                                 <p className={classes.warning}>Пожалуйста, закончите форматирование этой статью и нажмите кнопку изменить перед добавлением новой</p>
-                                <Post key={""} title = {""}  text={""} illnes={""} classif={""} practicy ={""} important = {""} recomendations = {""}/>
+                                <Post edit = "false" key={""} title = {""}  text={""} illnes={""} classif={""} practicy ={""} important = {""} recomendations = {""}/>
                             </>
     }
 
     const postsArray = state.posts.map((element, index)=>{
         return(
             <>
-                <Post key={index} id = {element.id} title = {element.title}  text={element.text} illnes={element.disease} classif={element.classification} practicy ={element.practice} important = {element.important} recomendations = {element.recommendation} />
+                <Post edit ="true" key={index} id = {element.id} title = {element.title}  text={element.text} illnes={element.disease} classif={element.classification} practicy ={element.practice} important = {element.important} recomendations = {element.recommendation} />
             </>
         )
     })
