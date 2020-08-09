@@ -12,35 +12,6 @@ class AuthenticatedComponent extends Component{
         isLoading:false
     }
 
-    login=()=>{
-        
-        axios.post(API + DEFAULT_QUERY, {
-            email: document.getElementById('login').value.trim(),
-            password: document.getElementById('password').value.trim(),
-
-
-        })
-            .then(function (response) {
-                console.log(response.data.token);
-                localStorage.setItem('cool-jwt', response.data.token);
-                this.setState(()=>{
-                        return {
-                            isLoading: true
-                        }}
-                )
-
-
-
-            })
-            .catch(function (error) {
-                console.log(error.response);
-                this.setState(()=>{
-                        return {
-                            isLoading: false
-                        }}
-                )
-
-            });}
 
     refresh = ()=> {
         this.setState(()=>{
@@ -60,7 +31,7 @@ class AuthenticatedComponent extends Component{
         }
     }
     componentDidMount(){
-        if(this.state.isLoading==true){
+
         const jwt = localStorage.getItem('cool-jwt');
         if(!jwt){
             console.log('no jwt')
@@ -77,11 +48,11 @@ class AuthenticatedComponent extends Component{
             console.log(err.message);
             localStorage.removeItem('cool-jwt');
         })}}
-    }
+  //  }
     render(){
         if(this.state.user == undefined){
             return(
-                <AdminLogin login = {this.login} refresh = {this.refresh}  />
+                <AdminLogin refresh = {this.refresh}  />
             )
         }else {
             return (

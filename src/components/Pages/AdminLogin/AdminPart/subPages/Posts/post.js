@@ -15,59 +15,63 @@ const Posts = (props) =>{
         classif: props.classif,
         practicy: props.practicy,
         important: props.important,
-        recomendations: props.recomendations
+        recomendations: props.recomendations,
+        edit:props.edit
     })
     function editPost(){
+        if(state.edit=="false"){
+            axios.post(API + DEFAULT_QUERY, {
+                title: document.getElementById('title').value.trim(),
+                text: document.getElementById('text').value.trim(),
+                disease: document.getElementById('illness').value.trim(),
+                classification: document.getElementById('classif').value.trim(),
+                practice: document.getElementById('practice').value.trim(),
+                important: document.getElementById('important').value.trim(),
+                recommendation: document.getElementById('recommendation').value.trim()
 
-        axios.put(API + DEFAULT_QUERY+state.id.toString(), {
-            title: document.getElementById('title').value.trim(),
-            text: document.getElementById('text').value.trim(),
-            disease: document.getElementById('illness').value.trim(),
-            classification: document.getElementById('classif').value.trim(),
-            practice: document.getElementById('practice').value.trim(),
-            important: document.getElementById('important').value.trim(),
-            recommendation: document.getElementById('recommendation').value.trim()
+            })
+                .then(function (response) {
+                    console.log(response.data);
+                    console.log(response.status);
+                    console.log(response.statusText);
 
 
-        })
-            .then(function (response) {
-                console.log(response.data);
-                console.log(response.status);
-                console.log(response.statusText);
+                })
+                .catch(function (error) {
+
+                    console.log(error.response.data.error.errors);
+
+                });
+        }
+        else{
+            axios.put(API + DEFAULT_QUERY+state.id.toString(), {
+                title: document.getElementById('title').value.trim(),
+                text: document.getElementById('text').value.trim(),
+                disease: document.getElementById('illness').value.trim(),
+                classification: document.getElementById('classif').value.trim(),
+                practice: document.getElementById('practice').value.trim(),
+                important: document.getElementById('important').value.trim(),
+                recommendation: document.getElementById('recommendation').value.trim()
 
 
             })
-            .catch(function (error) {
-
-                console.log(error.response.data.error.errors);
-
-            });}
-
-    function addPost(){
-
-        axios.post(API + DEFAULT_QUERY, {
-            title: document.getElementById('title').value.trim(),
-            text: document.getElementById('text').value.trim(),
-            disease: document.getElementById('illness').value.trim(),
-            classification: document.getElementById('classif').value.trim(),
-            practice: document.getElementById('practice').value.trim(),
-            important: document.getElementById('important').value.trim(),
-            recommendation: document.getElementById('recommendation').value.trim()
-
-        })
-            .then(function (response) {
-                console.log(response.data);
-                console.log(response.status);
-                console.log(response.statusText);
+                .then(function (response) {
+                    console.log(response.data);
+                    console.log(response.status);
+                    console.log(response.statusText);
 
 
-            })
-            .catch(function (error) {
+                })
+                .catch(function (error) {
 
-                console.log(error.response.data.error.errors);
+                    console.log(error.response.data.error.errors);
 
-            });}
+                });
+        }
+       }
+
     function deletePost(){
+        if(state.edit!="false")
         axios.delete(API + DEFAULT_QUERY+state.id.toString())
             .then(function (response) {
                 console.log(response.data);
