@@ -40,25 +40,26 @@ const Discussion = () => {
         state.questions = state.questions.slice(0,3)
     }
 
-    state.questions = state.questions.map((element, index) => {
-        let shortTitle = element.title.slice(0, 30);
-        if (element.title.length > 30) {
-            shortTitle = shortTitle + "...";
-        }
+    let parserdQuestions = null;
+    if (state.isLoading == true){
+        parserdQuestions = state.questions.map((element, index) => {
+            let shortTitle = element.title.slice(0, 30);
+            if (element.title.length > 30) {
+                shortTitle = shortTitle + "...";
+            }
+            return (
+                    < Question index = {index} key={index} shortTitle={shortTitle} text={element.text} answer={element.answer}/>
 
-        return (
-
-                < Question index = {index} key={index} shortTitle={shortTitle} text={element.text} answer={element.answer}/>
-
-        )
-    })
+            )
+        })
+    }
 
     return (
 
         <>
             <Heading text={"Популярные вопросы"}/>
                 <div className={classes.PostsWrapper}>
-                    {state.questions}
+                    {parserdQuestions}
                 </div>
                 <NavLink to={"/Questions"} exact={false}>
                     <button  className={classes.MoreButton}>Больше вопросов</button>
