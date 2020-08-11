@@ -1,12 +1,58 @@
-//const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const {jwtSecret} = require('../config/app');
+const authHelper = require('../controllers/token-controller');
 
 const db = require("../db/index");
 const Admin = db.admins;
+const Token = db.tokens;
 const Op = db.Sequelize.Op;
 
+
+const updateTokens =(userId,userEmail)=>{
+    const accessToken = authHelper.generateAccessToken(userId,userEmail);
+    const refreshToken = authHelper.generateRefreshToken();
+
+    return authHelper.replaceDBRefreshToken(refreshToken.id,userId)
+        .then(()=>({
+            accessToken,
+            refreshToken: refreshToken.token
+        }));
+};
+const refreshTokens=(req,res)=>{
+    const {refreshToken }= req.body;
+    let payload;
+    try {
+    payload = jwt.verify(refreshToken,process.env.secret);
+    if (payload.type !== 'refresh'){
+        res.status(400).json({message:"Invalid token"});
+        return;
+    }
+
+    }catch (e){
+        if (e instanceof jwt.TokenExpiredError ){
+            res.status(400).json({message:"Token expired! "});
+            return;
+        }
+        else if(e instanceof jwt.JsonWebTokenError){
+            res.status(400).json({message:"Invalid token"});
+            return;
+        }
+
+    }
+    Token.findOne({
+        where:{
+            tokenId: payload.id
+        }
+    })
+        .then((token)=>{
+            if(token ===null){
+                throw new Error('InvalidToken');
+            }
+            return updateTokens(token.userId)
+        })
+        .then((tokens)=>res.json(tokens))
+        .catch(err=> res.status(400).json({message: err.message}))
+};
 
 const createAdmin = (req, res) => {
 
@@ -66,11 +112,15 @@ const signIn = (req,res)=>{
             else{
             const isValid = bcrypt.compareSync(password,admin.password);
             if(isValid){
-                const token = jwt.sign({id : admin.id.toString(),email:admin.email},jwtSecret);
-                 return res.status(201).json({
-                    success: true,
-                    token: token.toString()});
 
+                updateTokens(admin.id,admin.email).then((tokens)=> {
+                    return res.status(201).json({
+                        success: true,
+                        accessToken: tokens.accessToken,
+                        refreshToken: tokens.refreshToken
+
+                    });
+                })
             }
             else {
                 return res.status(401).json({message: 'Invalid password'});
@@ -80,6 +130,7 @@ const signIn = (req,res)=>{
           res.status(500).json({message:err.message}))
 };
 const checkToken = (req, res) => {
+
     Admin.findOne({
         where :{
             id: req.userId,
@@ -104,8 +155,8 @@ module.exports = {
     signIn,
     getAdmins,
     createAdmin,
-    checkToken
-
+    checkToken,
+    refreshTokens
 
 }
 
