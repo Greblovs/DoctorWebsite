@@ -21,13 +21,13 @@ const Posts = (props) =>{
     function editPost(){
         if(state.edit=="false"){
             axios.post(API + DEFAULT_QUERY, {
-                title: document.getElementById('title').value.trim(),
-                text: document.getElementById('text').value.trim(),
-                disease: document.getElementById('illness').value.trim(),
-                classification: document.getElementById('classif').value.trim(),
-                practice: document.getElementById('practice').value.trim(),
-                important: document.getElementById('important').value.trim(),
-                recommendation: document.getElementById('recommendation').value.trim()
+                title: titleRef.current.value,
+                text: textRef.current.value,
+                disease: illnesRef.current.value,
+                classification: clasifRef.current.value,
+                practice: practicyRef.current.value,
+                important: importantRef.current.value,
+                recommendation: recomendatiosRef.current.value
 
             })
                 .then(function (response) {
@@ -45,13 +45,13 @@ const Posts = (props) =>{
         }
         else{
             axios.put(API + DEFAULT_QUERY+state.id.toString(), {
-                title: document.getElementById('title').value.trim(),
-                text: document.getElementById('text').value.trim(),
-                disease: document.getElementById('illness').value.trim(),
-                classification: document.getElementById('classif').value.trim(),
-                practice: document.getElementById('practice').value.trim(),
-                important: document.getElementById('important').value.trim(),
-                recommendation: document.getElementById('recommendation').value.trim()
+                title: titleRef.current.value,
+                text: textRef.current.value,
+                disease: illnesRef.current.value,
+                classification: clasifRef.current.value,
+                practice: practicyRef.current.value,
+                important: importantRef.current.value,
+                recommendation: recomendatiosRef.current.value
 
 
             })
@@ -112,7 +112,7 @@ const Posts = (props) =>{
         setState((prev)=>{
             return{
                 ...prev,
-                illnes: textRef.current.illnesRef
+                illnes: illnesRef.current.value
             }
         })
     },[]);
@@ -138,7 +138,7 @@ const Posts = (props) =>{
         setState((prev)=>{
             return{
                 ...prev,
-                important: importantRef.current.illnesRef
+                important: importantRef.current.value
             }
         })
     },[]);
@@ -146,7 +146,7 @@ const Posts = (props) =>{
         setState((prev)=>{
             return{
                 ...prev,
-                recomendations: recomendatiosRef.current.illnesRef
+                recomendations: recomendatiosRef.current.value
             }
         })
     },[]);
@@ -156,19 +156,19 @@ const Posts = (props) =>{
         <div>
             <form className={classes.postForm}>
                 <p className={classes.titleWriting}>Название</p>
-                <textarea className={classes.title} ref={titleRef}  value={state.title} id = "title"  onChange={titleChange} />
+                <textarea className={classes.title} ref={titleRef}  value={state.title}   onChange={titleChange} />
                 <p className={classes.titleWriting}>Заглавный текст</p>
-                <textarea className={classes.textArea} ref={textRef}  value={state.text} id = "text"  onChange={textChange} />
+                <textarea className={classes.textArea} ref={textRef}  value={state.text} id   onChange={textChange} />
                 <p className={classes.titleWriting}>Описание болезни</p>
-                <textarea className={classes.textArea} ref={illnesRef}  value={state.illnes} id = "illness"  onChange={ilnessChange} />
+                <textarea className={classes.textArea} ref={illnesRef}  value={state.illnes}   onChange={ilnessChange} />
                 <p className={classes.titleWriting}>Классификация</p>
-                <textarea className={classes.textArea} ref={clasifRef}  value={state.classif} id = "classif"  onChange={classifyChange} />
+                <textarea className={classes.textArea} ref={clasifRef}  value={state.classif}   onChange={classifyChange} />
                 <p className={classes.titleWriting}>Практика</p>
-                <textarea className={classes.textArea} ref={practicyRef}  value={state.practicy} id = "practice"  onChange={practicyChange} />
+                <textarea className={classes.textArea} ref={practicyRef}  value={state.practicy}   onChange={practicyChange} />
                 <p className={classes.titleWriting}>Важное</p>
-                <textarea className={classes.textArea} ref={importantRef}  value={state.important} id = "important"  onChange={importantChange} />
+                <textarea className={classes.textArea} ref={importantRef}  value={state.important}   onChange={importantChange} />
                 <p className={classes.titleWriting}>Рекомендации</p>
-                <textarea className={classes.textArea}  ref={recomendatiosRef}  value={state.recomendations} id = "recommendation"  onChange={recomendationChange} />
+                <textarea className={classes.textArea}  ref={recomendatiosRef}  value={state.recomendations}  onChange={recomendationChange} />
                 <input className={classes.Button} onClick={editPost} value={"Изменить"} className={classes.Button} type = {"submit"}  />
                 <input value = {"удалить"} onClick={deletePost} type={"submit"} className={classes.deleteButton}/>
             </form>

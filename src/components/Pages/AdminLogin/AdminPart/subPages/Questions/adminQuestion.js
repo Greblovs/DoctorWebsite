@@ -19,7 +19,7 @@ const Question = (props) =>{
             age: props.age,
             name: props.name,
             text: props.text,
-            answer: document.getElementById('text').value.trim(),
+            answer: inpRef.current.value
 
         })
             .then(function (response) {

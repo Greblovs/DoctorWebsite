@@ -19,23 +19,24 @@ const PopupMenu = ({isOpen, handleClick}) => {
         isLoading: false
 
     });
-    // if(!state.isLoading){
-    //     axios.get(API + DEFAULT_QUERY)
-    //         .then(result  => setState((prev)=>{
-    //             return {
-    //                 ...prev,
-    //                 contact: result.data.data[0],
-    //                 isLoading: true
-    //             }
-    //         }))
-    //         .catch(error => setState((prev)=>{
-    //             return {
-    //                 ...prev,
-    //                 error,
-    //                 isLoading: false
-    //             }
-    //         }));
-    // }
+    if(!state.isLoading){
+        axios.get(API + DEFAULT_QUERY)
+
+            .then(result  => setState((prev)=>{
+                return {
+                    ...prev,
+                    contact: result.data.data[0],
+                    isLoading: true
+                }
+            }))
+            .catch(error => setState((prev)=>{
+                return {
+                    ...prev,
+                    error,
+                    isLoading: false
+                }
+            }));
+    }
     const popupMenuCls = [classes.PopupMenu];
 
     if (isOpen) {
@@ -58,8 +59,8 @@ const PopupMenu = ({isOpen, handleClick}) => {
                 <div style={{marginTop:BotterTop, marginLeft: "40px",zIndex: "1000"}} className={classes.Botter}>
                 <div className={classes.Wrapper}>
                     <p className={classes.name}>Контакты:</p>
-                    <p className={classes.info}>(067) 000000 (8.00 — 20.00)</p>
-                    <p className={classes.info}>example@example.com</p>
+                    <p className={classes.info} >{state.contact.phoneNumber}</p>
+                    <p className={classes.info}>{state.contact.email}</p>
                     <br/>
                     <p style={{fontWeight:"600"}} className={classes.info}>@ALL RIGHTS RESERVED | 2020</p>
 

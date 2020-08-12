@@ -1,7 +1,9 @@
 import React, {useCallback, useState} from 'react';
 import classes from "./Botter.module.scss";
 import {NavLink} from 'react-router-dom';
-
+import axios from "axios";
+const API = 'http://localhost:3002/api';
+const DEFAULT_QUERY = '/contacts';
 
 const Botter = ((props) => {
     const [state, setState] = useState({
@@ -13,7 +15,26 @@ const Botter = ((props) => {
             {to: "/Questions", label: "Вопросы", exact: false},
             {to: "/Posts", label: "Статьи", exact: false},
         ],
+        contact:[]
     });
+    if(!state.isLoading){
+        axios.get(API + DEFAULT_QUERY)
+
+            .then(result  => setState((prev)=>{
+                return {
+                    ...prev,
+                    contact: result.data.data[0],
+                    isLoading: true
+                }
+            }))
+            .catch(error => setState((prev)=>{
+                return {
+                    ...prev,
+                    error,
+                    isLoading: false
+                }
+            }));
+    }
     let contacts = [classes.Contacts];
     if (state.contacts === true) {
         contacts = [classes.ContactsOpen]
@@ -61,8 +82,8 @@ const Botter = ((props) => {
                     </div>
                     <div className={contacts.join(" ")}>
                         <p className={classes.name}>Кот Вячеслав Федорович</p>
-                        <p className={classes.info}>(067) 5065206 (8.00 — 20.00)</p>
-                        <p className={classes.info}>example@example.com</p>
+                        <p className={classes.info}>{state.contact.phoneNumber}</p>
+                        <p className={classes.info}>{state.contact.email}</p>
                         <p className={classes.info}>@theBestDoctor</p>
                         <p className={classes.info}>Задайте Вопрос</p>
 

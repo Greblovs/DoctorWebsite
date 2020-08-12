@@ -1,0 +1,66 @@
+.textArea{
+  display: block;
+  max-width: 100%;
+  width: 800px;
+  height: 100px;
+  box-sizing: content-box;
+  margin-bottom: 15px;
+  padding-bottom: 30px;
+}
+
+.title{
+  margin-bottom: 15px;
+  display: block;
+  max-width: 100%;
+  width: 800px;
+  height: 50px;
+}
+.titleWriting{
+  padding-bottom: 5px;
+}
+.postForm{
+  width: 802px;
+  height: fit-content;
+  margin: 50px auto;
+}
+
+.Button{
+
+  width: 120px;
+  height: 40px;
+}
+
+.warning{
+  width: 100vw;
+  height: fit-content;
+  text-align: center;
+
+  font-size: 20px;
+}
+.addButton{
+  text-align: center;
+  line-height: 40px;
+  border: 1px solid gray;
+  display: block;
+  margin: 50px auto;
+  width: 250px;
+  height: 40px;
+  transition: 0.1s;
+}
+.addButton:hover{
+  transform: scale(1.1 );
+}
+
+.deleteButton{
+  width: 100px;
+  background-color: red;
+  color:black;
+  border: 1px solid black;
+  height: 40px;
+  line-height: 40px;
+  box-sizing: content-box;
+  border-radius: 2px;
+  position: absolute;
+
+  margin-left: 20px;
+}

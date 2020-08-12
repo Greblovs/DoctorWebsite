@@ -4,6 +4,7 @@ import AuthenticatedComponent from "../../../../AuthenticatedComponent";
 import axios from "axios";
 import contacts from "./subPages/contacts/contact";
 import Questions from "./subPages/Questions/adminQuestions"
+import Sliders from "./subPages/Slider/Sliders"
 import {BrowserRouter, Route, Switch, NavLink} from "react-router-dom";
 import Posts from "./subPages/Posts/posts";
 
@@ -20,6 +21,7 @@ const AdminPart = () => {
                     <NavLink to="/admin/Pages/Questions" className={classes.Button}>Вопросы</NavLink>
                     <NavLink to="/admin/Pages/Posts" className={classes.Button}>Посты</NavLink>
                     <NavLink to="/admin/Pages/Contacts" className={classes.Button}>Контакты</NavLink>
+                    <NavLink to="/admin/Pages/Slider" className={classes.Button}>Слайдер</NavLink>
                 </div>
             </div>
             <Switch>
@@ -28,6 +30,8 @@ const AdminPart = () => {
                 <Route exact path="/admin/Pages/Posts"  component={Posts} >
                 </Route>
                 <Route exact path = "/admin/Pages/Contacts" component={contacts}>
+                </Route>
+                <Route exact path = "/admin/Pages/Slider" component={Sliders}>
                 </Route>
                 <Route  path = "/admin">
                     <>
