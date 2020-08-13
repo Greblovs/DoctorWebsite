@@ -6,6 +6,7 @@ const API = 'http://localhost:3002/api';
 const DEFAULT_QUERY = '/posts';
 
 
+
 const Posts = () =>{
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [state, setState] = useState({
@@ -34,6 +35,8 @@ const Posts = () =>{
             }));
     }
 
+
+
     const AddForm = useCallback(()=>{
 
 
@@ -50,7 +53,7 @@ const Posts = () =>{
     if (state.postEdit ===1){
         postEditElement =   <>
                                 <p className={classes.warning}>Пожалуйста, закончите форматирование этой статью и нажмите кнопку изменить перед добавлением новой</p>
-                                <Post edit = "false" key={""} title = {""}  text={""} illnes={""} classif={""} practicy ={""} important = {""} recomendations = {""}/>
+                                <Post key={""} title = {""}  text={""} illnes={""} classif={""} practicy ={""} important = {""} recomendations = {""}/>
                             </>
     }
 

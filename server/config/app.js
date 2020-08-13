@@ -1,4 +1,5 @@
 module.exports = {
+
     jwt :{
         tokens:{
             access:{
@@ -10,7 +11,12 @@ module.exports = {
                 expiresIn: '7d',
             }
         }
-    },
+    }
 
 
-};
+
+    // apiPort: 3002,
+    // //mongoUri: 'mongodb://127.0.0.1:27017/EntSiteDatabase',
+    // jwtSecret: 'secKey',
+    // mysqlpass:'MakeMoreRobots'
+ };
