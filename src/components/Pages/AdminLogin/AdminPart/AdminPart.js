@@ -7,6 +7,7 @@ import Questions from "./subPages/Questions/adminQuestions"
 import Sliders from "./subPages/Slider/Sliders"
 import {BrowserRouter, Route, Switch, NavLink} from "react-router-dom";
 import Posts from "./subPages/Posts/posts";
+import Enter from "./subPages/Enter/enter"
 
 
 const AdminPart = () => {
@@ -22,7 +23,10 @@ const AdminPart = () => {
                     <NavLink to="/admin/Pages/Posts" className={classes.Button}>Посты</NavLink>
                     <NavLink to="/admin/Pages/Contacts" className={classes.Button}>Контакты</NavLink>
                     <NavLink to="/admin/Pages/Slider" className={classes.Button}>Слайдер</NavLink>
+                    <NavLink to="/admin/Pages/Enter" className={classes.Button}>Пароль</NavLink>
+                    <div style={{cursor: "pointer"}}   className={classes.Button}>Выйти</div>
                 </div>
+
             </div>
             <Switch>
                 <Route exact path="/admin/Pages/Questions" component={Questions} >
@@ -32,6 +36,8 @@ const AdminPart = () => {
                 <Route exact path = "/admin/Pages/Contacts" component={contacts}>
                 </Route>
                 <Route exact path = "/admin/Pages/Slider" component={Sliders}>
+                </Route>
+                <Route exact path = "/admin/Pages/Enter" component={Enter}>
                 </Route>
                 <Route  path = "/admin">
                     <>
