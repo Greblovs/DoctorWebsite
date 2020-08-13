@@ -112,7 +112,7 @@ const getPosts =  (req, res) => {
         });
 };
 
-//
+
 module.exports = {
     createPost,
     updatePost,

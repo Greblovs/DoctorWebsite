@@ -59,15 +59,8 @@ const Contacts = (props) =>{
 
             });}
 
-    // const viberUpdate = useCallback(()=>{
-    //     setState((prev)=>{
-    //         return{
-    //             ...prev,
-    //             viber: viber.current.value
-    //         }
-    //     })
-    // },[]);
-    //
+
+
     const phoneUpdate = useCallback(()=>{
         setState((prev)=>{
             return{
@@ -93,11 +86,7 @@ const Contacts = (props) =>{
 
     return(
         <>
-            {/*<form className={classes.form}>*/}
-            {/*    <p className={classes.title}>Вайбер</p>*/}
-            {/*    <input className={classes.input} value={state.contact.viber} ref={viber} onChange={viberUpdate}/>*/}
-            {/*    <input className={classes.submitButton} type={"submit"} value={"Сохранить"}/>*/}
-            {/*</form>*/}
+
             <form  className={classes.form}>
                 <p className={classes.title}>Телефон</p>
                 <input className={classes.input} ref={phone} onChange={phoneUpdate} value={state.phoneNumber} />

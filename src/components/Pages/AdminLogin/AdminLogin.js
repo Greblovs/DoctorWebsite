@@ -31,9 +31,7 @@ const AdminLogin = (props) => {
 
         })
             .then(function (response) {
-                console.log(response.data.accessToken);
                 localStorage.setItem('cool-jwt', response.data.accessToken);
-
                 setState((prev => {
                         return {
                             ...prev,

@@ -17,9 +17,9 @@ const app = (
 
         <Switch>
             <Route path = "/admin">
-                <AdminPart/>
-                <AuthenticatedComponent>
 
+                <AuthenticatedComponent>
+                    <AdminPart/>
                 </AuthenticatedComponent>
             </Route>
             <Route path="/">

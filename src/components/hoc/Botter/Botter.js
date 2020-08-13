@@ -15,7 +15,8 @@ const Botter = ((props) => {
             {to: "/Questions", label: "Вопросы", exact: false},
             {to: "/Posts", label: "Статьи", exact: false},
         ],
-        contact:[]
+        contact:[],
+        isLoading:false
     });
     if(!state.isLoading){
         axios.get(API + DEFAULT_QUERY)
@@ -125,8 +126,8 @@ const Botter = ((props) => {
                                 backgroundColor: "white",
                                 marginTop: "10px"
                             }}></div>
-                            <p style={{paddingTop: "10px"}} className={classes.text}>(067) 5065206 (8.00 — 20.00)</p>
-                            <p className={classes.text}>example@example.com</p>
+                            <p style={{paddingTop: "10px"}} className={classes.text}>{state.contact.phoneNumber}</p>
+                            <p className={classes.text}>{state.contact.email}</p>
                             <p className={classes.text}>@theBestDoctor</p>
                             <p className={classes.text}>Задайте Вопрос</p>
                         </div>

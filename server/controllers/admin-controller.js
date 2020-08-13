@@ -129,6 +129,7 @@ const signIn = (req,res)=>{
       .catch(err=>
           res.status(500).json({message:err.message}))
 };
+
 const checkToken = (req, res) => {
 
     Admin.findOne({
@@ -149,12 +150,71 @@ const checkToken = (req, res) => {
         res.status(500).send("There was a problem finding the user."))
 
     };
+const updateAdmin = (req, res) => {
+    if (!req.body) {
+        return res.status(400).json({
+            success: false,
+            error: 'You must provide a body to update',
+        })
+    }
+    const id = req.params.id;
+    req.body.password = bcrypt.hashSync(req.body.password,10);
+    Admin.update(req.body, {
+        where: { id: id }
+    })
+        .then(num => {
+            if(num==1){
+                return res.status(200).json({
+                    success: true,
+                    message: 'Admin updated!',
+                })}
+            else {
+                return res.status(404).json({
+                    message: 'Admin not found!',
+                })
+            }
+        })
+        .catch(err => {
+            return res.status(404).json({
+                error : err.message,
+                message: 'Admin not updated!',
+            })
+        });
+};
+const checkPassword=(req,res)=>{
+
+    Admin.findOne({
+        where :{
+            email: req.body.email
+
+        }})
+        .then((user)=>{
+            if (!user) return res.status(404).json({message: 'No user found'});
+            if(user.email !== req.userEmail || user.id !== req.userId){
+                return res.status(404).send("Wrong email");
+            }
+            const isValid = bcrypt.compareSync(req.body.password,user.password);
+            if(isValid){
+                return res.status(200).json({
+                    success:true,
+                    id : user.id
+                });
+                }
+            else {
+                return res.status(401).json({message: 'Invalid password'});
+            }
+})
+        .catch (err=>
+            res.status(500).send("There was a problem finding the user."))
+}
 
 
 module.exports = {
     signIn,
     getAdmins,
     createAdmin,
+    updateAdmin,
+    checkPassword,
     checkToken,
     refreshTokens
 

@@ -13,7 +13,10 @@ import Enter from "./subPages/Enter/enter"
 const AdminPart = () => {
     let ip = require("ip");
     let string = "IP: " + ip.address()
-
+    function logout(){
+        localStorage.removeItem('cool-jwt');
+        window.location.reload();
+    }
 
     return (
         <>
@@ -24,7 +27,7 @@ const AdminPart = () => {
                     <NavLink to="/admin/Pages/Contacts" className={classes.Button}>Контакты</NavLink>
                     <NavLink to="/admin/Pages/Slider" className={classes.Button}>Слайдер</NavLink>
                     <NavLink to="/admin/Pages/Enter" className={classes.Button}>Пароль</NavLink>
-                    <div style={{cursor: "pointer"}}   className={classes.Button}>Выйти</div>
+                    <div style={{cursor: "pointer"}}   className={classes.Button} onClick={logout}>Выйти</div>
                 </div>
 
             </div>
