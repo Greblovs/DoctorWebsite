@@ -4,6 +4,10 @@ import MenuButton from "./MenuButton/MenuButton";
 import logo from "../../../images/logo.png";
 import PopupMenu from "./PopupMenu/PopupMenu";
 import {NavLink, useLocation} from 'react-router-dom';
+import axios from "axios";
+const API = 'http://localhost:3002/api';
+const DEFAULT_QUERY = '/contacts';
+
 
 const Header = () => {
 
@@ -16,8 +20,29 @@ const Header = () => {
             {to: "/Questions", label: "Вопросы", exact: false},
             {to: "/Posts", label: "Статьи", exact: false},
         ],
+        isLoading:false,
+        phoneNum:null,
+        email:null,
     });
 
+    if(!state.isLoading){
+        axios.get(API + DEFAULT_QUERY)
+            .then(result  => setState((prev)=>{
+                return {
+                    ...prev,
+                    phoneNum: result.data.data[0].phoneNumber,
+                    email: result.data.data[0].email,
+                    isLoading: true
+                }
+            }))
+            .catch(error => setState((prev)=>{
+                return {
+                    ...prev,
+                    error,
+                    isLoading: false
+                }
+            }));
+    }
     const location = useLocation().pathname;
     if (location === "/" && state.page !== "Главная"){
         setState(prev => {

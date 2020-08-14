@@ -36,11 +36,12 @@ class AuthenticatedComponent extends Component{
         if(!jwt){
             console.log('no jwt')
             this.props.history.push("/admin")
-            //написть переход в вход !
+
         }
         else{
-        axios.get(API + DEFAULT_QUERY, {headers :{
-            authorization : `Bearer ${jwt}`}}).then(res=>this.setState({
+        axios.get(API + DEFAULT_QUERY, {
+            headers :{authorization : `Bearer ${jwt}`}})
+            .then(res=>this.setState({
             user: res.data
          }))
             .catch(err=>
@@ -48,7 +49,7 @@ class AuthenticatedComponent extends Component{
             console.log(err.message);
             localStorage.removeItem('cool-jwt');
         })}}
-  //  }
+
     render(){
         if(this.state.user == undefined){
             return(
