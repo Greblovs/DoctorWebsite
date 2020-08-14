@@ -19,7 +19,6 @@ const app = (
             <Route path = "/admin">
                 <AdminPart/>
                 <AuthenticatedComponent>
-
                 </AuthenticatedComponent>
             </Route>
             <Route path="/">
