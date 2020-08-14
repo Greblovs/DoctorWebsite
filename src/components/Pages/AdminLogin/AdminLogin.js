@@ -55,6 +55,20 @@ const AdminLogin = (props) => {
 
             });
     }
+    console.log(state.isLoading);
+
+    setTimeout(()=> {
+            if (state.isLoading === true) {
+                setState((prev => {
+                        return {
+                            ...prev,
+                            isLoading: false
+                        }
+                    }
+                ))
+            }
+        }, 200
+    )
 
     if (state.isLoading == false) {
         return (
@@ -67,6 +81,10 @@ const AdminLogin = (props) => {
                 </form>
 
             </>
+        )
+    }else{
+        return (
+            <h1></h1>
         )
     }
 
