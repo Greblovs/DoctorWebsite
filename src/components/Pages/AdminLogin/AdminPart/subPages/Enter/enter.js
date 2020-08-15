@@ -19,15 +19,23 @@ const Enter = ()=> {
                 headers: {authorization: `Bearer ${jwt}`},
             })
                 .then(function (response) {
-                    console.log(response.data)
+                    console.log(response.data);
+                    alert(response.data.message+'\nПовторите вход на страницу');
+                    window.location.reload();
                 })
 
                 .catch(function (error) {
+                    try{
                     console.log(error.response);
+                    alert(error.response.data.message);}
+                    catch (err){
+                        alert(err.message);
+                    }
+
 
                 });
         }
-        window.location.reload();
+
     }
     function enter(e) {
         e.preventDefault();
@@ -47,15 +55,19 @@ const Enter = ()=> {
 
                     updatePass(response.data.id);
                 }else{window.location.reload();}
-                //window.location.reload(false);
+
             })
             .catch(function (error) {
+                try{
                 console.log(error.response);
-                window.location.reload();
+                alert(error.response.data.message);}
+                catch (err){
+                    alert(err.message);
+                }
             });
 
     };
-    // if (state.isLoading == false) {
+
         return (
             <>
                 <form className={classes.form} onSubmit={enter}>
@@ -70,6 +82,6 @@ const Enter = ()=> {
                 </form>
             </>
         )
-    //}
+
 }
 export default Enter;

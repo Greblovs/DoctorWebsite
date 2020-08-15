@@ -12,8 +12,8 @@ const Question = (props) =>{
         text: props.answer,
 
     })
-    function addAnswer(){
-
+    function addAnswer(e){
+        e.preventDefault();
         axios.put(API + DEFAULT_QUERY+state.id.toString(), {
             title: props.title,
             age: props.age,
@@ -23,26 +23,23 @@ const Question = (props) =>{
 
         })
             .then(function (response) {
-                console.log(response.data);
-                console.log(response.status);
-                console.log(response.statusText);
-
+                alert(response.data.message);
 
             })
             .catch(function (error) {
-
-                console.log(error.response.data.error.errors);
+                alert(error.message);
 
             });}
-    function deleteQuestion(){
+    function deleteQuestion(e){
+        e.preventDefault();
         axios.delete(API + DEFAULT_QUERY+state.id.toString())
             .then(function (response) {
-            console.log(response.data);
-            console.log(response.status);
-            console.log(response.statusText);
+            //alert(response.data.message);
+            window.location.reload();
         })
-            .catch((err=>
-            console.log(err.response.data.error.errors)))
+            .catch(err=>
+                alert(err.message));
+
     }
 
     const input = useCallback(()=>{
@@ -60,7 +57,7 @@ const Question = (props) =>{
             <p className={classes.title}>{props.title}</p>
             <div>
                 <p className={classes.subTexts}>{props.name}</p>
-                <p style={window.innerWidth > 1000?{marginLeft: "50px"}: null} className={classes.subTexts}>Возраст:  {props.age}</p>
+                <p style={window.innerWidth > 1000?{marginLeft: "50px"}: null} className={classes.subTexts}> Возраст:  {props.age}</p>
             </div>
             <p>{props.text}</p>
             <form >

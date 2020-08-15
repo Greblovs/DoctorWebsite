@@ -107,7 +107,7 @@ const signIn = (req,res)=>{
         .then((admin)=>
         {
             if(!admin){
-                return  res.status(401).json({massage: 'Admin does not exist'});
+                return  res.status(401).json({message: 'Admin does not exist'});
             }
             else{
             const isValid = bcrypt.compareSync(password,admin.password);
@@ -185,14 +185,13 @@ const checkPassword=(req,res)=>{
 
     Admin.findOne({
         where :{
-            email: req.body.email
+            email: req.userEmail,
+            id:req.userId
 
         }})
         .then((user)=>{
             if (!user) return res.status(404).json({message: 'No user found'});
-            if(user.email !== req.userEmail || user.id !== req.userId){
-                return res.status(404).send("Wrong email");
-            }
+
             const isValid = bcrypt.compareSync(req.body.password,user.password);
             if(isValid){
                 return res.status(200).json({
@@ -205,7 +204,7 @@ const checkPassword=(req,res)=>{
             }
 })
         .catch (err=>
-            res.status(500).send("There was a problem finding the user."))
+            res.status(500).json({message :"There was a problem finding the user."}))
 }
 
 

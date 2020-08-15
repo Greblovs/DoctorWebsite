@@ -39,24 +39,19 @@ const Contacts = (props) =>{
                 }
             }));
     }
-    function editContact(){
-
+    function editContact(e){
+            e.preventDefault();
             axios.put(API + DEFAULT_QUERY1+state.id.toString(), {
             phoneNumber: state.phoneNumber,
                 email: state.email
 
         })
             .then(function (response) {
-                console.log(response.data);
-                console.log(response.status);
-                console.log(response.statusText);
-
+                alert(response.data.message);
 
             })
             .catch(function (error) {
-
-                console.log(error.response.data.error.errors);
-
+                alert(error.message);
             });}
 
 

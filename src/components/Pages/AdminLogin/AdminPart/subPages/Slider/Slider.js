@@ -14,7 +14,8 @@ const Slider = (props) =>{
         text: props.text,
         edit:props.edit
     })
-    function editPost(){
+    function editPost(e){
+        e.preventDefault();
         if(state.edit=="false"){
             axios.post(API + DEFAULT_QUERY, {
                 title: titleRef.current.value,
@@ -23,14 +24,12 @@ const Slider = (props) =>{
 
             })
                 .then(function (response) {
-                    console.log(response.data);
-                    console.log(response.status);
-                    console.log(response.statusText);
-
+                    //alert(response.data.message);
+                    window.location.reload();
 
                 })
                 .catch(function (error) {
-                    console.log(error.response.data.error.errors);
+                    alert(error.message);
                 });
         }
         else{
@@ -38,32 +37,29 @@ const Slider = (props) =>{
                 title: titleRef.current.value,
                 alltext: textRef.current.value,
 
-
-
             })
                 .then(function (response) {
-                    console.log(response.data);
-                    console.log(response.status);
-                    console.log(response.statusText);
-
+                    alert(response.data.message)
 
                 })
                 .catch(function (error) {
-                    console.log(error.response.data.error.errors);
+                    alert(error.message);
                 });
         }
     }
 
-    function deletePost(){
-        if(state.edit!="false")
+    function deletePost(e){
+        e.preventDefault();
+        if(state.edit!="false"){
             axios.delete(API + DEFAULT_QUERY+state.id.toString())
                 .then(function (response) {
-                    console.log(response.data);
-                    console.log(response.status);
-                    console.log(response.statusText);
+                   // alert(response.data.message);
+                    window.location.reload();
                 })
-                .catch((err=>
-                    console.log(err.response.data.error.errors)))
+                .catch(err=>
+                        alert(err.message)
+                    )}
+        else window.location.reload();
     }
 
     const titleRef = useRef();

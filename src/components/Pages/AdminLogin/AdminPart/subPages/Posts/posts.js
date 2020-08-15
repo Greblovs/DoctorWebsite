@@ -53,7 +53,7 @@ const Posts = () =>{
     if (state.postEdit ===1){
         postEditElement =   <>
                                 <p className={classes.warning}>Пожалуйста, закончите форматирование этой статью и нажмите кнопку изменить перед добавлением новой</p>
-                                <Post key={""} title = {""}  text={""} illnes={""} classif={""} practicy ={""} important = {""} recomendations = {""}/>
+                                <Post edit ={"false"} key={""} title = {""}  text={""} illnes={""} classif={""} practicy ={""} important = {""} recomendations = {""}/>
                             </>
     }
 

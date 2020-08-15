@@ -46,6 +46,7 @@ const AdminPart = () => {
                     <>
                         <p className={classes.Title}>Добро пожаловать Кот Вячеслав Федоровичь</p>
                         <p className={classes.IP}>{string}</p>
+
                     </>
 
                 </Route>
