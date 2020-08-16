@@ -54,8 +54,25 @@ const refreshTokens=(req,res)=>{
         .catch(err=> res.status(400).json({message: err.message}))
 };
 
-const createAdmin = (req, res) => {
+const deleteAdmin = (req, res) => {
+    const id = req.params.id;
 
+    Admin.destroy({
+        where: { id: id }
+    })
+        .then(num => {
+            if (num == 1) {
+                return res.status(200).json({ success: true, message: 'Admin deleted'});
+            } else {
+                return res.status(404).json({ success: false, error: `Admin not found` });
+            }
+        })
+        .catch(err => {
+            return res.status(400).json({ success: false, error: err })
+        });
+};
+
+const createAdmin = (req, res) => {
     if (!req.body) {
         res.status(400).json({
             success: false,
@@ -63,13 +80,10 @@ const createAdmin = (req, res) => {
         });
         return;
     }
-
     const admin = {
         email: req.body.email,
         password : bcrypt.hashSync(req.body.password,10)
-
     };
-
     Admin.create(admin)
         .then(() => {
             return res.status(201).json({
@@ -78,8 +92,18 @@ const createAdmin = (req, res) => {
             })
         })
         .catch(err => {
+            if(err.errors[0].validatorKey == "isEmail"){
+                return res.status(400).json({
+                    err : err.errors[0].validatorKey,
+                    message: 'Please, enter your email address'});
+            }
+            if(err.errors[0].validatorKey == "not_unique"){
+                   return res.status(400).json({
+                    err : err.errors[0].validatorKey,
+                    message: 'admin '+admin.email+' already exists'});
+            }
             return res.status(400).json({
-                err,
+                err : err.errors[0].validatorKey,
                 message: 'Admin not created!'});
         });
 };
@@ -107,7 +131,7 @@ const signIn = (req,res)=>{
         .then((admin)=>
         {
             if(!admin){
-                return  res.status(401).json({message: 'Admin does not exist'});
+                return  res.status(401).json({message: 'Admin'+admin.email+' does not exist'});
             }
             else{
             const isValid = bcrypt.compareSync(password,admin.password);
@@ -213,6 +237,7 @@ module.exports = {
     getAdmins,
     createAdmin,
     updateAdmin,
+    deleteAdmin,
     checkPassword,
     checkToken,
     refreshTokens

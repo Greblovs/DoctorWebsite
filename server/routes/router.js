@@ -36,6 +36,7 @@ router.get('/contacts', ContactCtrl.getContacts)
 router.post('/signin',AdminCtrl.signIn)
 //router.get('/admins',AuthMiddleware, AdminCtrl.getAdmins)
 router.post('/admin',AdminCtrl.createAdmin)
+router.delete('/admin/:id',AdminCtrl.deleteAdmin)
 router.get('/auth',AuthMiddleware, AdminCtrl.checkToken)
 router.post('/refreshTokens', AdminCtrl.refreshTokens)
 router.post('/checkPass',AuthMiddleware, AdminCtrl.checkPassword),
