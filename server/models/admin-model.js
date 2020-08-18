@@ -17,6 +17,9 @@ module.exports = (sequelize, Sequelize) => {
         password: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        resetLink:{
+            type:DataTypes.STRING
         }
 
     });

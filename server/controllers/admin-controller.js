@@ -1,8 +1,9 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authHelper = require('../controllers/token-controller');
-
+const mail = require('nodemailer');
 const db = require("../db/index");
+const config = require('../config/app')
 const Admin = db.admins;
 const Token = db.tokens;
 const Op = db.Sequelize.Op;
@@ -131,7 +132,7 @@ const signIn = (req,res)=>{
         .then((admin)=>
         {
             if(!admin){
-                return  res.status(401).json({message: 'Admin'+admin.email+' does not exist'});
+                return  res.status(401).json({message: 'Admin'+req.body.email+' does not exist'});
             }
             else{
             const isValid = bcrypt.compareSync(password,admin.password);
@@ -205,6 +206,95 @@ const updateAdmin = (req, res) => {
             })
         });
 };
+const forgotPassword=(req,res)=>{
+    Admin.findOne({
+        where:{
+            email : req.body.email
+        }
+    })
+        .then((admin)=>
+        {
+            if(!admin){
+                return  res.status(401).json({message: 'Admin'+req.body.email+' does not exist'});
+            }
+            const token = jwt.sign({userId : admin.id, userEmail : admin.email},process.env.resetPasswordKey,{expiresIn: '20m'});
+            Admin.update({resetLink: token}, {
+                where: { email: admin.email }
+            })
+                .then(num => {
+                    if(num!=1){
+                        return res.status(404).json({
+                            message: 'Admin not found!',
+                        })
+                    }})
+                .catch(err => {
+                    return res.status(404).json({
+                        error : err.message,
+                        message: 'Admin not updated!',
+                    })
+                });
+            let mailOptions = {
+                from: process.env.email,
+                to: req.body.email,
+                subject: 'Reset your account password',
+                html: '<h4><b>Reset Password</b></h4>' +
+                    '<p>To reset your password, complete this form:</p>' +
+                    '<a href=' + config.clientUrl + 'reset/' + token + '">' + config.clientUrl + 'reset/'  + token + '</a>' +
+                    '<br><br>' +
+                    '<p>--Team</p>'
+            }
+            let transporter = mail.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: process.env.email,
+                    pass: process.env.emailPass
+                }
+            });
+            let mailSent = transporter.sendMail(mailOptions)//sending mail to the user where he can reset password.User id and the token generated are sent as params in a link
+            if (mailSent) {
+                return res.json({success: true, message: 'Check your mail to reset your password.'})
+            } else {
+                return res.status(400).json({success:false})
+            }
+        })
+        .catch(err=>
+            res.status(500).json({message:err.message}))
+}
+const resetPassword=(req,res)=>{
+    if (!req.body) {
+        return res.status(400).json({
+            success: false,
+            error: 'You must provide a body to update',
+        })
+    }
+    req.body.password = bcrypt.hashSync(req.body.password,10);
+    Admin.update({password:req.body.password,resetLink: null}, {
+        where: {
+            id: req.userId,
+            email: req.userEmail
+        }
+    })
+        .then(num => {
+            if(num==1){
+                return res.status(200).json({
+                    success: true,
+                    message: 'Admin updated!',
+                })}
+            else {
+                return res.status(404).json({
+                    message: 'Admin not found!',
+                })
+            }
+        })
+        .catch(err => {
+            return res.status(404).json({
+                error : err.message,
+                message: 'Admin not updated!',
+            })
+        });
+
+}
+
 const checkPassword=(req,res)=>{
 
     Admin.findOne({
@@ -240,7 +330,9 @@ module.exports = {
     deleteAdmin,
     checkPassword,
     checkToken,
-    refreshTokens
+    refreshTokens,
+    resetPassword,
+    forgotPassword
 
 }
 

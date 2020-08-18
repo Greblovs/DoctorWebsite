@@ -8,7 +8,6 @@ const API = 'http://localhost:3002/api';
 const DEFAULT_QUERY = '/questions';
 
 const Discussion = () => {
-
     const [state, setState] = useState({
         searchValue: "",
         showedRows: 1,
@@ -55,7 +54,7 @@ const Discussion = () => {
 
             )
         })
-    }
+   }
     return (
 
         <>
