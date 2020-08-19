@@ -134,9 +134,9 @@ const Header = () => {
                 <div className={classes.SmartSize}>
                     <div className={window.innerWidth<1400? classes.BackTrace: classes.backTraceDesktop} onClick={toggleMenu} ref={backTraceRef}/>
                     <div className={backTraceMenu.join(' ')}>
-                        <div className={classes.backTraceLink + " " + classes.first}/>
-                        <div className={classes.backTraceLink + " " + classes.second}/>
-                        <div className={classes.backTraceLink + " " + classes.third}/>
+                        <a href={"tel:+"+state.phoneNum}><div className={classes.backTraceLink + " " + classes.first}/></a>
+                        <a href={"viber://add?number="+state.phoneNum}><div className={classes.backTraceLink + " " + classes.second}/></a>
+                        <a href={"mailto:"+state.email}><div className={classes.backTraceLink + " " + classes.third}/></a>
                     </div>
                     <div className={classes.Header}>
                         <MenuButton isOpen={state.isMenuOpen} handleClick={openMenu}/>
@@ -151,9 +151,9 @@ const Header = () => {
             <div className={ classes.TabletSize}>
                 <div  className={window.innerWidth<1400? classes.BackTrace: classes.backTraceDesktop} onClick={toggleMenu} ref={backTraceRef}></div>
                 <div className={backTraceMenu.join(' ')}>
-                    <div className={window.innerWidth<1400? classes.backTraceLink + " " + classes.first: classes.backTraceLinkDesktop + " " + classes.first}/>
-                    <div className={window.innerWidth<1400? classes.backTraceLink + " " + classes.second: classes.backTraceLinkDesktop + " " + classes.second}/>
-                    <div className={window.innerWidth<1400? classes.backTraceLink + " " + classes.third: classes.backTraceLinkDesktop + " " + classes.third}/>
+                    <a href={"tel:+"+state.phoneNum}><div className={window.innerWidth<1400? classes.backTraceLink + " " + classes.first: classes.backTraceLinkDesktop + " " + classes.first}/></a>
+                    <a href={"viber://chat?number=+"+state.phoneNum}><div className={window.innerWidth<1400? classes.backTraceLink + " " + classes.second: classes.backTraceLinkDesktop + " " + classes.second}/></a>
+                    <a href={"mailto:"+state.email}><div className={window.innerWidth<1400? classes.backTraceLink + " " + classes.third: classes.backTraceLinkDesktop + " " + classes.third}/></a>
                 </div>
                 <div className={classes.Header}>
                     <img srcSet={logo} alt=""/>
