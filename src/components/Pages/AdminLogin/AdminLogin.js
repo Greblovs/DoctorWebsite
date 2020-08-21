@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import classes from "./AdminLogin.module.scss";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch, NavLink} from "react-router-dom";
 import AdminPart, {AdminPage} from "./AdminPart/AdminPart"
+import Restore from "./AdminPart/subPages/restore/restore";
 
 const API = 'http://localhost:3002/api';
 const DEFAULT_QUERY = '/signin';
@@ -73,11 +74,16 @@ const AdminLogin = (props) => {
     if (state.isLoading == false) {
         return (
             <>
+
+
                 <form className={classes.form} onSubmit={login}>
                     <span className={classes.Header}>Вход</span>
                     <input id="login" placeholder={"Логин"} className={classes.Login} type={"text"}/>
                     <input id="password" placeholder={"Пароль"} className={classes.Password} type={"password"}/>
                     <input value={"Войти"} className={classes.Button} type={"submit"}/>
+                    <NavLink to="/admin/restore">
+                    <div className={classes.Restore}>Востановить пароль</div>
+                    </NavLink>
                 </form>
 
             </>

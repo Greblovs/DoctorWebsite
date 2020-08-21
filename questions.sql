@@ -1,4 +1,4 @@
-insert admins (phoneNumber, email, createdAt, updatedAt) 
+insert contactsadmins (phoneNumber, email, createdAt, updatedAt) 
 values (
 "+0504404565",
 "examle@example.com",

@@ -10,6 +10,7 @@ import Posts from "./subPages/Posts/posts";
 import Enter from "./subPages/Enter/enter"
 
 
+
 const AdminPart = () => {
     let ip = require("ip");
     let string = "IP: " + ip.address()
@@ -41,7 +42,9 @@ const AdminPart = () => {
                 <Route exact path = "/admin/Pages/Slider" component={Sliders}>
                 </Route>
                 <Route exact path = "/admin/Pages/Enter" component={Enter}>
-                </Route>
+            </Route>
+
+
                 <Route  path = "/admin">
                     <>
                         <p className={classes.Title}>Добро пожаловать Кот Вячеслав Федоровичь</p>

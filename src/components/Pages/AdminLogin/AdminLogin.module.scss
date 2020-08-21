@@ -9,6 +9,15 @@
   margin: auto;
   border: 3px solid $accent1;
 }
+.Restore{
+  width: 200px;
+  height: 60px;
+  line-height: 60px;
+  color: $accent1;
+  margin: 0 auto;
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 .Header{
   padding-bottom: 30px;

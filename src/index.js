@@ -9,6 +9,7 @@ import MainPage from "./components/Pages/Main/Main";
 
 import AuthenticatedComponent from "./AuthenticatedComponent";
 import AdminPart from "./components/Pages/AdminLogin/AdminPart/AdminPart";
+import Restore from "./components/Pages/AdminLogin/AdminPart/subPages/restore/restore";
 
 
 const app = (
@@ -16,11 +17,13 @@ const app = (
     <BrowserRouter>
 
         <Switch>
+            <Route path= "/admin/restore" component = {Restore}/>
             <Route path = "/admin">
                 <AuthenticatedComponent>
                     <AdminPart/>
                 </AuthenticatedComponent>
             </Route>
+
             <Route path="/">
                 <App/>
             </Route>
