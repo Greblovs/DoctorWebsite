@@ -9,21 +9,21 @@ import Restore from "./AdminPart/subPages/restore/restore";
 const API = 'http://localhost:3002/api';
 const DEFAULT_QUERY = '/signin';
 
-const AdminLogin = (props) => {
+const AdminLogin = () => {
 
     const [state, setState] = useState({
         isLoading: false
     });
 
-    function login() {
-
-        setState((prev => {
-                return {
-                    ...prev,
-                    isLoading: true
-                }
-            }
-        ))
+    function login(e) {
+        e.preventDefault();
+        // setState((prev => {
+        //         return {
+        //             ...prev,
+        //             isLoading: true
+        //         }
+        //     }
+        // ))
 
         axios.post(API + DEFAULT_QUERY, {
             email: document.getElementById('login').value.trim(),
@@ -33,45 +33,51 @@ const AdminLogin = (props) => {
         })
             .then(function (response) {
                 localStorage.setItem('cool-jwt', response.data.accessToken);
-                setState((prev => {
-                        return {
-                            ...prev,
-                            isLoading: false
-                        }
-                    }
-
-                ))
-                window.location.reload(false);
-
+                // setState((prev => {
+                //         return {
+                //             ...prev,
+                //             isLoading: false
+                //         }
+                //     }
+                //
+                // ))
+                // window.location.reload(false);
+                window.location.reload();
             })
             .catch(function (error) {
-                console.log(error.response);
-                setState((prev => {
-                        return {
-                            ...prev,
-                            isLoading: false
-                        }
-                    }
-                ))
+                try{
+                console.log(error.response.data);
+                alert(error.response.data.message);}
+                catch (err){
+                    alert(err.message);
+                }
+                // setState((prev => {
+                //         return {
+                //             ...prev,
+                //             isLoading: false
+                //         }
+                //     }
+                // ))
+                // window.location.reload();
 
             });
     }
-    console.log(state.isLoading);
+    // console.log(state.isLoading);
+    //
+    // setTimeout(()=> {
+    //         if (state.isLoading === true) {
+    //             setState((prev => {
+    //                     return {
+    //                         ...prev,
+    //                         isLoading: false
+    //                     }
+    //                 }
+    //             ))
+    //         }
+    //     }, 200
+    // )
 
-    setTimeout(()=> {
-            if (state.isLoading === true) {
-                setState((prev => {
-                        return {
-                            ...prev,
-                            isLoading: false
-                        }
-                    }
-                ))
-            }
-        }, 200
-    )
-
-    if (state.isLoading == false) {
+   // if (state.isLoading == false) {
         return (
             <>
 
@@ -88,11 +94,11 @@ const AdminLogin = (props) => {
 
             </>
         )
-    }else{
-        return (
-            <h1></h1>
-        )
-    }
+   // }else{
+      //  return (
+        //    <h1></h1>
+        //)
+    //}
 
 }
 
