@@ -3,7 +3,6 @@ import classes from "./AdminLogin.module.scss";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import {BrowserRouter, Route, Switch, NavLink} from "react-router-dom";
-import AdminPart, {AdminPage} from "./AdminPart/AdminPart"
 import Restore from "./AdminPart/subPages/restore/restore";
 
 const API = 'http://localhost:3002/api';
@@ -11,20 +10,10 @@ const DEFAULT_QUERY = '/signin';
 
 const AdminLogin = () => {
 
-    const [state, setState] = useState({
-        isLoading: false
-    });
+
 
     function login(e) {
         e.preventDefault();
-        // setState((prev => {
-        //         return {
-        //             ...prev,
-        //             isLoading: true
-        //         }
-        //     }
-        // ))
-
         axios.post(API + DEFAULT_QUERY, {
             email: document.getElementById('login').value.trim(),
             password: document.getElementById('password').value.trim(),
@@ -33,15 +22,7 @@ const AdminLogin = () => {
         })
             .then(function (response) {
                 localStorage.setItem('cool-jwt', response.data.accessToken);
-                // setState((prev => {
-                //         return {
-                //             ...prev,
-                //             isLoading: false
-                //         }
-                //     }
-                //
-                // ))
-                // window.location.reload(false);
+
                 window.location.reload();
             })
             .catch(function (error) {
@@ -51,33 +32,11 @@ const AdminLogin = () => {
                 catch (err){
                     alert(err.message);
                 }
-                // setState((prev => {
-                //         return {
-                //             ...prev,
-                //             isLoading: false
-                //         }
-                //     }
-                // ))
-                // window.location.reload();
+
 
             });
     }
-    // console.log(state.isLoading);
-    //
-    // setTimeout(()=> {
-    //         if (state.isLoading === true) {
-    //             setState((prev => {
-    //                     return {
-    //                         ...prev,
-    //                         isLoading: false
-    //                     }
-    //                 }
-    //             ))
-    //         }
-    //     }, 200
-    // )
 
-   // if (state.isLoading == false) {
         return (
             <>
 
@@ -88,17 +47,12 @@ const AdminLogin = () => {
                     <input id="password" placeholder={"Пароль"} className={classes.Password} type={"password"}/>
                     <input value={"Войти"} className={classes.Button} type={"submit"}/>
                     <NavLink to="/admin/restore">
-                    <div className={classes.Restore}>Востановить пароль</div>
+                    <div className={classes.Restore}>Восстановить пароль</div>
                     </NavLink>
                 </form>
 
             </>
         )
-   // }else{
-      //  return (
-        //    <h1></h1>
-        //)
-    //}
 
 }
 

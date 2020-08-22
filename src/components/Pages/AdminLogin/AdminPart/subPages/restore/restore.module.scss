@@ -1,7 +1,9 @@
+@import "src/strings/colors";
+
 .Restore{
   width: 500px;
   padding: 5px;
-  height: 20px;
+  height: 30px;
   margin-top: 20px;
   margin-left: calc(50vw - 250px);
 }
@@ -22,4 +24,32 @@
   color: darkblue;
   cursor: pointer;
   border-bottom: 1px solid darkblue;
+}
+.Button{
+  max-width: calc(100vw - 40px);
+  display: block;
+  width: 200px;
+  height: 45px;
+  background-color: $accent1;
+  border-radius: 10px;
+  color: white;
+  font-size: 26px;
+  margin: auto;
+  margin-top: 20px;
+  box-shadow: none;
+  border:none;
+  transition: transform 0.2s;
+  transform: scale(1);
+}
+
+.Button:focus{
+  outline: none;
+}
+
+.Button:active{
+  outline: none;
+  transform: scale(0.95);
+}
+.Button:hover{
+  outline: none;
 }

@@ -10,6 +10,8 @@ import MainPage from "./components/Pages/Main/Main";
 import AuthenticatedComponent from "./AuthenticatedComponent";
 import AdminPart from "./components/Pages/AdminLogin/AdminPart/AdminPart";
 import Restore from "./components/Pages/AdminLogin/AdminPart/subPages/restore/restore";
+import NewPassword from "./components/Pages/AdminLogin/AdminPart/subPages/NewPassword/newPassword";
+
 
 
 const app = (
@@ -18,6 +20,8 @@ const app = (
 
         <Switch>
             <Route path= "/admin/restore" component = {Restore}/>
+            <Route exact path="/admin/reset/:token" component={NewPassword}>
+            </Route>
             <Route path = "/admin">
                 <AuthenticatedComponent>
                     <AdminPart/>

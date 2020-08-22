@@ -132,7 +132,7 @@ const signIn = (req,res)=>{
         .then((admin)=>
         {
             if(!admin){
-                return  res.status(401).json({message: 'Admin'+req.body.email+' does not exist'});
+                return  res.status(401).json({message: 'Admin '+req.body.email+' does not exist'});
             }
             else{
             const isValid = bcrypt.compareSync(password,admin.password);
@@ -215,7 +215,7 @@ const forgotPassword=(req,res)=>{
         .then((admin)=>
         {
             if(!admin){
-                return  res.status(401).json({message: 'Admin'+req.body.email+' does not exist'});
+                return  res.status(401).json({message: 'Admin '+req.body.email+' does not exist'});
             }
             const token = jwt.sign({userId : admin.id, userEmail : admin.email},process.env.resetPasswordKey,{expiresIn: '20m'});
             Admin.update({resetLink: token}, {
@@ -239,7 +239,7 @@ const forgotPassword=(req,res)=>{
                 subject: 'Reset your account password',
                 html: '<h4><b>Reset Password</b></h4>' +
                     '<p>To reset your password, complete this form:</p>' +
-                    '<a href=' + config.clientUrl + 'reset/' + token + '">' + config.clientUrl + 'reset/'  + token + '</a>' +
+                    '<a href=' + config.clientUrl + 'admin/reset/' + token + '>' + config.clientUrl + 'admin/reset/'  + token + '</a>' +
                     '<br><br>' +
                     '<p>--Team</p>'
             }
@@ -278,7 +278,7 @@ const resetPassword=(req,res)=>{
             if(num==1){
                 return res.status(200).json({
                     success: true,
-                    message: 'Admin updated!',
+                    message: 'Password updated!',
                 })}
             else {
                 return res.status(404).json({
@@ -289,7 +289,7 @@ const resetPassword=(req,res)=>{
         .catch(err => {
             return res.status(404).json({
                 error : err.message,
-                message: 'Admin not updated!',
+                message: 'Password not updated!',
             })
         });
 

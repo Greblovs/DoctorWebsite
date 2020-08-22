@@ -13,7 +13,7 @@ const generateAccessToken =(userId,userEmail) =>{
         type: tokens.access.type,
     };
     const options={
-        expiresIn:tokens.access.expiresIn
+        //expiresIn:tokens.access.expiresIn
     }
     return jwt.sign(payload,process.env.secret,options);
 };

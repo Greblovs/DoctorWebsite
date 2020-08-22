@@ -4,7 +4,7 @@ module.exports = {
         tokens:{
             access:{
                 type:'access',
-                expiresIn: '20m',
+                //expiresIn: '20m',
             },
             refresh:{
                 type:'refresh',
@@ -12,5 +12,5 @@ module.exports = {
             }
         }
     },
-    clientUrl: 'localhost3000/'
+    clientUrl: 'http://localhost:3000/'
  };
